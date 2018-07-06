@@ -1,4 +1,3 @@
-//TestComment
 package com.mavenMessaging;
 
 import java.io.BufferedReader;
@@ -56,6 +55,7 @@ public class MessagingAPI {
 			ex.printStackTrace();
 		}
 		return sessionKey;
+
 	}
 	
 	@SuppressWarnings("unused")

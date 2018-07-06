@@ -28,6 +28,6 @@ import com.mavenMessaging.MessagingAPI;
 public class MessagingTests {
 	@BeforeClass
 	public static void setup() throws IOException {
-		MessagingAPI.setSessionKeyFromFile("C:\\Users\\TylerB\\eclipse-workspace\\mavenMessaging\\userpass.txt");
+		MessagingAPI.setSessionKeyFromFile("userpass.txt");
 	}
 }
