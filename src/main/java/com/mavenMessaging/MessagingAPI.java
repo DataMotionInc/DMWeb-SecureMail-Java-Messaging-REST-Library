@@ -55,7 +55,6 @@ public class MessagingAPI {
 			ex.printStackTrace();
 		}
 		return sessionKey;
-
 	}
 	
 	@SuppressWarnings("unused")
@@ -253,7 +252,6 @@ public class MessagingAPI {
 		MessageId messageId = new MessageId();
 		String URL = "https://securemailbeta.datamotion.com/SecureMessagingApi/Message/";
 		String JSONMessage = buildJSONStringFromObject(message);
-		//System.out.println(JSONMessage);
 		try {
 			HttpEntity entity = buildHttpPostEntity(URL, JSONMessage, assembleCommonHeaders(sessionKey));
 			String response = IOUtils.toString(entity.getContent(), "UTF-8");
@@ -422,6 +420,7 @@ public class MessagingAPI {
 		String username = br.readLine();
 		String password = br.readLine();
 		SessionKey = getNewSessionKey(username, password);
+		br.close();
 	}
 }
 
