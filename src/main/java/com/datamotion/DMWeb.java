@@ -31,13 +31,13 @@ import lombok.Setter;
 public class DMWeb {
 	
 	@Getter @Setter
+	private static String BaseUrl;
+	
+	@Getter @Setter
 	private static String SessionKey;
 	
 	@Getter @Setter
 	private static int StatusCode;
-	
-	@Getter @Setter
-	private static String BaseUrl;
 	
 	public DMWeb() {
 		BaseUrl = "https://securemailbeta.datamotion.com/";
@@ -334,7 +334,7 @@ public class DMWeb {
 	}
 	
 	@SuppressWarnings("unused")
-	public void retractMessage(int messageId) {
+	public static void retractMessage(int messageId) {
 		String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Retract";
 		try {
 			HttpEntity entity = buildHttpPostEntity(URL, "", assembleCommonHeaders());
@@ -441,7 +441,10 @@ public class DMWeb {
 	    return bytes;
 	}
 
-
+	public static byte[] decodeBase64ToByteArray(String base64) {
+		byte[] bytes = Base64.decodeBase64(base64);
+		return bytes;
+	}
 }
 
 

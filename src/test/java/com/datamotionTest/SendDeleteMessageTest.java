@@ -23,7 +23,7 @@ public class SendDeleteMessageTest {
 		ArrayList<String> cc = new ArrayList<String>();
 		ArrayList<String> bcc = new ArrayList<String>();
 		ArrayList<Attachment> attachments = new ArrayList<Attachment>();
-		Attachment attachment = new Attachment("", "", "");
+		Attachment attachment = new Attachment("dGhpcyBpcyBhIHRlc3QgZmlsZQ==", "text/plain", "test.txt");
 		attachments.add(attachment);
 		Message message = new Message(to, "UnitTest1@dmfaketest.com", cc, bcc, "TestSubject", "CreateTime", attachments, "content", "content");
 		int messageId = tester.sendMessage(message, tester.getSessionKey()).getMessageId();

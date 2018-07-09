@@ -1,21 +1,32 @@
 package com.datamotion;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@AllArgsConstructor
-@NoArgsConstructor
 public class Attachment {	
-	@JsonProperty ("AttachmentBase64") @Getter @Setter
+	@Getter @Setter
 	private String AttachmentBase64;
 	
-	@JsonProperty ("ContentType") @Getter @Setter
+	@Getter @Setter
 	private String ContentType;
 	
-	@JsonProperty ("FileName") @Getter @Setter
+	@Getter @Setter
 	private String FileName;
+	
+	@Getter @Setter
+	private byte[] Bytes;
+	
+	@JsonCreator
+	public Attachment(@JsonProperty("AttachmentBase64") String AB64,
+			@JsonProperty("ContentType") String CT,
+			@JsonProperty("FileName") String FN) {
+		AttachmentBase64 = AB64;
+		ContentType = CT;
+		FN = FileName;
+		DMWeb dmweb = new DMWeb();
+		Bytes = dmweb.decodeBase64ToByteArray(AB64);
+	}
 }
