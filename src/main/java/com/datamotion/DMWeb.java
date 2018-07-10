@@ -48,7 +48,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class DMWeb {
-	//comment
 
 	@Getter @Setter
 	private static String BaseUrl;
