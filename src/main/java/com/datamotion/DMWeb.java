@@ -138,7 +138,7 @@ public class DMWeb {
 	}
 	
 	/**
-	 * Invalidates the <code>SessionKey</code> currently in use by <code>DMWeb</code>
+	 * Invalidates the <code>SessionKey</code> in use by <code>DMWeb</code>
 	 */
 	public static void logout() {
 		String URL = BaseUrl + "SecureMessagingApi/Account/Logout";
