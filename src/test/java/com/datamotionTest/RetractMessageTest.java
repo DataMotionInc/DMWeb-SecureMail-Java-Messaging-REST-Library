@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.datamotion.DMWeb;
-import com.datamotion.MimeMessage;
+import com.datamotion.Models.MimeMessage;
 
 public class RetractMessageTest {
 

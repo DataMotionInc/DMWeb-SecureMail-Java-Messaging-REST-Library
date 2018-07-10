@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.datamotion.DMWeb;
-import com.datamotion.MoveMessage;
+import com.datamotion.Models.MoveMessage;
 
 public class MoveMessageTest {
 

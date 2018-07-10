@@ -7,7 +7,7 @@ import java.io.IOException;
 import org.junit.Test;
 
 import com.datamotion.DMWeb;
-import com.datamotion.Details;
+import com.datamotion.Models.Details;
 
 public class GetAccountDetailsTest {
 

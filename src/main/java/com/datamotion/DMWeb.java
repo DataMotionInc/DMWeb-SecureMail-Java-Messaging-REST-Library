@@ -20,6 +20,25 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 
+import com.datamotion.Models.Credentials;
+import com.datamotion.Models.DeleteMessageResponse;
+import com.datamotion.Models.Details;
+import com.datamotion.Models.Folders;
+import com.datamotion.Models.HttpHeader;
+import com.datamotion.Models.Message;
+import com.datamotion.Models.MessageIDget;
+import com.datamotion.Models.MessageId;
+import com.datamotion.Models.MessageIds;
+import com.datamotion.Models.MessageSummariesGet;
+import com.datamotion.Models.MessageSummariesResponse;
+import com.datamotion.Models.MetaData;
+import com.datamotion.Models.MimeMessage;
+import com.datamotion.Models.MoveMessage;
+import com.datamotion.Models.NewFolder;
+import com.datamotion.Models.NewFolderId;
+import com.datamotion.Models.PasswordChange;
+import com.datamotion.Models.Search;
+import com.datamotion.Models.SearchResponse;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -30,21 +49,35 @@ import lombok.Setter;
 
 public class DMWeb {
 	
+
 	@Getter @Setter
 	private static String BaseUrl;
 	
+	/**
+	 * Session Key received after passing authentication, required for SecureMail methods
+	 */
 	@Getter @Setter
 	private static String SessionKey;
 	
+	/**
+	 * Http response status code
+	 */
 	@Getter @Setter
 	private static int StatusCode;
 	
 	public DMWeb() {
 		BaseUrl = "https://securemailbeta.datamotion.com/";
 	}
-	//SecureMail Messaging API Functions
+	//SecureMail Messaging API Methods
 	//Account:
-	@SuppressWarnings("unused")
+	/**
+	 * Retrieves a session key if valid credentials are used as arguments.
+	 * SessionKey is stored as a member of the base DMWeb class.
+	 * A valid session key is required for all other SecureMail API functions.
+	 * @param user <code>string</code> login username
+	 * @param pass <code>string</code> login password
+	 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+	 */
 	public static void logon(String user, String pass) throws JsonParseException {
 		String sessionKey = "";
 		String URL = BaseUrl + "SecureMessagingApi/Account/Logon";
@@ -66,7 +99,11 @@ public class DMWeb {
 		SessionKey = sessionKey;
 	}
 	
-	@SuppressWarnings("unused")
+	/**
+	 * Retrieves account details in a standard format
+	 * @return <code>Details</code> object mapped from JSON in server response
+	 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+	 */
 	public static Details getAccountDetails() throws JsonParseException {
 		Details details = new Details();
 		String JSONdetails = "";
@@ -84,7 +121,11 @@ public class DMWeb {
 		return details;
 	}
 	
-	@SuppressWarnings("unused")
+	/**
+	 * Changes login password, requires valid current password and valid old password to be successful
+	 * @param oldPass <code>string</code> old password
+	 * @param newPass <code>string</code> new password
+	 */
 	public static void changePassword(String oldPass, String newPass) {
 		PasswordChange passChange = new PasswordChange(oldPass, newPass);
 		String JSONPassChange = buildJSONStringFromObject(passChange);
@@ -96,7 +137,9 @@ public class DMWeb {
 		}
 	}
 	
-	@SuppressWarnings("unused")
+	/**
+	 * Invalidates the <code>SessionKey</code> currently in use by <code>DMWeb</code>
+	 */
 	public static void logout() {
 		String URL = BaseUrl + "SecureMessagingApi/Account/Logout";
 		try {
@@ -107,7 +150,11 @@ public class DMWeb {
 	}
 
 	//Folder:
-	@SuppressWarnings("unused")
+	/**
+	 * Retrieves folder structure and related statistics
+	 * @return <code>Folders</code> object mapped from JSON in server response
+	 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+	 */
 	public static Folders listAllFolders() throws JsonParseException {
 		Folders folders = new Folders();
 		String URL = BaseUrl + "SecureMessagingApi/Folder/List";
@@ -124,7 +171,11 @@ public class DMWeb {
 		return folders;
 	}
 
-	@SuppressWarnings("unused")
+	/**
+	 * Creates a custom folder with appropriate information mapped from new folder object
+	 * @param newFolder <code>NewFolder</code> object
+	 * @return <code>string</code> New Folder ID
+	 */
 	public static NewFolderId createFolder(NewFolder newFolder) {
 		String URL = BaseUrl + "SecureMessagingApi/Folder";
 		String JSONNewFolder = buildJSONStringFromObject(newFolder);
@@ -140,7 +191,11 @@ public class DMWeb {
 		return newFolderId;
 	}
 	
-	@SuppressWarnings("unused")
+	/**
+	 * Deletes a custom folder, given that folder's ID.
+	 * Non-custom folders cannot be deleted
+	 * @param folderID <code>int</code> folder ID
+	 */
 	public static void deleteFolder(int folderID) {
 		String URL = BaseUrl + "SecureMessagingApi/Folder/" + folderID;
 		try {
@@ -151,7 +206,12 @@ public class DMWeb {
 	}
 	
 	//Message:
-	@SuppressWarnings("unused")
+	/**
+	 * Retrieves the message IDs of all messages in the user's inbox
+	 * @param ID <code>MessageIDget</code> object, containing search parameters
+	 * @return <code>MessageIds</code> object, mapped from JSON in server response
+	 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+	 */
 	public static MessageIds getInboxMessageIds(MessageIDget ID) throws JsonParseException {
 		String URL = BaseUrl + "SecureMessagingApi/Message/GetInboxMessageIds";
 		String JSONMessageIDget = buildJSONStringFromObject(ID);
@@ -169,7 +229,12 @@ public class DMWeb {
 		return messageIds;
 	}
 	
-	@SuppressWarnings("unused")
+	/**
+	 * Retrieves message summaries of all messages within a specified folder
+	 * @param messageSummariesGet <code>MessageSummariesGet</code> object, containing search parameters
+	 * @return <code>MessageSummariesResponse</code> object, mapped from JSON in server response
+	 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+	 */
 	public static MessageSummariesResponse getMessageSummaries(MessageSummariesGet messageSummariesGet) throws JsonParseException {
 		MessageSummariesResponse response = new MessageSummariesResponse();
 		String URL = BaseUrl + "SecureMessagingApi/Message/GetMessageSummaries";
@@ -187,7 +252,13 @@ public class DMWeb {
 		return response;
 	}
 	
-	@SuppressWarnings("unused")
+	/**
+	 * Retrieves message summaries of all unread messages in a user's inbox
+	 * @param after <code>boolean</code> to retrieve only messages after a specified ID
+	 * @param lastMessageId <code>int</code> specified ID, used if <b>after</b> is true
+	 * @return MessageSummariesResponse object, mapped from JSON in server response
+	 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+	 */
 	public static MessageSummariesResponse getUnreadMessages(boolean after, int lastMessageId) throws JsonParseException {
 		MessageSummariesResponse response = new MessageSummariesResponse();
 		String URL = BaseUrl + "SecureMessagingApi/Message/Inbox/Unread";
@@ -205,7 +276,12 @@ public class DMWeb {
 		return response;
 	}
 	
-	@SuppressWarnings("unused")
+	/**
+	 * Searches the user's inbox, based on filter parameters
+	 * @param search <code>Search</code> Object containing filter parameters
+	 * @return <code>SearchResponse</code> object, mapped from JSON in server response
+	 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+	 */
 	public static SearchResponse searchInbox(Search search) throws JsonParseException {
 		SearchResponse response = new SearchResponse();
 		String URL = BaseUrl + "SecureMessagingApi/Message/Inbox/Search";
@@ -223,7 +299,12 @@ public class DMWeb {
 		return response;
 	}
 
-	@SuppressWarnings("unused")
+	/**
+	 * Retrieves metadata for a sent message
+	 * @param messageId <code>int</code> message ID of the message in question
+	 * @return <code>MetaData</code> object, mapped from JSON in server response
+	 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+	 */
 	public static MetaData getMessageMetadata(int messageId) throws JsonParseException {
 		MetaData metaData = new MetaData();
 		String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Metadata";
@@ -240,7 +321,12 @@ public class DMWeb {
 		return metaData;
 	}
 	
-	@SuppressWarnings("unused")
+	/**
+	 * Retrieves a message based on the message ID passed
+	 * @param messageId <code>int</code> ID of message to be retrieved
+	 * @return <code>Message</code> object, mapped from JSON in server response
+	 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+	 */
 	public static Message getMessage(int messageId) throws JsonParseException {
 		Message message = new Message();
 		String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId;
@@ -257,7 +343,12 @@ public class DMWeb {
 		return message;
 	}
 	
-	@SuppressWarnings("unused")
+	/**
+	 * Retrieves a message in MIME format
+	 * @param messageId <code>int</code> ID of message to be retrieved
+	 * @return <code>MimeMessage</code> object, mapped from JSON in server response
+	 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+	 */
 	public static MimeMessage getMimeMessage(int messageId) throws JsonParseException {
 		MimeMessage mimeMessage = new MimeMessage();
 		String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Mime";
@@ -274,8 +365,12 @@ public class DMWeb {
 		return mimeMessage;
 	}
 	
-	@SuppressWarnings("unused")
-	public static MessageId sendMessage(Message message, String SessionKey) {
+	/**
+	 * Sends a message, with all relevant information contained in <code>Message</code> object
+	 * @param message <code>Message</code> object
+	 * @return <code>int</code> ID of message that was sent
+	 */
+	public static MessageId sendMessage(Message message) {
 		MessageId messageId = new MessageId();
 		String URL = BaseUrl + "SecureMessagingApi/Message/";
 		String JSONMessage = buildJSONStringFromObject(message);
@@ -290,7 +385,11 @@ public class DMWeb {
 		return messageId;
 	}
 	
-	@SuppressWarnings("unused")
+	/**
+	 * Sends a MIME message, assuming <code>MimeMessage</code> object contains a properly formatted MIME string
+	 * @param mimeMessage <code>MimeMessage</code> object
+	 * @return <code>int</code> ID of message that was sent
+	 */
 	public static MessageId sendMimeMessage(MimeMessage mimeMessage) {
 		MessageId messageId = new MessageId();
 		String URL = BaseUrl + "SecureMessagingApi/Message/Mime";
@@ -306,7 +405,11 @@ public class DMWeb {
 		return messageId;
 	}
 
-	@SuppressWarnings("unused")
+	/**
+	 * Moves a message into a specified folder
+	 * @param moveMessage <code>MoveMessage</code> object, containing relevant parameters
+	 * @param messageId <code>int</code> ID of message to be moved
+	 */
 	public static void moveMessage(MoveMessage moveMessage, int messageId) {
 		String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Move";
 		String JSONMoveMessage = buildJSONStringFromObject(moveMessage);
@@ -317,7 +420,13 @@ public class DMWeb {
 		}
 	}
 	
-	@SuppressWarnings("unused")
+	/**
+	 * Deletes a message from a folder
+	 * @param messageId <code>int</code> ID of message to be deleted
+	 * @param permanent <code>boolean</code> Flag to delete message permanently
+	 * @return <code>DeleteMessageResponse</code> object, mapped from JSON in server response
+	 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+	 */
 	public static DeleteMessageResponse deleteMessage(int messageId, boolean permanent) throws JsonParseException {
 		DeleteMessageResponse response = new DeleteMessageResponse();
 		String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId;
@@ -333,7 +442,10 @@ public class DMWeb {
 		return response;
 	}
 	
-	@SuppressWarnings("unused")
+	/**
+	 * Retracts a message from any recipients who received it
+	 * @param messageId <code>int</code> ID of message to be retracted
+	 */
 	public static void retractMessage(int messageId) {
 		String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Retract";
 		try {
@@ -405,7 +517,7 @@ public class DMWeb {
 		return headers;
 	}
 	
-	@SuppressWarnings("unused")
+
 	public static String encodeFileToBase64Binary(String fileName) throws IOException {
 
 		File file = new File(fileName);

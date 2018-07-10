@@ -5,8 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import com.datamotion.DMWeb;
-import com.datamotion.NewFolder;
-import com.datamotion.NewFolderId;
+import com.datamotion.Models.NewFolder;
+import com.datamotion.Models.NewFolderId;
 
 public class CreateDeleteFolderTest {
 

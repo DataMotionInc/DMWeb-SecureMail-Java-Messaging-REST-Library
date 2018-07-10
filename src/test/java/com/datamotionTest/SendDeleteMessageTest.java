@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import com.datamotion.Attachment;
 import com.datamotion.DMWeb;
-import com.datamotion.DeleteMessageResponse;
-import com.datamotion.Message;
+import com.datamotion.Models.Attachment;
+import com.datamotion.Models.DeleteMessageResponse;
+import com.datamotion.Models.Message;
 import com.fasterxml.jackson.core.JsonParseException;
 
 public class SendDeleteMessageTest {
@@ -26,7 +26,7 @@ public class SendDeleteMessageTest {
 		Attachment attachment = new Attachment("dGhpcyBpcyBhIHRlc3QgZmlsZQ==", "text/plain", "test.txt");
 		attachments.add(attachment);
 		Message message = new Message(to, "UnitTest1@dmfaketest.com", cc, bcc, "TestSubject", "CreateTime", attachments, "content", "content");
-		int messageId = tester.sendMessage(message, tester.getSessionKey()).getMessageId();
+		int messageId = tester.sendMessage(message).getMessageId();
 		assertNotNull(messageId);
 		assertEquals(200, tester.getStatusCode());
 		Thread.sleep(5000);

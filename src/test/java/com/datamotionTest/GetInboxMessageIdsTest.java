@@ -5,8 +5,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import com.datamotion.DMWeb;
-import com.datamotion.MessageIDget;
-import com.datamotion.MessageIds;
+import com.datamotion.Models.MessageIDget;
+import com.datamotion.Models.MessageIds;
 import com.fasterxml.jackson.core.JsonParseException;
 
 public class GetInboxMessageIdsTest {

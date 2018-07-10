@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.datamotion.DMWeb;
-import com.datamotion.DeleteMessageResponse;
-import com.datamotion.MimeMessage;
+import com.datamotion.Models.DeleteMessageResponse;
+import com.datamotion.Models.MimeMessage;
 import com.fasterxml.jackson.core.JsonParseException;
 
 public class SendMimeMessageTest {

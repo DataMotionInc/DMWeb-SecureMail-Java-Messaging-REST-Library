@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.datamotion.DMWeb;
-import com.datamotion.Folders;
+import com.datamotion.Models.Folders;
 import com.fasterxml.jackson.core.JsonParseException;
 
 public class ListAllFoldersTest {

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.datamotion.DMWeb;
-import com.datamotion.Message;
+import com.datamotion.Models.Message;
 import com.fasterxml.jackson.core.JsonParseException;
 
 public class GetMessageTest {

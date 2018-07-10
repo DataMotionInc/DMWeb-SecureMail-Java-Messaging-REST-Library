@@ -1,5 +1,6 @@
-package com.datamotion;
+package com.datamotion.Models;
 
+import com.datamotion.DMWeb;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

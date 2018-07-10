@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.datamotion.DMWeb;
-import com.datamotion.Search;
-import com.datamotion.SearchResponse;
+import com.datamotion.Models.Search;
+import com.datamotion.Models.SearchResponse;
 import com.fasterxml.jackson.core.JsonParseException;
 
 public class SearchInboxTest {

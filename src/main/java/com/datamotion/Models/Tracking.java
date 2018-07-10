@@ -1,4 +1,4 @@
-package com.datamotion;
+package com.datamotion.Models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

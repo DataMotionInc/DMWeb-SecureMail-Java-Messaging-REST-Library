@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.datamotion.DMWeb;
-import com.datamotion.MessageSummariesGet;
-import com.datamotion.MessageSummariesResponse;
+import com.datamotion.Models.MessageSummariesGet;
+import com.datamotion.Models.MessageSummariesResponse;
 import com.fasterxml.jackson.core.JsonParseException;
 
 public class GetMessageSummariesTest {

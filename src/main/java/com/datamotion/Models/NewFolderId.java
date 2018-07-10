@@ -1,4 +1,4 @@
-package com.datamotion;
+package com.datamotion.Models;
 
 import lombok.Getter;
 import lombok.Setter;
