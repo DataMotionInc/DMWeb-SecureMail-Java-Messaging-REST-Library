@@ -48,7 +48,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class DMWeb {
-
+	
+	/**
+	 * Base URL for various DataMotion SecureMail methods
+	 */
 	@Getter @Setter
 	private static String BaseUrl;
 	
@@ -64,6 +67,9 @@ public class DMWeb {
 	@Getter @Setter
 	private static int StatusCode;
 	
+	/**
+	 * Sets <code>BaseUrl</code>
+	 */
 	public DMWeb() {
 		BaseUrl = "https://securemailbeta.datamotion.com/";
 	}
@@ -455,6 +461,12 @@ public class DMWeb {
 	}
 	
 	//Auxiliary Functions:
+	
+	/**
+	 * Builds a JSON string from an object
+	 * @param object <code>object</code> of any type
+	 * @return <code>String</code> representation of passed object
+	 */
 	public static String buildJSONStringFromObject(Object object) {
 		ObjectMapper mapper = new ObjectMapper();
 		String json = null;
@@ -469,6 +481,15 @@ public class DMWeb {
 		return json;
 	}
 
+		/**
+		 * Assembles necessary parts of an HTTP POST and handles send/response
+		 * @param URL <code>String</code> target URL
+		 * @param body <code>String</code> body of post
+		 * @param headerList <code>ArrayList&ltHttpHeader&gt</code> list of header fields and associated values
+		 * @return <code>HttpEntity</code> object
+		 * @throws ClientProtocolException
+		 * @throws IOException
+		 */
 	public static HttpEntity buildHttpPostEntity(String URL, String body, ArrayList<HttpHeader> headerList) throws ClientProtocolException, IOException {
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost httpPost = new HttpPost(URL);
@@ -483,6 +504,14 @@ public class DMWeb {
 		return entity;
 	}
 	
+	/**
+	 * Assembles necessary parts of an HTTP GET and handles send/response
+	 * @param URL <code>String</code> target URL
+	 * @param headerList <code>ArrayList&ltHttpHeader&gt</code> list of header fields and associated values
+	 * @return <code>HttpEntity</code> object
+	 * @throws ClientProtocolException
+	 * @throws IOException
+	 */
 	public static HttpEntity buildHttpGetEntity(String URL, ArrayList<HttpHeader> headerList) throws ClientProtocolException, IOException {
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpGet httpGet = new HttpGet(URL);
@@ -495,6 +524,14 @@ public class DMWeb {
 		return entity;
 	}
 	
+	/**
+	 * Assembles necessary parts of an HTTP Delete and handles send/response
+	 * @param URL <code>String</code> target URL
+	 * @param headerList <code>ArrayList&ltHttpHeader&gt</code> list of header fields and associated values
+	 * @return <code>HttpEntity</code> object
+	 * @throws ClientProtocolException
+	 * @throws IOException
+	 */
 	public static HttpEntity buildHttpDeleteEntity(String URL, ArrayList<HttpHeader> headerList) throws ClientProtocolException, IOException {
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpDelete httpDelete = new HttpDelete(URL);
@@ -507,6 +544,10 @@ public class DMWeb {
 		return entity;
 	}
 	
+	/**
+	 * Assembles header fields/values commonly used by the DataMotion SecureMail API
+	 * @return <code>ArrayList&ltHttpHeader&gt</code> list of header fields and associated values
+	 */
 	public static ArrayList<HttpHeader> assembleCommonHeaders(){
 		HttpHeader contentType = new HttpHeader("Content-Type", "application/json");
 		HttpHeader xSessionKey = new HttpHeader("X-Session-Key", SessionKey);
@@ -516,7 +557,12 @@ public class DMWeb {
 		return headers;
 	}
 	
-
+	/**
+	 * Loads file from filename and encodes it to a Base64 string
+	 * @param fileName <code>String</code> name of file
+	 * @return <code>String</code> encoded string
+	 * @throws IOException
+	 */
 	public static String encodeFileToBase64Binary(String fileName) throws IOException {
 
 		File file = new File(fileName);
@@ -527,6 +573,12 @@ public class DMWeb {
 		return encodedString;
 	}
 	
+	/**
+	 * Loads a file into a byte array
+	 * @param file <code>File</code> file to be loaded
+	 * @return <code>byte[]</code> byte array
+	 * @throws IOException
+	 */
 	@SuppressWarnings("resource")
 	public static byte[] loadFile(File file) throws IOException {
 	    InputStream is = new FileInputStream(file);
@@ -552,6 +604,11 @@ public class DMWeb {
 	    return bytes;
 	}
 
+	/**
+	 * Decodes a Base64 string into a byte array
+	 * @param base64 <code>String</code> input Base64 string
+	 * @return <code>byte[]</code> byte array
+	 */
 	public static byte[] decodeBase64ToByteArray(String base64) {
 		byte[] bytes = Base64.decodeBase64(base64);
 		return bytes;
