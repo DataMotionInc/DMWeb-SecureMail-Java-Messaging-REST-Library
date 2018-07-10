@@ -7,9 +7,17 @@ import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Size Model Class
+ * @author TylerB
+ *
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 public class Size {
+	/**
+	 * Size represented as StdString
+	 */
 	@JsonProperty("StdString") @Getter @Setter
 	private String StdString;
 }

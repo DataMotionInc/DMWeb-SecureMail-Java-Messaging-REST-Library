@@ -7,12 +7,22 @@ import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Credentials Model Class
+ * Valid credentials are required to retrieve a session key
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 public class Credentials {
+	/**
+	 * login username or email address
+	 */
 	@JsonProperty("UserIdOrEmail") @Getter @Setter
 	private String useridoremail;
 	
+	/**
+	 * login password
+	 */
 	@JsonProperty("Password") @Getter @Setter
 	private String password;
 }

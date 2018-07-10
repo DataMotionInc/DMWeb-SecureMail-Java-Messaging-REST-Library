@@ -47,10 +47,15 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Main Class containing methods for all DataMotion SecureMail API funtions
+ * @author Thomas Tyler Bissell
+ *
+ */
 public class DMWeb {
 	
 	/**
-	 * Base URL for various DataMotion SecureMail methods
+	 * Base URL for various DataMotion SecureMail methodscd
 	 */
 	@Getter @Setter
 	private static String BaseUrl;
