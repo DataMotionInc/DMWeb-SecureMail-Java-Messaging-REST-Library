@@ -55,7 +55,7 @@ import lombok.Setter;
 public class DMWeb {
 	
 	/**
-	 * Base URL for various DataMotion SecureMail methodscd
+	 * Base URL for various DataMotion SecureMail methods
 	 */
 	@Getter @Setter
 	private static String BaseUrl;
@@ -490,10 +490,10 @@ public class DMWeb {
 		 * Assembles necessary parts of an HTTP POST and handles send/response
 		 * @param URL <code>String</code> target URL
 		 * @param body <code>String</code> body of post
-		 * @param headerList <code>ArrayList&ltHttpHeader&gt</code> list of header fields and associated values
+		 * @param headerList <code>ArrayList&lt;HttpHeader@gt;</code> list of header fields and associated values
 		 * @return <code>HttpEntity</code> object
-		 * @throws ClientProtocolException
-		 * @throws IOException
+		 * @throws ClientProtocolException Throws underlying ClientProtocolException Throws underlying ClientProtocolException
+		 * @throws IOException Throws underlying IOException
 		 */
 	public static HttpEntity buildHttpPostEntity(String URL, String body, ArrayList<HttpHeader> headerList) throws ClientProtocolException, IOException {
 		HttpClient client = HttpClientBuilder.create().build();
@@ -512,10 +512,10 @@ public class DMWeb {
 	/**
 	 * Assembles necessary parts of an HTTP GET and handles send/response
 	 * @param URL <code>String</code> target URL
-	 * @param headerList <code>ArrayList&ltHttpHeader&gt</code> list of header fields and associated values
+	 * @param headerList <code>ArrayList&lt;HttpHeader@gt;</code> list of header fields and associated values
 	 * @return <code>HttpEntity</code> object
-	 * @throws ClientProtocolException
-	 * @throws IOException
+	 * @throws ClientProtocolException Throws underlying ClientProtocolException
+	 * @throws IOException Throws underlying IOException
 	 */
 	public static HttpEntity buildHttpGetEntity(String URL, ArrayList<HttpHeader> headerList) throws ClientProtocolException, IOException {
 		HttpClient client = HttpClientBuilder.create().build();
@@ -532,10 +532,10 @@ public class DMWeb {
 	/**
 	 * Assembles necessary parts of an HTTP Delete and handles send/response
 	 * @param URL <code>String</code> target URL
-	 * @param headerList <code>ArrayList&ltHttpHeader&gt</code> list of header fields and associated values
+	 * @param headerList <code>ArrayList&lt;HttpHeader@gt;</code> list of header fields and associated values
 	 * @return <code>HttpEntity</code> object
-	 * @throws ClientProtocolException
-	 * @throws IOException
+	 * @throws ClientProtocolException Throws underlying ClientProtocolException
+	 * @throws IOException Throws underlying IOException
 	 */
 	public static HttpEntity buildHttpDeleteEntity(String URL, ArrayList<HttpHeader> headerList) throws ClientProtocolException, IOException {
 		HttpClient client = HttpClientBuilder.create().build();
@@ -551,7 +551,7 @@ public class DMWeb {
 	
 	/**
 	 * Assembles header fields/values commonly used by the DataMotion SecureMail API
-	 * @return <code>ArrayList&ltHttpHeader&gt</code> list of header fields and associated values
+	 * @return <code>ArrayList&lt;HttpHeader@gt;</code> list of header fields and associated values
 	 */
 	public static ArrayList<HttpHeader> assembleCommonHeaders(){
 		HttpHeader contentType = new HttpHeader("Content-Type", "application/json");
@@ -566,7 +566,7 @@ public class DMWeb {
 	 * Loads file from filename and encodes it to a Base64 string
 	 * @param fileName <code>String</code> name of file
 	 * @return <code>String</code> encoded string
-	 * @throws IOException
+	 * @throws IOException Throws underlying IOException
 	 */
 	public static String encodeFileToBase64Binary(String fileName) throws IOException {
 
@@ -582,7 +582,7 @@ public class DMWeb {
 	 * Loads a file into a byte array
 	 * @param file <code>File</code> file to be loaded
 	 * @return <code>byte[]</code> byte array
-	 * @throws IOException
+	 * @throws IOException Throws underlying IOException
 	 */
 	@SuppressWarnings("resource")
 	public static byte[] loadFile(File file) throws IOException {
