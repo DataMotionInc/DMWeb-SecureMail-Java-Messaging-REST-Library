@@ -20,7 +20,7 @@ public class Context {
 	private String Password;
 	
 	public Context() throws IOException {
-		File file = new File("userpass.txt");
+		File file = new File("C:\\Users\\TylerB\\Desktop\\userpass.txt");
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		Username = br.readLine();
 		Password = br.readLine();
