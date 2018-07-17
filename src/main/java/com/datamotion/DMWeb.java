@@ -72,6 +72,9 @@ public class DMWeb {
 	@Getter @Setter
 	private static int StatusCode;
 	
+	@Getter @Setter
+	private static String ErrorMessage;
+	
 	/**
 	 * Sets <code>BaseUrl</code>
 	 */
@@ -96,13 +99,15 @@ public class DMWeb {
 		headers.add(contentType);
 		Credentials creds = new Credentials(user, pass);
 		String JSONcreds = buildJSONStringFromObject(creds);
+		String response = "";
 		try {
 			HttpEntity entity = buildHttpPostEntity(URL, JSONcreds, headers);
-			String JSONsessionKey = IOUtils.toString(entity.getContent(), "UTF-8");
-			ObjectNode node = new ObjectMapper().readValue(JSONsessionKey,  ObjectNode.class);
+			response = IOUtils.toString(entity.getContent(), "UTF-8");
+			ObjectNode node = new ObjectMapper().readValue(response,  ObjectNode.class);
 			sessionKey = node.get("SessionKey").asText();
 		}catch (JsonParseException ex) {
-			throw ex;
+			//throw ex;
+			ErrorMessage = response;
 		}catch (Exception ex) {
 			ex.printStackTrace();
 		}
