@@ -197,7 +197,7 @@ public class DMWeb {
 	 * @param newFolder <code>NewFolder</code> object
 	 * @return <code>string</code> New Folder ID
 	 */
-	public static NewFolderId createFolder(NewFolder newFolder) throws JsonParseException {
+	public static NewFolderId createFolder(NewFolder newFolder) {
 		String URL = BaseUrl + "SecureMessagingApi/Folder";
 		String JSONNewFolder = buildJSONStringFromObject(newFolder);
 		NewFolderId newFolderId = new NewFolderId();
@@ -424,7 +424,7 @@ public class DMWeb {
 	 * @param mimeMessage <code>MimeMessage</code> object
 	 * @return <code>int</code> ID of message that was sent
 	 */
-	public static MessageId sendMimeMessage(MimeMessage mimeMessage) throws JsonParseException {
+	public static MessageId sendMimeMessage(MimeMessage mimeMessage) {
 		MessageId messageId = new MessageId();
 		String URL = BaseUrl + "SecureMessagingApi/Message/Mime";
 		String JSONMimeMessage = buildJSONStringFromObject(mimeMessage);
