@@ -101,5 +101,19 @@ public class Statistics {
 	 * Total disk space (kb) consumed by the user's Outbox	
 	 */
 	@JsonProperty("UsedAccountSize") @Getter @Setter
-	private int UsedAccountSize;	
+	private int UsedAccountSize;
+
+	@Override
+	public String toString() {
+		return "Statistics [AccountSize=" + AccountSize + ", AvailableAccountSize=" + AvailableAccountSize
+				+ ", DateCreated=" + DateCreated + ", DateOfLastNotice=" + DateOfLastNotice + ", DateOfLastVisit="
+				+ DateOfLastVisit + ", DatePasswordExpires=" + DatePasswordExpires + ", TotalFilesInOutbox="
+				+ TotalFilesInOutbox + ", TotalFilesSent=" + TotalFilesSent + ", TotalMessagesInInbox="
+				+ TotalMessagesInInbox + ", TotalMessagesInOutbox=" + TotalMessagesInOutbox + ", TotalMessagesReceived="
+				+ TotalMessagesReceived + ", TotalMessagesSent=" + TotalMessagesSent + ", TotalUnreadMessagesInInbox="
+				+ TotalUnreadMessagesInInbox + ", TotalVisits=" + TotalVisits + ", UsedAccountSize=" + UsedAccountSize
+				+ "]";
+	}
+	
+	
 }

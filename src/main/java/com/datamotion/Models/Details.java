@@ -36,5 +36,13 @@ public class Details {
 	 * (See <code>Statistics</code> model)
 	 */
 	@JsonProperty("Statistics") @Getter @Setter
-	private Statistics Statistics;	
+	private Statistics Statistics;
+
+	@Override
+	public String toString() {
+		return "Details [EmailAddress=" + EmailAddress + ", FirstName=" + FirstName + ", LastName=" + LastName
+				+ ", Statistics=" + Statistics.toString() + "]";
+	}	
+	
+	
 }
