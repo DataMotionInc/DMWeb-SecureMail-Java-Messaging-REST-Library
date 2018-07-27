@@ -20,4 +20,9 @@ public class Folders {
 	 */
 	@JsonProperty("Folders") @Getter @Setter
 	private ArrayList<Folder> Folders;
+
+	@Override
+	public String toString() {
+		return "Folders [\nFolders=" + Folders + "]";
+	}
 }
