@@ -53,4 +53,13 @@ public class MetaData {
 	 */
 	@JsonProperty("Tracking") @Getter @Setter
 	private ArrayList<Tracking> Tracking;
+
+	@Override
+	public String toString() {
+		return "MetaData [MetaAttachment=" + MetaAttachment + ", ExpirationDate=" + ExpirationDate + ", MessageId="
+				+ MessageId + ", MessageSize=" + MessageSize + ", SecurityEnvelope=" + SecurityEnvelope + ", Tracking="
+				+ Tracking + "]";
+	}
+	
+	
 }
