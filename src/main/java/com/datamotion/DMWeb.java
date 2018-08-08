@@ -342,6 +342,7 @@ public class DMWeb {
 		try {
 			HttpEntity entity = buildHttpGetEntity(URL, assembleCommonHeaders());
 			response = IOUtils.toString(entity.getContent(), "UTF-8");
+			System.out.println(response);
 			ObjectMapper objectMapper = new ObjectMapper();
 			metaData = objectMapper.readValue(response, MetaData.class);
 		}catch (JsonParseException ex) {

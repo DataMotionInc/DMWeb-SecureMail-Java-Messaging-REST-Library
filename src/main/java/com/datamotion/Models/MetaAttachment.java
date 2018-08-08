@@ -45,5 +45,5 @@ public class MetaAttachment {
 	 * See Recipient model class
 	 */
 	@JsonProperty("Tracking") @Getter @Setter
-	private ArrayList<Recipients> Tracking;
+	private MetaTracking Tracking;
 }
