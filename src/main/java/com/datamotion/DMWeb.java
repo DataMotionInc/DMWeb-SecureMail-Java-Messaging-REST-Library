@@ -342,7 +342,6 @@ public class DMWeb {
 		try {
 			HttpEntity entity = buildHttpGetEntity(URL, assembleCommonHeaders());
 			response = IOUtils.toString(entity.getContent(), "UTF-8");
-			System.out.println(response);
 			ObjectMapper objectMapper = new ObjectMapper();
 			metaData = objectMapper.readValue(response, MetaData.class);
 		}catch (JsonParseException ex) {
@@ -601,9 +600,7 @@ public class DMWeb {
 	 * @return <code>String</code> encoded string
 	 * @throws IOException Throws underlying IOException
 	 */
-	public static String encodeFileToBase64Binary(String fileName) throws IOException {
-
-		File file = new File(fileName);
+	public static String encodeFileToBase64Binary(File file) throws IOException {
 		byte[] bytes = loadFile(file);
 		byte[] encoded = Base64.encodeBase64(bytes);
 		String encodedString = new String(encoded);
