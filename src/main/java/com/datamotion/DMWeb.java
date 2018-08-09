@@ -47,7 +47,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.Getter;
 import lombok.Setter;
 
-//THIS IS A COMMENT
 
 /**
  * Main Class containing methods for all DataMotion SecureMail API funtions
