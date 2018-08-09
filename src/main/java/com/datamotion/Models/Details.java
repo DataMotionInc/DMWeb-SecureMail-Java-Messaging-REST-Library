@@ -40,8 +40,8 @@ public class Details {
 
 	@Override
 	public String toString() {
-		return "Details [EmailAddress=" + EmailAddress + ", FirstName=" + FirstName + ", LastName=" + LastName
-				+ ", Statistics=" + Statistics.toString() + "]";
+		return "Details [\nEmailAddress= " + EmailAddress + "\nFirstName= " + FirstName + "\nLastName= " + LastName
+				+ "\nStatistics=\n" + Statistics.toString() + "]";
 	}	
 	
 	

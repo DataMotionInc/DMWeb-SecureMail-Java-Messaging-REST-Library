@@ -30,7 +30,7 @@ public class MessageSummariesResponse {
 
 	@Override
 	public String toString() {
-		return "MessageSummariesResponse [MoreMessagesAvailable=" + MoreMessagesAvailable + ", Summaries=" + Summaries
-				+ "]";
+		return "MessageSummariesResponse [\nMoreMessagesAvailable= " + MoreMessagesAvailable + "\nSummaries=\n" + Summaries
+				+ "\n]";
 	}
 }

@@ -69,9 +69,9 @@ public class Summary {
 
 	@Override
 	public String toString() {
-		return "Summary [AttachmentCount=" + AttachmentCount + ", createTimeString=" + createTimeString + ", FolderId="
-				+ FolderId + ", MessageId=" + MessageId + ", MessageSize=" + MessageSize + ", Read=" + Read
-				+ ", MessageStatus=" + MessageStatus + ", SenderAddress=" + SenderAddress + ", Subject=" + Subject
+		return "\nSummary [\nAttachmentCount= " + AttachmentCount + "\ncreateTimeString= " + createTimeString + "\nFolderId= "
+				+ FolderId + "\nMessageId= " + MessageId + "\nMessageSize= " + MessageSize + "\nRead= " + Read
+				+ "\nMessageStatus= " + MessageStatus + "\nSenderAddress= " + SenderAddress + "\nSubject= " + Subject
 				+ "]";
 	}	
 }

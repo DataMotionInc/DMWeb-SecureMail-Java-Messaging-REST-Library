@@ -105,13 +105,13 @@ public class Statistics {
 
 	@Override
 	public String toString() {
-		return "Statistics [AccountSize=" + AccountSize + ", AvailableAccountSize=" + AvailableAccountSize
-				+ ", DateCreated=" + DateCreated + ", DateOfLastNotice=" + DateOfLastNotice + ", DateOfLastVisit="
-				+ DateOfLastVisit + ", DatePasswordExpires=" + DatePasswordExpires + ", TotalFilesInOutbox="
-				+ TotalFilesInOutbox + ", TotalFilesSent=" + TotalFilesSent + ", TotalMessagesInInbox="
-				+ TotalMessagesInInbox + ", TotalMessagesInOutbox=" + TotalMessagesInOutbox + ", TotalMessagesReceived="
-				+ TotalMessagesReceived + ", TotalMessagesSent=" + TotalMessagesSent + ", TotalUnreadMessagesInInbox="
-				+ TotalUnreadMessagesInInbox + ", TotalVisits=" + TotalVisits + ", UsedAccountSize=" + UsedAccountSize
+		return "Statistics [\nAccountSize = " + AccountSize + "\nAvailableAccountSize= " + AvailableAccountSize
+				+ "\nDateCreated= " + DateCreated + "\nDateOfLastNotice= " + DateOfLastNotice + "\nDateOfLastVisit= "
+				+ DateOfLastVisit + "\nDatePasswordExpires= " + DatePasswordExpires + "\nTotalFilesInOutbox= "
+				+ TotalFilesInOutbox + "\nTotalFilesSent= " + TotalFilesSent + "\nTotalMessagesInInbox= "
+				+ TotalMessagesInInbox + "\nTotalMessagesInOutbox= " + TotalMessagesInOutbox + "\nTotalMessagesReceived= "
+				+ TotalMessagesReceived + "\nTotalMessagesSent= " + TotalMessagesSent + "\nTotalUnreadMessagesInInbox= "
+				+ TotalUnreadMessagesInInbox + "\nTotalVisits= " + TotalVisits + "\nUsedAccountSize= " + UsedAccountSize
 				+ "]";
 	}
 	
