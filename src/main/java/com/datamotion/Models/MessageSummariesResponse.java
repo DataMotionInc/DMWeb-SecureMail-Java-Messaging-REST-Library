@@ -27,5 +27,10 @@ public class MessageSummariesResponse {
 	 */
 	@JsonProperty("Summaries") @Getter @Setter
 	private ArrayList<Summary> Summaries;
-	
+
+	@Override
+	public String toString() {
+		return "MessageSummariesResponse [MoreMessagesAvailable=" + MoreMessagesAvailable + ", Summaries=" + Summaries
+				+ "]";
+	}
 }

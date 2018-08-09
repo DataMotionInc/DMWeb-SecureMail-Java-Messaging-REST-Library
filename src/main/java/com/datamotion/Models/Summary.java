@@ -65,5 +65,13 @@ public class Summary {
 	 * Subject of the message
 	 */
 	@JsonProperty("Subject") @Getter @Setter
-	private String Subject;	
+	private String Subject;
+
+	@Override
+	public String toString() {
+		return "Summary [AttachmentCount=" + AttachmentCount + ", createTimeString=" + createTimeString + ", FolderId="
+				+ FolderId + ", MessageId=" + MessageId + ", MessageSize=" + MessageSize + ", Read=" + Read
+				+ ", MessageStatus=" + MessageStatus + ", SenderAddress=" + SenderAddress + ", Subject=" + Subject
+				+ "]";
+	}	
 }
