@@ -14,7 +14,7 @@ public class GetMessageTest {
 	public void test() throws JsonParseException {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
-		Message message = tester.getMessage(547);
+		Message message = tester.getMessage(628);
 		assertNotNull(message);
 		assertEquals(200, tester.getStatusCode());
 	}
