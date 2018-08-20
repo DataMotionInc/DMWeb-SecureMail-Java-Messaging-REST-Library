@@ -49,6 +49,7 @@ public class Attachment {
 			AttachmentBase64 = dmweb.encodeFileToBase64Binary(file);
 			ContentType = Files.probeContentType(file.toPath());
 			FileName = file.getName();
+			System.out.println(AttachmentBase64 + ContentType + FileName);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
