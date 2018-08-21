@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import com.datamotion.DMWeb;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,19 +23,25 @@ public class Attachment {
 	/**
 	 * Attachment Base64 string
 	 */
-	@JsonProperty("AttachmentBase64") @Getter @Setter
+	@JsonProperty("AttachmentBase64")
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private String AttachmentBase64;
 	
 	/**
 	 * Attachment MIME Content Type tag
 	 */
-	@JsonProperty("ContentType") @Getter @Setter
+	@JsonProperty("ContentType")
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private String ContentType;
 	
 	/**
 	 * Attachment Filename
 	 */
-	@JsonProperty("FileName") @Getter @Setter
+	@JsonProperty("FileName")
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private String FileName;
 	
 	/**

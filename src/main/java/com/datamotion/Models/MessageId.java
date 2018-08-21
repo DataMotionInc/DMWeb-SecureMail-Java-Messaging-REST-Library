@@ -1,6 +1,7 @@
 package com.datamotion.Models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +17,8 @@ public class MessageId {
 	/**
 	 * The unique message identifier for the newly created message	
 	 */
-	@JsonProperty("MessageId") @Getter @Setter
+	@JsonProperty("MessageId") 
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private int MessageId;
 }

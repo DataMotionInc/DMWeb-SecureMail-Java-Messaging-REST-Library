@@ -1,6 +1,7 @@
 package com.datamotion.Models;
 
 import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,12 +15,14 @@ public class HttpHeader {
 	/**
 	 * Http header key field
 	 */
-	@Getter @Setter
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private String Key;
 	
 	/**
 	 * Http header value field
 	 */
-	@Getter @Setter
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private String Value;	
 }

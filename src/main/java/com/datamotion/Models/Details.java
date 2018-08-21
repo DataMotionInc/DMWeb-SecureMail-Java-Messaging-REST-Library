@@ -1,6 +1,7 @@
 package com.datamotion.Models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -16,26 +17,34 @@ public class Details {
 	/**
 	 * Account email address
 	 */
-	@JsonProperty ("EmailAddress") @Getter @Setter
+	@JsonProperty ("EmailAddress")
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private String EmailAddress;
 	
 	/**
 	 * Account First Name
 	 */
-	@JsonProperty("FirstName") @Getter @Setter
+	@JsonProperty("FirstName")
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private String FirstName;
 	
 	/**
 	 * Account Last Name
 	 */
-	@JsonProperty("LastName") @Getter @Setter
+	@JsonProperty("LastName")
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private String LastName;
 	
 	/**
 	 * Account Statistics
 	 * (See <code>Statistics</code> model)
 	 */
-	@JsonProperty("Statistics") @Getter @Setter
+	@JsonProperty("Statistics")
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private Statistics Statistics;
 
 	@Override

@@ -1,6 +1,7 @@
 package com.datamotion.Models;
 
 import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -18,14 +19,18 @@ public class MessageSummariesResponse {
 	/**
 	 * Indicates whether there are more messages available	
 	 */
-	@JsonProperty("MoreMessagesAvailable") @Getter @Setter
+	@JsonProperty("MoreMessagesAvailable") 
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private boolean MoreMessagesAvailable;
 	
 	/**
 	 * Array of Summaries objects
 	 * See Summary model class
 	 */
-	@JsonProperty("Summaries") @Getter @Setter
+	@JsonProperty("Summaries") 
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private ArrayList<Summary> Summaries;
 
 	@Override

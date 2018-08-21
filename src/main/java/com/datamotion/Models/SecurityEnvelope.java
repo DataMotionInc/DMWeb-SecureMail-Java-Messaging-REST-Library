@@ -1,6 +1,7 @@
 package com.datamotion.Models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -16,24 +17,32 @@ public class SecurityEnvelope {
 	/**
 	 * Used to verify the integrity of the message, it is returned for reference only	
 	 */
-	@JsonProperty("Checksum") @Getter @Setter
+	@JsonProperty("Checksum") 
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private String Checksum;
 	
 	/**
 	 * Used to generate the CheckSum. If not present, assume MD5	
 	 */
-	@JsonProperty("HashAlgorithm") @Getter @Setter
+	@JsonProperty("HashAlgorithm") 
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private String HashAlgorithm;
 	
 	/**
 	 * Numeric indicator of the validation status	
 	 */
-	@JsonProperty("Status") @Getter @Setter
+	@JsonProperty("Status") 
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private int Status;
 	
 	/**
 	 * Status represented as string description	
 	 */
-	@JsonProperty("StatusDescription") @Getter @Setter
+	@JsonProperty("StatusDescription") 
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private String StatusDescription;
 }

@@ -1,6 +1,7 @@
 package com.datamotion.Models;
 
 import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -18,6 +19,8 @@ public class MessageIds {
 	/**
 	 * Array of message ID integers
 	 */
-	@JsonProperty("MessageIds") @Getter @Setter
+	@JsonProperty("MessageIds") 
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private ArrayList<Integer> MessageIds;
 }
