@@ -314,7 +314,6 @@ public class DMWeb {
 		SearchResponse searchResponse = new SearchResponse();
 		String URL = BaseUrl + "SecureMessagingApi/Message/Inbox/Search";
 		String JSONSearch = buildJSONStringFromObject(search);
-		System.out.println(JSONSearch);
 		String response = "";
 		try {
 			HttpEntity entity = buildHttpPostEntity(URL, JSONSearch, assembleCommonHeaders());
@@ -407,7 +406,6 @@ public class DMWeb {
 		MessageId messageId = new MessageId();
 		String URL = BaseUrl + "SecureMessagingApi/Message/";
 		String JSONMessage = buildJSONStringFromObject(message);
-		System.out.println(JSONMessage);
 		String response = "";
 		try {
 			HttpEntity entity = buildHttpPostEntity(URL, JSONMessage, assembleCommonHeaders());
@@ -621,7 +619,7 @@ public class DMWeb {
 
 	    long length = file.length();
 	    if (length > Integer.MAX_VALUE) {
-	        // File is too large
+	        //TODO error message for extremely large files;
 	    }
 	    byte[] bytes = new byte[(int)length];
 	    
