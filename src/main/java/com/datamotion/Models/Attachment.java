@@ -1,7 +1,11 @@
 package com.datamotion.Models;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URLConnection;
 import java.nio.file.Files;
 
 import com.datamotion.DMWeb;
@@ -54,9 +58,11 @@ public class Attachment {
 		DMWeb dmweb = new DMWeb();
 		try {
 			AttachmentBase64 = dmweb.encodeFileToBase64Binary(file);
+			//InputStream is = new BufferedInputStream(new FileInputStream(file));
+			//ContentType = URLConnection.guessContentTypeFromStream(is);
 			ContentType = Files.probeContentType(file.toPath());
 			FileName = file.getName();
-			System.out.println(AttachmentBase64 + ContentType + FileName);
+			System.out.println(AttachmentBase64 + "\n" + ContentType + "\n" + FileName);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
