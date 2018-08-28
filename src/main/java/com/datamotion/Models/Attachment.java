@@ -5,8 +5,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.FileNameMap;
 import java.net.URLConnection;
 import java.nio.file.Files;
+
 
 import com.datamotion.DMWeb;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -60,7 +62,10 @@ public class Attachment {
 			AttachmentBase64 = dmweb.encodeFileToBase64Binary(file);
 			//InputStream is = new BufferedInputStream(new FileInputStream(file));
 			//ContentType = URLConnection.guessContentTypeFromStream(is);
-			ContentType = Files.probeContentType(file.toPath());
+			//ContentType = Files.probeContentType(file.toPath());
+			//ContentType = URLConnection.guessContentTypeFromName(file.getName());
+			//FileNameMap fileNameMap = URLConnection.getFileNameMap();
+			//ContentType = fileNameMap.getContentTypeFor(file.getName());
 			FileName = file.getName();
 			System.out.println(AttachmentBase64 + "\n" + ContentType + "\n" + FileName);
 		} catch (IOException e) {
