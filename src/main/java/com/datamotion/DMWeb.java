@@ -595,7 +595,7 @@ public class DMWeb {
 	
 	/**
 	 * Loads file from filename and encodes it to a Base64 string
-	 * @param fileName <code>String</code> name of file
+	 * @param file <code>File</code> Java File object
 	 * @return <code>String</code> encoded string
 	 * @throws IOException Throws underlying IOException
 	 */

@@ -1,21 +1,22 @@
-package com.datamotionTest;
+package com.datamotionTest.Tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 import com.datamotion.DMWeb;
-import com.datamotion.Models.Folders;
+import com.datamotion.Models.MimeMessage;
 import com.fasterxml.jackson.core.JsonParseException;
 
-public class ListAllFoldersTest {
+public class GetMimeMessageTest {
 
 	@Test
 	public void test() throws JsonParseException {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
-		Folders folders = tester.listAllFolders();
-		assertNotNull(folders);
+		MimeMessage mimeMessage = tester.getMimeMessage(628);
+		assertNotNull(mimeMessage);
 		assertEquals(200, tester.getStatusCode());
 	}
+
 }

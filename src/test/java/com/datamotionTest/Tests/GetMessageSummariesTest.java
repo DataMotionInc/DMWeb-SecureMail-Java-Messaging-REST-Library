@@ -1,4 +1,4 @@
-package com.datamotionTest;
+package com.datamotionTest.Tests;
 
 import static org.junit.Assert.*;
 
