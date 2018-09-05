@@ -1,6 +1,7 @@
 package com.datamotion.Models;
 
 import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -19,13 +20,17 @@ public class SearchResponse {
 	 * PageDetails object
 	 * See PageDetails model class
 	 */
-	@JsonProperty("PageDetails") @Getter @Setter
+	@JsonProperty("PageDetails") 
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private PageDetails details;
 	
 	/**
 	 * Array of results objects
 	 * See Results model class
 	 */
-	@JsonProperty("Results")@Getter @Setter
+	@JsonProperty("Results")
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private ArrayList<Results> results;
 }

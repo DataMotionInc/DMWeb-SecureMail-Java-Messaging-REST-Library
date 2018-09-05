@@ -1,6 +1,7 @@
 package com.datamotion.Models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -17,12 +18,16 @@ public class Credentials {
 	/**
 	 * login username or email address
 	 */
-	@JsonProperty("UserIdOrEmail") @Getter @Setter
+	@JsonProperty("UserIdOrEmail")
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private String useridoremail;
 	
 	/**
 	 * login password
 	 */
-	@JsonProperty("Password") @Getter @Setter
+	@JsonProperty("Password")
+	@Getter (onMethod_=@JsonIgnore)
+	@Setter (onMethod_=@JsonIgnore)
 	private String password;
 }

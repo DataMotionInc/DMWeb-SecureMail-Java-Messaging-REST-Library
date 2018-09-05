@@ -47,6 +47,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.Getter;
 import lombok.Setter;
 
+
 /**
  * Main Class containing methods for all DataMotion SecureMail API funtions
  * @author Thomas Tyler Bissell
@@ -594,13 +595,11 @@ public class DMWeb {
 	
 	/**
 	 * Loads file from filename and encodes it to a Base64 string
-	 * @param fileName <code>String</code> name of file
+	 * @param file <code>File</code> Java File object
 	 * @return <code>String</code> encoded string
 	 * @throws IOException Throws underlying IOException
 	 */
-	public static String encodeFileToBase64Binary(String fileName) throws IOException {
-
-		File file = new File(fileName);
+	public static String encodeFileToBase64Binary(File file) throws IOException {
 		byte[] bytes = loadFile(file);
 		byte[] encoded = Base64.encodeBase64(bytes);
 		String encodedString = new String(encoded);
@@ -620,7 +619,7 @@ public class DMWeb {
 
 	    long length = file.length();
 	    if (length > Integer.MAX_VALUE) {
-	        // File is too large
+	        //TODO error message for extremely large files;
 	    }
 	    byte[] bytes = new byte[(int)length];
 	    
