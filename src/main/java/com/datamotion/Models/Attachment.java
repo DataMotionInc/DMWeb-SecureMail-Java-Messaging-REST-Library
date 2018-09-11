@@ -1,20 +1,13 @@
 package com.datamotion.Models;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.FileNameMap;
-import java.net.URLConnection;
-import java.nio.file.Files;
 
 import org.apache.tika.Tika;
 
 import com.datamotion.DMWeb;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
