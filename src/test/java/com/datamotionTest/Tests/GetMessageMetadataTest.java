@@ -14,7 +14,7 @@ public class GetMessageMetadataTest {
 	public void test() throws JsonParseException {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
-		MetaData metadata = tester.getMessageMetadata(628);
+		MetaData metadata = tester.getMessageMetadata(661);
 		assertNotNull(metadata);
 		assertEquals(200, tester.getStatusCode());
 	}

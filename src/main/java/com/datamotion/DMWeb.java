@@ -165,6 +165,9 @@ public class DMWeb {
 		String URL = BaseUrl + "SecureMessagingApi/Account/Logout";
 		try {
 			HttpEntity entity = buildHttpPostEntity(URL, "", assembleCommonHeaders());
+			if (StatusCode != 200) {
+				ErrorMessage = IOUtils.toString(entity.getContent(), "UTF-8");
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}	
@@ -225,6 +228,9 @@ public class DMWeb {
 		String URL = BaseUrl + "SecureMessagingApi/Folder/" + folderID;
 		try {
 			HttpEntity entity = buildHttpDeleteEntity(URL, assembleCommonHeaders());
+			if (StatusCode != 200) {
+				ErrorMessage = IOUtils.toString(entity.getContent(), "UTF-8");
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -453,6 +459,9 @@ public class DMWeb {
 		String JSONMoveMessage = buildJSONStringFromObject(moveMessage);
 		try {
 			HttpEntity entity = buildHttpPostEntity(URL, JSONMoveMessage, assembleCommonHeaders());
+			if (StatusCode != 200) {
+				ErrorMessage = IOUtils.toString(entity.getContent(), "UTF-8");
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -491,6 +500,9 @@ public class DMWeb {
 		String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Retract";
 		try {
 			HttpEntity entity = buildHttpPostEntity(URL, "", assembleCommonHeaders());
+			if (StatusCode != 200) {
+				ErrorMessage = IOUtils.toString(entity.getContent(), "UTF-8");
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

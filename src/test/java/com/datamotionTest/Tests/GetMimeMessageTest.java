@@ -14,7 +14,7 @@ public class GetMimeMessageTest {
 	public void test() throws JsonParseException {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
-		MimeMessage mimeMessage = tester.getMimeMessage(628);
+		MimeMessage mimeMessage = tester.getMimeMessage(661);
 		assertNotNull(mimeMessage);
 		assertEquals(200, tester.getStatusCode());
 	}
