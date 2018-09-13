@@ -55,7 +55,6 @@ public class Attachment {
 				e1.printStackTrace();
 			}
 			FileName = file.getName();
-			System.out.println(AttachmentBase64 + "\n" + ContentType + "\n" + FileName);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
