@@ -49,7 +49,7 @@ import lombok.Setter;
 
 
 /**
- * Main Class containing methods for all DataMotion SecureMail API funtions
+ * Main Class containing methods for all DataMotion SecureMail API functions
  * @author Thomas Tyler Bissell
  *
  */
