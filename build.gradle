@@ -1,6 +1,16 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 group = 'com.datamotion'
 version = '0.0.2-SNAPSHOT'
@@ -12,8 +22,7 @@ targetCompatibility = 1.8
 
 
 
-repositories {
-        
+repositories {   
      maven { url "http://repo.maven.apache.org/maven2" }
 }
 dependencies {
