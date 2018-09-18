@@ -26,7 +26,7 @@ import com.datamotion.Models.Details;
 import com.datamotion.Models.Folders;
 import com.datamotion.Models.HttpHeader;
 import com.datamotion.Models.Message;
-import com.datamotion.Models.MessageIDget;
+import com.datamotion.Models.MessageIdGet;
 import com.datamotion.Models.MessageId;
 import com.datamotion.Models.MessageIds;
 import com.datamotion.Models.MessageSummariesGet;
@@ -243,7 +243,7 @@ public class DMWeb {
 	 * @return <code>MessageIds</code> object, mapped from JSON in server response
 	 * @throws JsonParseException Exception specific to JSON to Object mapping errors
 	 */
-	public static MessageIds getInboxMessageIds(MessageIDget ID) throws JsonParseException {
+	public static MessageIds getInboxMessageIds(MessageIdGet ID) throws JsonParseException {
 		String URL = BaseUrl + "SecureMessagingApi/Message/GetInboxMessageIds";
 		String JSONMessageIDget = buildJSONStringFromObject(ID);
 		MessageIds messageIds = new MessageIds();

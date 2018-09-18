@@ -13,7 +13,7 @@ import lombok.Setter;
  */
 @AllArgsConstructor
 @NoArgsConstructor
-public class MessageIDget {
+public class MessageIdGet {
 	/**
 	 * The folder ID to search in (must be an inbox folderID). 1 is the primary inbox folder and is the default. -1 represents all inbox folders.	
 	 */
