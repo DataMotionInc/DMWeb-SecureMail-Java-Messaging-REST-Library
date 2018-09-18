@@ -26,7 +26,7 @@ import com.datamotion.Models.Details;
 import com.datamotion.Models.Folders;
 import com.datamotion.Models.HttpHeader;
 import com.datamotion.Models.Message;
-import com.datamotion.Models.MessageIDget;
+import com.datamotion.Models.MessageIdGet;
 import com.datamotion.Models.MessageId;
 import com.datamotion.Models.MessageIds;
 import com.datamotion.Models.MessageSummariesGet;
@@ -49,7 +49,7 @@ import lombok.Setter;
 
 
 /**
- * Main Class containing methods for all DataMotion SecureMail API funtions
+ * Main Class containing methods for all DataMotion SecureMail API functions
  * @author Thomas Tyler Bissell
  *
  */
@@ -165,6 +165,9 @@ public class DMWeb {
 		String URL = BaseUrl + "SecureMessagingApi/Account/Logout";
 		try {
 			HttpEntity entity = buildHttpPostEntity(URL, "", assembleCommonHeaders());
+			if (StatusCode != 200) {
+				ErrorMessage = IOUtils.toString(entity.getContent(), "UTF-8");
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}	
@@ -225,6 +228,9 @@ public class DMWeb {
 		String URL = BaseUrl + "SecureMessagingApi/Folder/" + folderID;
 		try {
 			HttpEntity entity = buildHttpDeleteEntity(URL, assembleCommonHeaders());
+			if (StatusCode != 200) {
+				ErrorMessage = IOUtils.toString(entity.getContent(), "UTF-8");
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -237,7 +243,7 @@ public class DMWeb {
 	 * @return <code>MessageIds</code> object, mapped from JSON in server response
 	 * @throws JsonParseException Exception specific to JSON to Object mapping errors
 	 */
-	public static MessageIds getInboxMessageIds(MessageIDget ID) throws JsonParseException {
+	public static MessageIds getInboxMessageIds(MessageIdGet ID) throws JsonParseException {
 		String URL = BaseUrl + "SecureMessagingApi/Message/GetInboxMessageIds";
 		String JSONMessageIDget = buildJSONStringFromObject(ID);
 		MessageIds messageIds = new MessageIds();
@@ -453,6 +459,9 @@ public class DMWeb {
 		String JSONMoveMessage = buildJSONStringFromObject(moveMessage);
 		try {
 			HttpEntity entity = buildHttpPostEntity(URL, JSONMoveMessage, assembleCommonHeaders());
+			if (StatusCode != 200) {
+				ErrorMessage = IOUtils.toString(entity.getContent(), "UTF-8");
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -491,6 +500,9 @@ public class DMWeb {
 		String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Retract";
 		try {
 			HttpEntity entity = buildHttpPostEntity(URL, "", assembleCommonHeaders());
+			if (StatusCode != 200) {
+				ErrorMessage = IOUtils.toString(entity.getContent(), "UTF-8");
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
