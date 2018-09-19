@@ -83,7 +83,7 @@ public class DMWeb {
 	 * Sets <code>BaseUrl</code>
 	 */
 	public DMWeb() {
-		BaseUrl = "https://securemailbeta.datamotion.com/";
+		BaseUrl = "https://ssl.datamotion.com/";
 	}
 	//SecureMail Messaging API Methods
 	//Account:
