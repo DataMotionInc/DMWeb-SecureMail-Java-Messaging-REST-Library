@@ -27,11 +27,11 @@ public class GetMimeMessageTest {
 		Attachment attachment = new Attachment("dGhpcyBpcyBhIHRlc3QgZmlsZQ==", "text/plain", "test.txt");
 		attachments.add(attachment);
 		Message message = new Message(to, "UnitTest1@dmfaketest.com", cc, bcc, "TestSubject", "CreateTime", attachments, "content", "content");
-		int messageId = tester.sendMessage(message).getMessageId();
-		MimeMessage mimeMessage = tester.getMimeMessage(messageId);
+		int messageId = tester.Message.sendMessage(message).getMessageId();
+		MimeMessage mimeMessage = tester.Message.getMimeMessage(messageId);
 		assertNotNull(mimeMessage);
 		assertEquals(200, tester.getStatusCode());
-		DeleteMessageResponse response = tester.deleteMessage(messageId, false);
+		DeleteMessageResponse response = tester.Message.deleteMessage(messageId, false);
 	}
 
 }

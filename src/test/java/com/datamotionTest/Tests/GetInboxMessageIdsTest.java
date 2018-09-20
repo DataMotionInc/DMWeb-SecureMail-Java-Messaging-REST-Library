@@ -16,7 +16,7 @@ public class GetInboxMessageIdsTest {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
 		MessageIdGet messageIdGet = new MessageIdGet(1, 0, false);
-		MessageIds messageIds = tester.getInboxMessageIds(messageIdGet);
+		MessageIds messageIds = tester.Message.getInboxMessageIds(messageIdGet);
 		assertNotNull(messageIds);
 		assertEquals(200, tester.getStatusCode());
 	}

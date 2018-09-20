@@ -12,7 +12,7 @@ public class LogoutTest {
 	public void test() {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
-		tester.logout();
+		tester.Account.logout();
 		assertEquals(200, tester.getStatusCode());
 	}
 

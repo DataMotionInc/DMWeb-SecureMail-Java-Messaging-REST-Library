@@ -12,7 +12,7 @@ public class ChangePasswordTest {
 	public void test() {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
-		tester.changePassword("CURRENTPASSWORD", "NEWPASSWORD");
+		tester.Account.changePassword("CURRENTPASSWORD", "NEWPASSWORD");
 		assertEquals(200, DMWeb.getStatusCode());
 	}
 

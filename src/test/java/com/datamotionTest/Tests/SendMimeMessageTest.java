@@ -37,12 +37,12 @@ public class SendMimeMessageTest {
 				"\r\n" + 
 				"<pre>This is the body text of a sample message.</pre>\r\n" + 
 				"--XXXXboundary text--");
-		int messageId = tester.sendMimeMessage(mimeMessage).getMessageId();
+		int messageId = tester.Message.sendMimeMessage(mimeMessage).getMessageId();
 		assertNotNull(messageId);
 		assertEquals(200, tester.getStatusCode());
 		Thread.sleep(3000);
 		tester.setStatusCode(-1);
-		DeleteMessageResponse response = tester.deleteMessage(messageId, false);
+		DeleteMessageResponse response = tester.Message.deleteMessage(messageId, false);
 		assertNotNull(response);
 		assertEquals(200, tester.getStatusCode());
 		

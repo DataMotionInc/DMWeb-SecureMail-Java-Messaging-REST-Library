@@ -26,10 +26,10 @@ public class GetMessageTest {
 		Attachment attachment = new Attachment("dGhpcyBpcyBhIHRlc3QgZmlsZQ==", "text/plain", "test.txt");
 		attachments.add(attachment);
 		Message message = new Message(to, "UnitTest1@dmfaketest.com", cc, bcc, "TestSubject", "CreateTime", attachments, "content", "content");
-		int messageId = tester.sendMessage(message).getMessageId();
-		Message receivedMessage = tester.getMessage(messageId);
+		int messageId = tester.Message.sendMessage(message).getMessageId();
+		Message receivedMessage = tester.Message.getMessage(messageId);
 		assertNotNull(receivedMessage);
 		assertEquals(200, tester.getStatusCode());
-		DeleteMessageResponse response = tester.deleteMessage(messageId, false);
+		DeleteMessageResponse response = tester.Message.deleteMessage(messageId, false);
 	}
 }

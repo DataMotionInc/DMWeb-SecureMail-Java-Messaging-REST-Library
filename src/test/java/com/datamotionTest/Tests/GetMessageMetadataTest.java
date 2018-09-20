@@ -27,11 +27,11 @@ public class GetMessageMetadataTest {
 		Attachment attachment = new Attachment("dGhpcyBpcyBhIHRlc3QgZmlsZQ==", "text/plain", "test.txt");
 		attachments.add(attachment);
 		Message message = new Message(to, "UnitTest1@dmfaketest.com", cc, bcc, "TestSubject", "CreateTime", attachments, "content", "content");
-		int messageId = tester.sendMessage(message).getMessageId();
-		MetaData metadata = tester.getMessageMetadata(messageId);
+		int messageId = tester.Message.sendMessage(message).getMessageId();
+		MetaData metadata = tester.Message.getMessageMetadata(messageId);
 		assertNotNull(metadata);
 		assertEquals(200, tester.getStatusCode());
-		DeleteMessageResponse response = tester.deleteMessage(messageId, false);
+		DeleteMessageResponse response = tester.Message.deleteMessage(messageId, false);
 
 	}
 }

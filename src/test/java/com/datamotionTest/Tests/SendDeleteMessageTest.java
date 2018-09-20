@@ -26,12 +26,12 @@ public class SendDeleteMessageTest {
 		Attachment attachment = new Attachment("dGhpcyBpcyBhIHRlc3QgZmlsZQ==", "text/plain", "test.txt");
 		attachments.add(attachment);
 		Message message = new Message(to, "UnitTest1@dmfaketest.com", cc, bcc, "TestSubject", "CreateTime", attachments, "content", "content");
-		int messageId = tester.sendMessage(message).getMessageId();
+		int messageId = tester.Message.sendMessage(message).getMessageId();
 		assertNotNull(messageId);
 		assertEquals(200, tester.getStatusCode());
 		Thread.sleep(5000);
 		tester.setStatusCode(-1);
-		DeleteMessageResponse response = tester.deleteMessage(messageId, false);
+		DeleteMessageResponse response = tester.Message.deleteMessage(messageId, false);
 		assertNotNull(response);
 		assertEquals(200, tester.getStatusCode());
 	}
