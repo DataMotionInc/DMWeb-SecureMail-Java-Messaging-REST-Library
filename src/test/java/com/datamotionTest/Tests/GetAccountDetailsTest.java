@@ -15,7 +15,7 @@ public class GetAccountDetailsTest {
 	public void test() throws IOException {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
-		Details details = tester.getAccountDetails();
+		Details details = tester.Account.getAccountDetails();
 		assertNotNull(details);
 		assertEquals(200, tester.getStatusCode());
 	}

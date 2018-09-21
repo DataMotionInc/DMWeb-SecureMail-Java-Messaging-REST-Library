@@ -15,7 +15,7 @@ public class GetUnreadMessagesTest {
 	public void test() throws JsonParseException {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
-		MessageSummariesResponse response = tester.getUnreadMessages(false, 0);
+		MessageSummariesResponse response = tester.Message.getUnreadMessages(false, 0);
 		assertNotNull(response);
 		assertEquals(200, tester.getStatusCode());
 	}

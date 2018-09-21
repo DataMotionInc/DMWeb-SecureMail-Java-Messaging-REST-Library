@@ -14,7 +14,7 @@ public class GetSessionKeyTest {
 	public void test() throws IOException {
 		DMWeb tester = new DMWeb();
 		Context context = new Context();
-		tester.logon(context.getUsername(), context.getPassword());
-		assertNotNull(tester.getSessionKey());
+		tester.Account.logon(context.getUsername(), context.getPassword());
+		assertEquals(32, tester.getSessionKey().length());
 	}
 }

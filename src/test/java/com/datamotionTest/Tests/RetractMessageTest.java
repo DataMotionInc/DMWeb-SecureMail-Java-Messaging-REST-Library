@@ -35,9 +35,9 @@ public class RetractMessageTest {
 				"\r\n" + 
 				"<pre>This is the body text of a sample message.</pre>\r\n" + 
 				"--XXXXboundary text--");
-		int messageId = tester.sendMimeMessage(mimeMessage).getMessageId();
+		int messageId = tester.Message.sendMimeMessage(mimeMessage).getMessageId();
 		Thread.sleep(3000);
-		tester.retractMessage(messageId);
+		tester.Message.retractMessage(messageId);
 		assertEquals(200, tester.getStatusCode());
 	}
 

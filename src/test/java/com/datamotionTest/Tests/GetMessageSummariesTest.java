@@ -16,7 +16,7 @@ public class GetMessageSummariesTest {
 	DMWeb tester = new DMWeb();
 	tester.setStatusCode(-1);
 	MessageSummariesGet getSummaries = new MessageSummariesGet(1, 0);
-	MessageSummariesResponse response = tester.getMessageSummaries(getSummaries);
+	MessageSummariesResponse response = tester.Message.getMessageSummaries(getSummaries);
 	assertNotNull(response);
 	assertEquals(200, tester.getStatusCode());
 	}

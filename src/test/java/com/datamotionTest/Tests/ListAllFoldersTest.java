@@ -14,7 +14,7 @@ public class ListAllFoldersTest {
 	public void test() throws JsonParseException {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
-		Folders folders = tester.listAllFolders();
+		Folders folders = tester.Folders.listAllFolders();
 		assertNotNull(folders);
 		assertEquals(200, tester.getStatusCode());
 	}

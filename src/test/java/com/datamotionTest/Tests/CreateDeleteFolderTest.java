@@ -15,9 +15,9 @@ public class CreateDeleteFolderTest {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
 		NewFolder testFolder = new NewFolder("testFolderName", 0);
-		int newFolderId = tester.createFolder(testFolder).getFolderId();
+		int newFolderId = tester.Folders.createFolder(testFolder).getFolderId();
 		assertEquals(200, tester.getStatusCode());
-		tester.deleteFolder(newFolderId);
+		tester.Folders.deleteFolder(newFolderId);
 		assertEquals(200, tester.getStatusCode());
 	}
 

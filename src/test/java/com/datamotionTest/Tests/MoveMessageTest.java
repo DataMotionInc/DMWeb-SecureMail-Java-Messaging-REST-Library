@@ -28,14 +28,14 @@ public class MoveMessageTest {
 		Attachment attachment = new Attachment("dGhpcyBpcyBhIHRlc3QgZmlsZQ==", "text/plain", "test.txt");
 		attachments.add(attachment);
 		Message message = new Message(to, "UnitTest1@dmfaketest.com", cc, bcc, "TestSubject", "CreateTime", attachments, "content", "content");
-		int messageId = tester.sendMessage(message).getMessageId();
-		tester.moveMessage(moveMessage, messageId);
+		int messageId = tester.Message.sendMessage(message).getMessageId();
+		tester.Message.moveMessage(moveMessage, messageId);
 		assertEquals(200, tester.getStatusCode());
 		Thread.sleep(3000);
 		moveMessage.setDestinationFolderId(1);
-		tester.moveMessage(moveMessage, messageId);
+		tester.Message.moveMessage(moveMessage, messageId);
 		assertEquals(200, tester.getStatusCode());
-		DeleteMessageResponse response = tester.deleteMessage(messageId, false);
+		DeleteMessageResponse response = tester.Message.deleteMessage(messageId, false);
 	}
 
 }
