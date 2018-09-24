@@ -12,7 +12,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 public class GetMessageSummariesTest {
 
 	@Test
-	public void test() throws JsonParseException {
+	public void test() throws Exception {
 	DMWeb tester = new DMWeb();
 	tester.setStatusCode(-1);
 	MessageSummariesGet getSummaries = new MessageSummariesGet(1, 0);

@@ -12,7 +12,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 public class SearchInboxTest {
 
 	@Test
-	public void test() throws JsonParseException {
+	public void test() throws Exception {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
 		Search search = new Search("account", 1, false, false, "", false, 1, 1);

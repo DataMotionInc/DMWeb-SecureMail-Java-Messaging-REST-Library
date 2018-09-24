@@ -9,7 +9,7 @@ import com.datamotion.DMWeb;
 public class ChangePasswordTest {
 
 	@Test
-	public void test() {
+	public void test() throws Exception {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
 		tester.Account.changePassword("CURRENTPASSWORD", "NEWPASSWORD");

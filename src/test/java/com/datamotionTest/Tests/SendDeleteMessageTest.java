@@ -15,7 +15,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 public class SendDeleteMessageTest {
 
 	@Test
-	public void test() throws JsonParseException, InterruptedException {
+	public void test() throws Exception {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
 		ArrayList<String> to = new ArrayList<String>();

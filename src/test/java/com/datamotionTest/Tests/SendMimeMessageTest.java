@@ -12,7 +12,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 public class SendMimeMessageTest {
 
 	@Test
-	public void test() throws InterruptedException, JsonParseException {
+	public void test() throws Exception {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
 		MimeMessage mimeMessage = new MimeMessage(

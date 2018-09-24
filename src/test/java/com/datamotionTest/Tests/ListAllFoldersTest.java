@@ -11,7 +11,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 public class ListAllFoldersTest {
 
 	@Test
-	public void test() throws JsonParseException {
+	public void test() throws Exception {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
 		Folders folders = tester.Folders.listAllFolders();

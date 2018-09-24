@@ -94,9 +94,9 @@ public class DMWeb {
 		 * A valid session key is required for all other SecureMail API functions.
 		 * @param user <code>string</code> login username
 		 * @param pass <code>string</code> login password
-		 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+		 * @throws Exception 
 		 */
-		public void logon(String user, String pass) throws JsonParseException {
+		public void logon(String user, String pass) throws Exception {
 			String sessionKey = "";
 			String URL = BaseUrl + "SecureMessagingApi/Account/Logon";
 			HttpHeader contentType = new HttpHeader("Content-Type", "application/json");
@@ -110,10 +110,9 @@ public class DMWeb {
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				ObjectNode node = new ObjectMapper().readValue(response,  ObjectNode.class);
 				sessionKey = node.get("SessionKey").asText();
-			}catch (JsonParseException ex) {
-				ErrorMessage = response;
 			}catch (Exception ex) {
-				ex.printStackTrace();
+				ErrorMessage = response;
+				throw new Exception(response);
 			}
 			SessionKey = sessionKey;
 		}
@@ -121,9 +120,9 @@ public class DMWeb {
 		/**
 		 * Retrieves account details in a standard format
 		 * @return <code>Details</code> object mapped from JSON in server response
-		 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+		 * @throws Exception
 		 */
-		public Details getAccountDetails() throws JsonParseException {
+		public Details getAccountDetails() throws Exception {
 			Details details = new Details();
 			String response = "";
 			String URL = BaseUrl + "SecureMessagingApi/Account/Details";
@@ -132,10 +131,9 @@ public class DMWeb {
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				ObjectMapper objectMapper = new ObjectMapper();
 				details = objectMapper.readValue(response, Details.class);
-			}catch (JsonParseException ex) {
+			}catch (Exception ex) {
 				ErrorMessage = response;
-			} catch (Exception ex) {
-				ex.printStackTrace();
+				throw new Exception(response);
 			}
 			return details;
 		}
@@ -144,33 +142,41 @@ public class DMWeb {
 		 * Changes login password, requires valid new password and valid old password to be successful
 		 * @param oldPass <code>string</code> old password
 		 * @param newPass <code>string</code> new password
+		 * @throws Exception 
 		 */
-		public void changePassword(String oldPass, String newPass) {
+		public void changePassword(String oldPass, String newPass) throws Exception {
 			PasswordChange passChange = new PasswordChange(oldPass, newPass);
 			String JSONPassChange = buildJSONStringFromObject(passChange);
 			String URL = BaseUrl + "SecureMessagingApi/Account/ChangePassword";
+			String response = "";
 			try {
 				HttpEntity entity = buildHttpPostEntity(URL, JSONPassChange, assembleCommonHeaders());
+				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				if (StatusCode != 200) {
 					ErrorMessage = IOUtils.toString(entity.getContent(), "UTF-8");
 				}
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				ErrorMessage = response;
+				throw new Exception(response);
 			}
 		}
 		
 		/**
 		 * Invalidates the <code>SessionKey</code> in use by <code>DMWeb</code>
+		 * @throws Exception 
 		 */
-		public void logout() {
+		public void logout() throws Exception {
 			String URL = BaseUrl + "SecureMessagingApi/Account/Logout";
+			String response = "";
 			try {
 				HttpEntity entity = buildHttpPostEntity(URL, "", assembleCommonHeaders());
+				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				if (StatusCode != 200) {
-					ErrorMessage = IOUtils.toString(entity.getContent(), "UTF-8");
+					ErrorMessage = response;
 				}
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				ErrorMessage = response;
+				throw new Exception(response);
 			}	
 		}
 
@@ -180,9 +186,9 @@ public class DMWeb {
 		/**
 		 * Retrieves folder structure and related statistics
 		 * @return <code>Folders</code> object mapped from JSON in server response
-		 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+		 * @throws Exception
 		 */
-		public Folders listAllFolders() throws JsonParseException {
+		public Folders listAllFolders() throws Exception {
 			Folders folders = new Folders();
 			String URL = BaseUrl + "SecureMessagingApi/Folder/List";
 			String response = "";
@@ -191,10 +197,9 @@ public class DMWeb {
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				ObjectMapper objectMapper = new ObjectMapper();
 				folders = objectMapper.readValue(response, Folders.class);
-			} catch (JsonParseException ex) {
-				ErrorMessage = response;
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				ErrorMessage = response;
+				throw new Exception(response);
 			}
 			return folders;
 		}
@@ -203,8 +208,9 @@ public class DMWeb {
 		 * Creates a custom folder with appropriate information mapped from new folder object
 		 * @param newFolder <code>NewFolder</code> object
 		 * @return <code>string</code> New Folder ID
+		 * @throws Exception 
 		 */
-		public NewFolderId createFolder(NewFolder newFolder) {
+		public NewFolderId createFolder(NewFolder newFolder) throws Exception {
 			String URL = BaseUrl + "SecureMessagingApi/Folder";
 			String JSONNewFolder = buildJSONStringFromObject(newFolder);
 			NewFolderId newFolderId = new NewFolderId();
@@ -216,8 +222,7 @@ public class DMWeb {
 				newFolderId = objectMapper.readValue(response, NewFolderId.class);
 			} catch (JsonParseException ex) {
 				ErrorMessage = response;
-			} catch (Exception ex) {
-				ex.printStackTrace();
+				throw new Exception(response);
 			}
 			return newFolderId;
 		}
@@ -226,16 +231,20 @@ public class DMWeb {
 		 * Deletes a custom folder, given that folder's ID.
 		 * Non-custom folders cannot be deleted
 		 * @param folderID <code>int</code> folder ID
+		 * @throws Exception 
 		 */
-		public void deleteFolder(int folderID) {
+		public void deleteFolder(int folderID) throws Exception {
 			String URL = BaseUrl + "SecureMessagingApi/Folder/" + folderID;
+			String response = "";
 			try {
 				HttpEntity entity = buildHttpDeleteEntity(URL, assembleCommonHeaders());
+				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				if (StatusCode != 200) {
 					ErrorMessage = IOUtils.toString(entity.getContent(), "UTF-8");
 				}
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				ErrorMessage = response;
+				throw new Exception(response);
 			}
 		}
 
@@ -246,9 +255,9 @@ public class DMWeb {
 		 * Retrieves the message IDs of all messages in the user's inbox
 		 * @param ID <code>MessageIDget</code> object, containing search parameters
 		 * @return <code>MessageIds</code> object, mapped from JSON in server response
-		 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+		 * @throws Exception 
 		 */
-		public MessageIds getInboxMessageIds(MessageIdGet ID) throws JsonParseException {
+		public MessageIds getInboxMessageIds(MessageIdGet ID) throws Exception {
 			String URL = BaseUrl + "SecureMessagingApi/Message/GetInboxMessageIds";
 			String JSONMessageIDget = buildJSONStringFromObject(ID);
 			MessageIds messageIds = new MessageIds();
@@ -258,10 +267,9 @@ public class DMWeb {
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				ObjectMapper objectMapper = new ObjectMapper();
 				messageIds = objectMapper.readValue(response, MessageIds.class);
-			}catch (JsonParseException ex) {
+			}catch (Exception ex) {
 				ErrorMessage = response;
-			} catch (Exception ex) {
-				ex.printStackTrace();
+				throw new Exception(response);
 			}
 			return messageIds;
 		}
@@ -270,9 +278,9 @@ public class DMWeb {
 		 * Retrieves message summaries of all messages within a specified folder
 		 * @param messageSummariesGet <code>MessageSummariesGet</code> object, containing search parameters
 		 * @return <code>MessageSummariesResponse</code> object, mapped from JSON in server response
-		 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+		 * @throws Exception 
 		 */
-		public MessageSummariesResponse getMessageSummaries(MessageSummariesGet messageSummariesGet) throws JsonParseException {
+		public MessageSummariesResponse getMessageSummaries(MessageSummariesGet messageSummariesGet) throws Exception {
 			MessageSummariesResponse messageSummariesResponse = new MessageSummariesResponse();
 			String URL = BaseUrl + "SecureMessagingApi/Message/GetMessageSummaries";
 			String JSONGetSummaries = buildJSONStringFromObject(messageSummariesGet);
@@ -282,10 +290,9 @@ public class DMWeb {
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				ObjectMapper objectMapper = new ObjectMapper();
 				messageSummariesResponse = objectMapper.readValue(response, MessageSummariesResponse.class);
-			}catch (JsonParseException ex) {
+			}catch (Exception ex) {
 				ErrorMessage = response;
-			} catch (Exception ex) {
-				ex.printStackTrace();
+				throw new Exception(response);
 			}
 			return messageSummariesResponse;
 		}
@@ -295,9 +302,9 @@ public class DMWeb {
 		 * @param after <code>boolean</code> to retrieve only messages after a specified ID
 		 * @param lastMessageId <code>int</code> specified ID, used if <b>after</b> is true
 		 * @return MessageSummariesResponse object, mapped from JSON in server response
-		 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+		 * @throws Exception
 		 */
-		public MessageSummariesResponse getUnreadMessages(boolean after, int lastMessageId) throws JsonParseException {
+		public MessageSummariesResponse getUnreadMessages(boolean after, int lastMessageId) throws Exception {
 			MessageSummariesResponse messageSummariesResponse = new MessageSummariesResponse();
 			String URL = BaseUrl + "SecureMessagingApi/Message/Inbox/Unread";
 			String response = "";
@@ -307,10 +314,9 @@ public class DMWeb {
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				ObjectMapper objectMapper = new ObjectMapper();
 				messageSummariesResponse = objectMapper.readValue(response, MessageSummariesResponse.class);
-			}catch (JsonParseException ex) {
+			}catch (Exception ex) {
 				ErrorMessage = response;
-			} catch (Exception ex) {
-				ex.printStackTrace();
+				throw new Exception(response);
 			}
 			return messageSummariesResponse;
 		}
@@ -319,9 +325,9 @@ public class DMWeb {
 		 * Searches the user's inbox, based on filter parameters
 		 * @param search <code>Search</code> Object containing filter parameters
 		 * @return <code>SearchResponse</code> object, mapped from JSON in server response
-		 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+		 * @throws Exception
 		 */
-		public SearchResponse searchInbox(Search search) throws JsonParseException {
+		public SearchResponse searchInbox(Search search) throws Exception {
 			SearchResponse searchResponse = new SearchResponse();
 			String URL = BaseUrl + "SecureMessagingApi/Message/Inbox/Search";
 			String JSONSearch = buildJSONStringFromObject(search);
@@ -331,10 +337,9 @@ public class DMWeb {
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				ObjectMapper objectMapper = new ObjectMapper();
 				searchResponse = objectMapper.readValue(response, SearchResponse.class);
-			}catch (JsonParseException ex) {
-				ErrorMessage = response;
 			}catch (Exception ex) {
-				ex.printStackTrace();
+				ErrorMessage = response;
+				throw new Exception(response);
 			}
 			return searchResponse;
 		}
@@ -343,9 +348,9 @@ public class DMWeb {
 		 * Retrieves metadata for a sent message
 		 * @param messageId <code>int</code> message ID of the message in question
 		 * @return <code>MetaData</code> object, mapped from JSON in server response
-		 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+		 * @throws Exception
 		 */
-		public MetaData getMessageMetadata(int messageId) throws JsonParseException {
+		public MetaData getMessageMetadata(int messageId) throws Exception {
 			MetaData metaData = new MetaData();
 			String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Metadata";
 			String response = "";
@@ -354,10 +359,9 @@ public class DMWeb {
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				ObjectMapper objectMapper = new ObjectMapper();
 				metaData = objectMapper.readValue(response, MetaData.class);
-			}catch (JsonParseException ex) {
+			}catch (Exception ex) {
 				ErrorMessage = response;
-			} catch(Exception ex) {
-				ex.printStackTrace();
+				throw new Exception(response);
 			}
 			return metaData;
 		}
@@ -366,9 +370,9 @@ public class DMWeb {
 		 * Retrieves a message based on the message ID passed
 		 * @param messageId <code>int</code> ID of message to be retrieved
 		 * @return <code>Message</code> object, mapped from JSON in server response
-		 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+		 * @throws Exception
 		 */
-		public Message getMessage(int messageId) throws JsonParseException {
+		public Message getMessage(int messageId) throws Exception {
 			Message message = new Message();
 			String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId;
 			String response = "";
@@ -377,10 +381,9 @@ public class DMWeb {
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				ObjectMapper objectMapper = new ObjectMapper();
 				message = objectMapper.readValue(response,  Message.class);
-			}catch (JsonParseException ex) {
+			}catch (Exception ex) {
 				ErrorMessage = response;
-			} catch (Exception ex) {
-				ex.printStackTrace();
+				throw new Exception(response);
 			}
 			return message;
 		}
@@ -389,9 +392,9 @@ public class DMWeb {
 		 * Retrieves a message in MIME format
 		 * @param messageId <code>int</code> ID of message to be retrieved
 		 * @return <code>MimeMessage</code> object, mapped from JSON in server response
-		 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+		 * @throws Exception
 		 */
-		public MimeMessage getMimeMessage(int messageId) throws JsonParseException {
+		public MimeMessage getMimeMessage(int messageId) throws Exception {
 			MimeMessage mimeMessage = new MimeMessage();
 			String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Mime";
 			String response = "";
@@ -400,10 +403,9 @@ public class DMWeb {
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				ObjectMapper objectMapper = new ObjectMapper();
 				mimeMessage = objectMapper.readValue(response, MimeMessage.class);
-			}catch (JsonParseException ex) {
+			}catch (Exception ex) {
 				ErrorMessage = response;
-			} catch(Exception ex) {
-				ex.printStackTrace();
+				throw new Exception(response);
 			}
 			return mimeMessage;
 		}
@@ -412,8 +414,9 @@ public class DMWeb {
 		 * Sends a message, with all relevant information contained in <code>Message</code> object
 		 * @param message <code>Message</code> object
 		 * @return <code>int</code> ID of message that was sent
+		 * @throws Exception
 		 */
-		public MessageId sendMessage(Message message) throws JsonParseException {
+		public MessageId sendMessage(Message message) throws Exception {
 			MessageId messageId = new MessageId();
 			String URL = BaseUrl + "SecureMessagingApi/Message/";
 			String JSONMessage = buildJSONStringFromObject(message);
@@ -423,10 +426,9 @@ public class DMWeb {
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				ObjectMapper objectMapper = new ObjectMapper();
 				messageId = objectMapper.readValue(response, MessageId.class);
-			} catch (JsonParseException ex) {
-				ErrorMessage = response;
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				ErrorMessage = response;
+				throw new Exception(response);
 			}
 			return messageId;
 		}
@@ -435,8 +437,9 @@ public class DMWeb {
 		 * Sends a MIME message, assuming <code>MimeMessage</code> object contains a properly formatted MIME string
 		 * @param mimeMessage <code>MimeMessage</code> object
 		 * @return <code>int</code> ID of message that was sent
+		 * @throws Exception 
 		 */
-		public MessageId sendMimeMessage(MimeMessage mimeMessage) {
+		public MessageId sendMimeMessage(MimeMessage mimeMessage) throws Exception {
 			MessageId messageId = new MessageId();
 			String URL = BaseUrl + "SecureMessagingApi/Message/Mime";
 			String JSONMimeMessage = buildJSONStringFromObject(mimeMessage);
@@ -446,10 +449,9 @@ public class DMWeb {
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				ObjectMapper objectMapper = new ObjectMapper();
 				messageId = objectMapper.readValue(response, MessageId.class);
-			} catch (JsonParseException ex) {
-				ErrorMessage = response;
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				ErrorMessage = response;
+				throw new Exception(response);
 			}
 			return messageId;
 		}
@@ -458,17 +460,20 @@ public class DMWeb {
 		 * Moves a message into a specified folder
 		 * @param moveMessage <code>MoveMessage</code> object, containing relevant parameters
 		 * @param messageId <code>int</code> ID of message to be moved
+		 * @throws Exception 
 		 */
-		public void moveMessage(MoveMessage moveMessage, int messageId) {
+		public void moveMessage(MoveMessage moveMessage, int messageId) throws Exception {
 			String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Move";
 			String JSONMoveMessage = buildJSONStringFromObject(moveMessage);
+			String response = "";
 			try {
 				HttpEntity entity = buildHttpPostEntity(URL, JSONMoveMessage, assembleCommonHeaders());
+				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				if (StatusCode != 200) {
 					ErrorMessage = IOUtils.toString(entity.getContent(), "UTF-8");
 				}
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				throw new Exception(response);
 			}
 		}
 		
@@ -477,9 +482,9 @@ public class DMWeb {
 		 * @param messageId <code>int</code> ID of message to be deleted
 		 * @param permanent <code>boolean</code> Flag to delete message permanently
 		 * @return <code>DeleteMessageResponse</code> object, mapped from JSON in server response
-		 * @throws JsonParseException Exception specific to JSON to Object mapping errors
+		 * @throws Exception 
 		 */
-		public DeleteMessageResponse deleteMessage(int messageId, boolean permanent) throws JsonParseException {
+		public DeleteMessageResponse deleteMessage(int messageId, boolean permanent) throws Exception {
 			DeleteMessageResponse deleteMessageResponse = new DeleteMessageResponse();
 			String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId;
 			String response = "";
@@ -489,10 +494,9 @@ public class DMWeb {
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				ObjectMapper objectMapper = new ObjectMapper();
 				deleteMessageResponse = objectMapper.readValue(response, DeleteMessageResponse.class);
-			} catch (JsonParseException ex) {
-				ErrorMessage = response;
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				ErrorMessage = response;
+				throw new Exception(response);
 			}
 			return deleteMessageResponse;
 		}
@@ -500,16 +504,19 @@ public class DMWeb {
 		/**
 		 * Retracts a message from any recipients who received it
 		 * @param messageId <code>int</code> ID of message to be retracted
+		 * @throws Exception 
 		 */
-		public void retractMessage(int messageId) {
+		public void retractMessage(int messageId) throws Exception {
 			String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Retract";
+			String response = "";
 			try {
 				HttpEntity entity = buildHttpPostEntity(URL, "", assembleCommonHeaders());
+				response = IOUtils.toString(entity.getContent(), "UTF-8");
 				if (StatusCode != 200) {
 					ErrorMessage = IOUtils.toString(entity.getContent(), "UTF-8");
 				}
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				throw new Exception(response);
 			}
 		}
 	}

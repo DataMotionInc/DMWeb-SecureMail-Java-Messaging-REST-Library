@@ -12,7 +12,7 @@ import com.datamotion.Models.Details;
 public class GetAccountDetailsTest {
 
 	@Test
-	public void test() throws IOException {
+	public void test() throws Exception {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
 		Details details = tester.Account.getAccountDetails();
