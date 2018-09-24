@@ -87,6 +87,10 @@ public class DMWeb {
 		BaseUrl = "https://securemailbeta.datamotion.com/";
 	}
 	
+	public DMWeb(String url) {
+		BaseUrl = url;
+	}
+	
 	public class DMAccount {
 		/**
 		 * Retrieves a session key if valid credentials are used as arguments.
