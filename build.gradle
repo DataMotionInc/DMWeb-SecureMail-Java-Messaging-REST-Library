@@ -13,9 +13,9 @@ apply plugin: 'maven-publish'
 apply plugin: 'com.github.johnrengelman.shadow'
 
 group = 'com.datamotion'
-version = '0.0.2-SNAPSHOT'
+version = 'version-num'
 
-description = """"""
+description = "Java SecureMail REST Messaging SDK for DatMotion"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
