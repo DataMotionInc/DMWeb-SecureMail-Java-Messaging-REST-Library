@@ -19,8 +19,8 @@ stages:
 build:
   stage: build
   script: 
-    - gradle --build-cache assemble
-    - gradle shadowJar
+    - gradle --build-cache -PmavenUser=$MavenUser -PmavenPass=$MavenPass assemble
+    - gradle shadowJar -PmavenUser=$MavenUser -PmavenPass=$MavenPass
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
@@ -38,7 +38,7 @@ test:
     - echo $UserIdOrEmail > "userpass.txt"
     - echo $Password >> "userpass.txt"
     #Execute Tests
-    - gradle check
+    - gradle check -PmavenUser=$MavenUser -PmavenPass=$MavenPass
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
