@@ -9,7 +9,7 @@ variables:
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
-  - mapfile BuildConfiguration < BUILD
+  - while IFS= read -r line; do BuildConfiguration+=("$line"); done < BUILD
 
 stages:
   - build
