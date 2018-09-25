@@ -1,4 +1,4 @@
-image: gradle:alpine
+image: gradle:slim
 
 # Disable the Gradle daemon for Continuous Integration servers as correctness
 # is usually a priority over speed in CI environments. Using a fresh
@@ -9,7 +9,6 @@ variables:
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
-  - sudo apt-get install --only-upgrade -y bash
   - mapfile BuildConfiguration < BUILD
 
 stages:
