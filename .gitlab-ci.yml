@@ -56,6 +56,12 @@ deploy:
     - gradle publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass
   only:
     - tags
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - build
+      - .gradle
   environment:
     name: maven    
   dependencies:
