@@ -12,7 +12,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 public class GetInboxMessageIdsTest {
 
 	@Test
-	public void test() throws JsonParseException {
+	public void test() throws Exception {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
 		MessageIdGet messageIdGet = new MessageIdGet(1, 0, false);

@@ -16,7 +16,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 public class GetMimeMessageTest {
 
 	@Test
-	public void test() throws JsonParseException {
+	public void test() throws Exception {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
 		ArrayList<String> to = new ArrayList<String>();
@@ -31,6 +31,7 @@ public class GetMimeMessageTest {
 		MimeMessage mimeMessage = tester.Message.getMimeMessage(messageId);
 		assertNotNull(mimeMessage);
 		assertEquals(200, tester.getStatusCode());
+		Thread.sleep(5000);
 		DeleteMessageResponse response = tester.Message.deleteMessage(messageId, false);
 	}
 

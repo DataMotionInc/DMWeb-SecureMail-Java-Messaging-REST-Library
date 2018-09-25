@@ -11,7 +11,7 @@ import com.datamotion.Models.NewFolderId;
 public class CreateDeleteFolderTest {
 
 	@Test
-	public void testCreateFolder() {
+	public void testCreateFolder() throws Exception {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
 		NewFolder testFolder = new NewFolder("testFolderName", 0);

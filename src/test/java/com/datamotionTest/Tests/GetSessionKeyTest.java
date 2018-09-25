@@ -11,7 +11,7 @@ import com.datamotion.DMWeb;
 public class GetSessionKeyTest {
 
 	@Test
-	public void test() throws IOException {
+	public void test() throws Exception {
 		DMWeb tester = new DMWeb();
 		Context context = new Context();
 		tester.Account.logon(context.getUsername(), context.getPassword());

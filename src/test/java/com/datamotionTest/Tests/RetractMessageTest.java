@@ -10,7 +10,7 @@ import com.datamotion.Models.MimeMessage;
 public class RetractMessageTest {
 
 	@Test
-	public void test() throws InterruptedException {
+	public void test() throws Exception {
 		DMWeb tester = new DMWeb();
 		tester.setStatusCode(-1);
 		MimeMessage mimeMessage = new MimeMessage(
