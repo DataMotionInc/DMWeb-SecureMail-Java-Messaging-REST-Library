@@ -9,7 +9,8 @@ variables:
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
-  - while IFS= read -r line; do BuildConfiguration+=("$line"); done < BUILD
+  - sudo apt-get install --only-upgrade -y bash
+  - mapfile BuildConfiguration < BUILD
 
 stages:
   - build
