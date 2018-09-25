@@ -19,6 +19,7 @@ stages:
 build:
   stage: build
   script: 
+    - sed -i "s/version-num/${BuildConfiguration[0]}/g" build.gradle
     - gradle --build-cache -PmavenUser=$MavenUser -PmavenPass=$MavenPass assemble
     - gradle shadowJar -PmavenUser=$MavenUser -PmavenPass=$MavenPass
   cache:
@@ -37,6 +38,7 @@ test:
     #Write Config File from Environment Variables
     - echo $UserIdOrEmail > "userpass.txt"
     - echo $Password >> "userpass.txt"
+    - cat userpass.txt
     #Execute Tests
     - gradle check -PmavenUser=$MavenUser -PmavenPass=$MavenPass
   cache:
@@ -52,7 +54,6 @@ deploy:
   stage: deploy
   script: 
     - gradle publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass
-    - sed -i "s/version-num/${BuildConfiguration[0]}/g" build.gradle
   only:
     - tags
   environment:
