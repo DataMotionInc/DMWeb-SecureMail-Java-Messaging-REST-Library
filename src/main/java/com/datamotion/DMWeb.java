@@ -98,9 +98,10 @@ public class DMWeb {
 		 * A valid session key is required for all other SecureMail API functions.
 		 * @param user <code>string</code> login username
 		 * @param pass <code>string</code> login password
+		 * @return <code>String</code> session key
 		 * @throws Exception 
 		 */
-		public void logon(String user, String pass) throws Exception {
+		public String logon(String user, String pass) throws Exception {
 			String sessionKey = "";
 			String URL = BaseUrl + "SecureMessagingApi/Account/Logon";
 			HttpHeader contentType = new HttpHeader("Content-Type", "application/json");
@@ -119,6 +120,7 @@ public class DMWeb {
 				throw new Exception(response);
 			}
 			SessionKey = sessionKey;
+			return sessionKey;
 		}
 		
 		/**
