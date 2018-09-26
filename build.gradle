@@ -31,9 +31,22 @@ lombok {
     sha256 = ""
 }
 
+delombok(type: DelombokTask, dependsOn: compileJava) {
+    ext.outputDir = file("$buildDir/delombok")
+    outputs.dir(outputDir)
+    sourceSets.main.java.srcDirs.each { 
+        inputs.dir(it)
+        args(it, "-d", outputDir)
+    }
+    doFirst {
+        outputDir.deleteDir()
+    }
+}
+
 javadoc {
-    source = sourceSets.main.allJava
-    classpath = configurations.compile
+    dependsOn delombok
+    source = delombok.outputDir
+    failOnError = false
 }
 
 repositories {   
