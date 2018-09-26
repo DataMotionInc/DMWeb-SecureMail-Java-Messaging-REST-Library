@@ -45,9 +45,23 @@ task delombok(type: DelombokTask, dependsOn: compileJava) {
     }
 }
 
+task sourceJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+
+task packageJavadoc(type: Jar) {
+    from javadoc
+    classifier = 'javadoc'
+}
+
 javadoc {
     dependsOn delombok
     source = delombok.outputDir
+    options {
+        setMemberLevel JavadocMemberLevel.PUBLIC
+        setAuthor true
+    }
     failOnError = false
 }
 
@@ -65,3 +79,34 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version:'4.12'
 }
 
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourceJar
+            artifact packageJavadoc
+        }
+    }
+    repositories {
+		maven {
+			url "${project.version.endsWith('-SNAPSHOT') ? 'https://oss.sonatype.org/content/repositories/snapshots' : 'https://oss.sonatype.org/service/local/staging/deploy/maven2/' }"
+			credentials {
+				username project.mavenUser
+				password project.mavenPass
+			}
+		}
+	}
+}
+
+test {
+	beforeTest { descriptor ->
+		logger.lifecycle("Running test: " + descriptor)
+	}
+	onOutput { descriptor, event ->
+    	logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
+  	}
+  	System.out.println 'Starthing the Unit and Integration test'
+  	filter {
+  		includeTestsMatching "*TestSuite*"
+  	}  	
+}
