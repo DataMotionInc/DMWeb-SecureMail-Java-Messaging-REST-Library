@@ -1,17 +1,22 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url "http://repo.maven.apache.org/maven2" }
     }
     dependencies {
         classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
     }
 }
 
+plugins {
+    id 'io.franzbecker.gradle-lombok' version '1.14'
+    id 'java'
+}
+
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'com.github.johnrengelman.shadow'
-apply plugin: 'io.franzbecker.gradle-lombok'
 
 group = 'com.datamotion'
 version = 'version-num'
@@ -66,6 +71,12 @@ publishing {
 		from sourceSets.main.allSource
 	}
 	
+	task javadoc {
+	    dependsOn delombok
+	    source = delombok.outputDir
+	    failOnError = false
+	}
+	
 	task javadocJar(type: Jar, dependsOn: javadoc) {
 		classifier = 'javadoc'
 		from javadoc.destinationDir
@@ -86,12 +97,6 @@ publishing {
 			}
 		}
 	}
-}
-
-javadoc {
-    dependsOn delombok
-    source = delombok.outputDir
-    failOnError = false
 }
 
 test {
