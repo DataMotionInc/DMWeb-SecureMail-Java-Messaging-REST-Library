@@ -31,7 +31,7 @@ build:
       - .gradle
   artifacts:
     paths:
-      - "build/libs/"
+      - "build/"
 
 test:
   stage: test
