@@ -15,7 +15,7 @@ apply plugin: 'com.github.johnrengelman.shadow'
 group = 'com.datamotion'
 version = 'version-num'
 
-description = "Java SecureMail REST Messaging SDK for DatMotion"
+description = "Java SecureMail REST Messaging SDK for DataMotion"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
