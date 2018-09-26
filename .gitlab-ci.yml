@@ -53,7 +53,7 @@ test:
 deploy:
   stage: deploy
   script: 
-    - gradle publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass
+    - gradle clean assemble publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass
   only:
     - tags
   cache:
