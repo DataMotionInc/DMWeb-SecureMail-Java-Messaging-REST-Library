@@ -14,12 +14,12 @@ public class MessageId {
 	@JsonProperty("MessageId") 
 	private int MessageId;
 
-	@JsonIgnore
+	
 	public MessageId() {
 		MessageId = 0;
 	}
 
-	@JsonIgnore
+	
 	public MessageId(int messageId) {
 		MessageId = messageId;
 	}

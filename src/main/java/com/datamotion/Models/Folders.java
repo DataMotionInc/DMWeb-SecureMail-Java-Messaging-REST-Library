@@ -22,12 +22,12 @@ public class Folders {
 		return "Folders [\nFolders=" + Folders + "]";
 	}
 
-	@JsonIgnore
+	
 	public Folders() {
 		Folders = null;
 	}
 
-	@JsonIgnore
+	
 	public Folders(ArrayList<Folder> folders) {
 		Folders = folders;
 	}

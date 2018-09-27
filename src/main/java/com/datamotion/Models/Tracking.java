@@ -38,7 +38,7 @@ public class Tracking {
 	@JsonProperty("ReceiverField") 
 	private String ReceiverField;
 
-	@JsonIgnore
+	
 	public Tracking() {
 		DateOpened = null;
 		Email = null;
@@ -47,7 +47,7 @@ public class Tracking {
 		ReceiverField = null;
 	}
 
-	@JsonIgnore
+	
 	public Tracking(String dateOpened, String email, String messageStatusDescription, int messageStatusId,
 			String receiverField) {
 		DateOpened = dateOpened;

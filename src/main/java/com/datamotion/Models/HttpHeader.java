@@ -16,13 +16,13 @@ public class HttpHeader {
 	 */
 	private String Value;
 
-	@JsonIgnore
+	
 	public HttpHeader() {
 		Key = null;
 		Value = null;
 	}
 
-	@JsonIgnore
+	
 	public HttpHeader(String key, String value) {
 		Key = key;
 		Value = value;

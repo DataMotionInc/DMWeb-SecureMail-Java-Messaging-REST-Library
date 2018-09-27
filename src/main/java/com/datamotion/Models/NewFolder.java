@@ -19,13 +19,11 @@ public class NewFolder {
 	@JsonProperty("FolderType") 
 	private int FolderType;
 
-	@JsonIgnore
 	public NewFolder() {
 		FolderName = null;
 		FolderType = 0;
 	}
 
-	@JsonIgnore
 	public NewFolder(String folderName, int folderType) {
 		FolderName = folderName;
 		FolderType = folderType;

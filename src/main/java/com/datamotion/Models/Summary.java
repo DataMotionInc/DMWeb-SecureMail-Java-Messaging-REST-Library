@@ -70,7 +70,7 @@ public class Summary {
 				+ "]";
 	}
 
-	@JsonIgnore
+	
 	public Summary() {
 		AttachmentCount = 0;
 		this.createTimeString = null;
@@ -82,7 +82,7 @@ public class Summary {
 		Subject = null;
 	}
 
-	@JsonIgnore
+	
 	public Summary(int attachmentCount, String createTimeString, int folderId, int messageId, int messageSize,
 			boolean read, int messageStatus, String senderAddress, String subject) {
 		AttachmentCount = attachmentCount;

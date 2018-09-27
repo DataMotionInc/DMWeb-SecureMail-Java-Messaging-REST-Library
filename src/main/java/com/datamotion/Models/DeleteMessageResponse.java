@@ -19,14 +19,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 	@JsonProperty("Result")
 	private String Result;
 
-	@JsonIgnore
+	
 	public DeleteMessageResponse() {
 		NewFolderId = 0;
 		Result = null;
 
 	}
 
-	@JsonIgnore
+	
 	public DeleteMessageResponse(int newFolderId, String result) {
 		NewFolderId = newFolderId;
 		Result = result;

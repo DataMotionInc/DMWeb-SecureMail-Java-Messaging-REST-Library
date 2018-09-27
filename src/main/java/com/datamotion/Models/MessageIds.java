@@ -16,12 +16,12 @@ public class MessageIds {
 	@JsonProperty("MessageIds") 
 	private ArrayList<Integer> MessageIds;
 
-	@JsonIgnore
+	
 	public MessageIds() {
 		MessageIds = null;
 	}
 
-	@JsonIgnore
+	
 	public MessageIds(ArrayList<Integer> messageIds) {
 		MessageIds = messageIds;
 	}

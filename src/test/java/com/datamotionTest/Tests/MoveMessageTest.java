@@ -11,6 +11,8 @@ import com.datamotion.Models.Attachment;
 import com.datamotion.Models.DeleteMessageResponse;
 import com.datamotion.Models.Message;
 import com.datamotion.Models.MoveMessage;
+import com.datamotion.Models.NewFolder;
+import com.datamotion.Models.NewFolderId;
 import com.fasterxml.jackson.core.JsonParseException;
 
 public class MoveMessageTest {
@@ -20,7 +22,10 @@ public class MoveMessageTest {
 		try {
 			DMWeb tester = new DMWeb();
 			tester.setStatusCode(-1);
-			MoveMessage moveMessage = new MoveMessage(140);
+			NewFolder newFolder = new NewFolder("move message test folder", 0);
+			NewFolderId newFolderId = tester.Folders.createFolder(newFolder);
+			Thread.sleep(5000);
+			MoveMessage moveMessage = new MoveMessage(newFolderId.getFolderId());
 			ArrayList<String> to = new ArrayList<String>();
 			to.add("UnitTest1@dmfaketest.com");
 			ArrayList<String> cc = new ArrayList<String>();
@@ -39,6 +44,7 @@ public class MoveMessageTest {
 			assertEquals(200, tester.getStatusCode());
 			Thread.sleep(5000);
 			DeleteMessageResponse response = tester.Message.deleteMessage(messageId, false);
+			tester.Folders.deleteFolder(newFolderId.getFolderId());
 
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());

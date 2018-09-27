@@ -44,7 +44,7 @@ public class Recipients {
 	@JsonProperty("Email") 
 	private String Email;
 
-	@JsonIgnore
+	
 	public Recipients() {
 		ChecksumValidated =0;
 		Delivered = false;
@@ -54,7 +54,7 @@ public class Recipients {
 		Email = null;
 	}
 
-	@JsonIgnore
+	
 	public Recipients(int checksumValidated, boolean delivered, String deliveredDate, boolean downloaded,
 			String downloadedDate, String email) {
 		ChecksumValidated = checksumValidated;

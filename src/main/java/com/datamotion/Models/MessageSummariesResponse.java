@@ -29,13 +29,13 @@ public class MessageSummariesResponse {
 				+ "\n]";
 	}
 
-	@JsonIgnore
+	
 	public MessageSummariesResponse() {
 		MoreMessagesAvailable = false;
 		Summaries = null;
 	}
 
-	@JsonIgnore
+	
 	public MessageSummariesResponse(boolean moreMessagesAvailable, ArrayList<Summary> summaries) {
 		MoreMessagesAvailable = moreMessagesAvailable;
 		Summaries = summaries;

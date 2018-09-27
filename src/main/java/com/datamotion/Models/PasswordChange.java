@@ -20,13 +20,13 @@ public class PasswordChange {
 	@JsonProperty ("NewPassword") 
 	private String NewPassword;
 
-	@JsonIgnore
+	
 	public PasswordChange() {
 		OldPassword = null;
 		NewPassword = null;
 	}
 
-	@JsonIgnore
+	
 	public PasswordChange(String oldPassword, String newPassword) {
 		OldPassword = oldPassword;
 		NewPassword = newPassword;

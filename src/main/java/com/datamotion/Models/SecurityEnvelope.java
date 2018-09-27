@@ -31,7 +31,7 @@ public class SecurityEnvelope {
 	@JsonProperty("StatusDescription") 
 	private String StatusDescription;
 
-	@JsonIgnore
+	
 	public SecurityEnvelope() {
 		Checksum = null;
 		HashAlgorithm = null;
@@ -39,7 +39,7 @@ public class SecurityEnvelope {
 		StatusDescription = null;
 	}
 
-	@JsonIgnore
+	
 	public SecurityEnvelope(String checksum, String hashAlgorithm, int status, String statusDescription) {
 		Checksum = checksum;
 		HashAlgorithm = hashAlgorithm;

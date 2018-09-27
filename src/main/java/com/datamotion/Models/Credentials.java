@@ -20,12 +20,12 @@ public class Credentials {
 	@JsonProperty("Password")
 	private String password;
 
-	@JsonIgnore
+	
 	public Credentials() {
 		
 	}
 
-	@JsonIgnore
+	
 	public Credentials(String useridoremail, String password) {
 		this.useridoremail = useridoremail;
 		this.password = password;

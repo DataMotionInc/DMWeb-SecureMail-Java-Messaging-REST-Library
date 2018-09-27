@@ -31,14 +31,14 @@ public class Attachment {
 	@JsonProperty("FileName")
 	private String FileName;
 	
-	@JsonIgnore
+	
 	public Attachment() {
 		AttachmentBase64 = null;
 		ContentType = null;
 		FileName = null;
 	}
 	
-	@JsonIgnore
+	
 	public Attachment(String attachmentBase64, String contentType, String fileName) {
 		AttachmentBase64 = attachmentBase64;
 		ContentType = contentType;

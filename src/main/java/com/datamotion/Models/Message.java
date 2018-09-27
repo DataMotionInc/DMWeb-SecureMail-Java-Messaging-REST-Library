@@ -64,7 +64,7 @@ public class Message {
 	@JsonProperty("TextBody") 
 	private String TextBody;
 
-	@JsonIgnore
+	
 	public Message() {
 		To = null;
 		From = null;
@@ -77,7 +77,7 @@ public class Message {
 		TextBody = null;
 	}
 
-	@JsonIgnore
+	
 	public Message(ArrayList<String> to, String from, ArrayList<String> cc, ArrayList<String> bcc, String subject,
 			String createTime, ArrayList<Attachment> attachments, String htmlBody, String textBody) {
 		To = to;
