@@ -24,13 +24,13 @@ public class SearchResponse {
 	@JsonProperty("Results")
 	private ArrayList<Results> results;
 
-	@JsonIgnore
+	
 	public SearchResponse() {
 		this.details = null;
 		this.results = null;
 	}
 
-	@JsonIgnore
+	
 	public SearchResponse(PageDetails details, ArrayList<Results> results) {
 		this.details = details;
 		this.results = results;

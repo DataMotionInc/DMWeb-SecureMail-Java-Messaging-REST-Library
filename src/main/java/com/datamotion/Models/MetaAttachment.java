@@ -42,7 +42,7 @@ public class MetaAttachment {
 	@JsonProperty("Tracking") 
 	private MetaTracking Tracking;
 
-	@JsonIgnore
+	
 	public MetaAttachment() {
 		AttachmentId = 0;
 		FileName = null;
@@ -51,7 +51,7 @@ public class MetaAttachment {
 		Tracking = null;
 	}
 
-	@JsonIgnore
+	
 	public MetaAttachment(int attachmentId, String fileName, com.datamotion.Models.SecurityEnvelope securityEnvelope,
 			com.datamotion.Models.Size size, MetaTracking tracking) {
 		AttachmentId = attachmentId;

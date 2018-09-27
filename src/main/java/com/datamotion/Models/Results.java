@@ -79,7 +79,7 @@ public class Results {
 	@JsonProperty("Subject") 
 	private String Subject;
 
-	@JsonIgnore
+	
 	public Results() {
 		CreateTime = null;
 		LastAction = 0;
@@ -95,7 +95,7 @@ public class Results {
 		Subject = null;
 	}
 
-	@JsonIgnore
+	
 	public Results(String createTime, int lastAction, int messageId, int messageSize, int messageStatusId,
 			String passwordHint, boolean read, int messageStatus, boolean readConfirmation, String senderEmail,
 			int senderId, String subject) {

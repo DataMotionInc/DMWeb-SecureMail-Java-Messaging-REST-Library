@@ -19,13 +19,13 @@ public class MessageSummariesGet {
 	@JsonProperty("LastMessageIDReceived") 
 	private int LastMessageIDReceived;
 
-	@JsonIgnore
+	
 	public MessageSummariesGet() {
 		FolderId = 0;
 		LastMessageIDReceived = 0;
 	}
 
-	@JsonIgnore
+	
 	public MessageSummariesGet(int folderId, int lastMessageIDReceived) {
 		FolderId = folderId;
 		LastMessageIDReceived = lastMessageIDReceived;

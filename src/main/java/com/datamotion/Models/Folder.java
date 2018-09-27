@@ -58,7 +58,7 @@ public class Folder {
 				+ "\nTotalMessages=" + TotalMessages + "\nTotalSize=" + TotalSize + "]";
 	}
 
-	@JsonIgnore
+	
 	public Folder() {
 		FolderId = 0;
 		FolderName = null;
@@ -69,7 +69,7 @@ public class Folder {
 		TotalSize = 0;
 	}
 
-	@JsonIgnore
+	
 	public Folder(int folderId, String folderName, int folderType, String folderTypeDescription, boolean isSystemFolder,
 			int totalMessages, int totalSize) {
 		FolderId = folderId;

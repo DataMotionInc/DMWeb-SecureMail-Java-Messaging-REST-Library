@@ -10,12 +10,12 @@ public class MetaTracking {
 	@JsonProperty("Recipients") 
 	private ArrayList<Recipients> Recipients;
 
-	@JsonIgnore
+	
 	public MetaTracking() {
 		Recipients = null;
 	}
 
-	@JsonIgnore
+	
 	public MetaTracking(ArrayList<com.datamotion.Models.Recipients> recipients) {
 		Recipients = recipients;
 	}

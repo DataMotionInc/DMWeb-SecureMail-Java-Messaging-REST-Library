@@ -13,12 +13,10 @@ public class MoveMessage {
 	@JsonProperty("DestinationFolderId") 
 	private int DestinationFolderId;
 
-	@JsonIgnore
 	public MoveMessage() {
 		DestinationFolderId = 0;
 	}
 
-	@JsonIgnore
 	public MoveMessage(int destinationFolderId) {
 		DestinationFolderId = destinationFolderId;
 	}

@@ -56,7 +56,7 @@ public class MetaData {
 				+ Tracking + "]";
 	}
 
-	@JsonIgnore
+	
 	public MetaData() {
 		MetaAttachment = null;
 		ExpirationDate = null;
@@ -66,7 +66,7 @@ public class MetaData {
 		Tracking = null;
 	}
 
-	@JsonIgnore
+	
 	public MetaData(ArrayList<com.datamotion.Models.MetaAttachment> metaAttachment, String expirationDate,
 			int messageId, int messageSize, com.datamotion.Models.SecurityEnvelope securityEnvelope,
 			ArrayList<com.datamotion.Models.Tracking> tracking) {

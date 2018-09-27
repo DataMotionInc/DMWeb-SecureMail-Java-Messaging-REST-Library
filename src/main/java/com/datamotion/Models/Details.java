@@ -39,7 +39,7 @@ public class Details {
 				+ "\nStatistics=\n" + Statistics.toString() + "]";
 	}
 
-	@JsonIgnore
+	
 	public Details() {
 		EmailAddress = null;
 		FirstName = null;
@@ -47,7 +47,7 @@ public class Details {
 		Statistics = null;
 	}
 
-	@JsonIgnore
+	
 	public Details(String emailAddress, String firstName, String lastName,
 			com.datamotion.Models.Statistics statistics) {
 		EmailAddress = emailAddress;

@@ -14,12 +14,10 @@ public class NewFolderId {
 	@JsonProperty("FolderId") 
 	private int FolderId;
 
-	@JsonIgnore
 	public NewFolderId() {
 		FolderId = 0;
 	}
 
-	@JsonIgnore
 	public NewFolderId(int folderId) {
 		FolderId = folderId;
 	}

@@ -44,7 +44,7 @@ public class PageDetails {
 	@JsonProperty("TotalPages") 
 	private int TotalPages;
 
-	@JsonIgnore
+	
 	public PageDetails() {
 		CurrentPage = 0;
 		FolderId = 0;
@@ -54,7 +54,7 @@ public class PageDetails {
 		TotalPages = 0;
 	}
 
-	@JsonIgnore
+	
 	public PageDetails(int currentPage, int folderId, String orderBy, int pageSize, int totalMessages, int totalPages) {
 		CurrentPage = currentPage;
 		FolderId = folderId;

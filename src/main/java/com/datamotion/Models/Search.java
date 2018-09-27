@@ -56,7 +56,7 @@ public class Search {
 	@JsonProperty("PageSize")
 	private int PageSize;
 
-	@JsonIgnore
+	
 	public Search() {
 		Filter = null;
 		FolderId = 0;
@@ -68,7 +68,7 @@ public class Search {
 		PageSize = 0;
 	}
 
-	@JsonIgnore
+	
 	public Search(String filter, int folderId, boolean getInboxUnReadOnly, boolean getRetractedMsgs, String orderBy,
 			boolean orderDesc, int pageNum, int pageSize) {
 		Filter = filter;

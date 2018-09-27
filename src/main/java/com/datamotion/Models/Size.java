@@ -15,12 +15,12 @@ public class Size {
 	@JsonProperty("StdString") 
 	private String StdString;
 
-	@JsonIgnore
+	
 	public Size() {
 		StdString = null;
 	}
 
-	@JsonIgnore
+	
 	public Size(String stdString) {
 		StdString = stdString;
 	}

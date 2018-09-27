@@ -14,12 +14,12 @@ public class MimeMessage {
 	@JsonProperty("MimeMessage") 
 	private String MimeMessage;
 
-	@JsonIgnore
+	
 	public MimeMessage() {
 		MimeMessage = null;
 	}
 
-	@JsonIgnore
+	
 	public MimeMessage(String mimeMessage) {
 		MimeMessage = mimeMessage;
 	}

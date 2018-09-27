@@ -26,14 +26,14 @@ public class MessageIdGet {
 	@JsonProperty("MustHaveAttachments") 
 	private boolean MustHaveAttachments;
 
-	@JsonIgnore
+	
 	public MessageIdGet() {
 		FolderID = 0;
 		MessageListFilter = 0;
 		MustHaveAttachments = false;
 	}
 
-	@JsonIgnore
+	
 	public MessageIdGet(int folderID, int messageListFilter, boolean mustHaveAttachments) {
 		FolderID = folderID;
 		MessageListFilter = messageListFilter;

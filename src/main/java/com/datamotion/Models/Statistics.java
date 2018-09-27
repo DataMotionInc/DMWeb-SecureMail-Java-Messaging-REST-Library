@@ -110,7 +110,7 @@ public class Statistics {
 				+ "]";
 	}
 
-	@JsonIgnore
+	
 	public Statistics() {
 		AccountSize = 0;
 		AvailableAccountSize = 0;
@@ -129,7 +129,7 @@ public class Statistics {
 		UsedAccountSize = 0;
 	}
 
-	@JsonIgnore
+	
 	public Statistics(int accountSize, int availableAccountSize, String dateCreated, String dateOfLastNotice,
 			String dateOfLastVisit, String datePasswordExpires, int totalFilesInOutbox, int totalFilesSent,
 			int totalMessagesInInbox, int totalMessagesInOutbox, int totalMessagesReceived, int totalMessagesSent,
