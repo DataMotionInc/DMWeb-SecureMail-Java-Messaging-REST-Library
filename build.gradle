@@ -39,17 +39,17 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version:'4.12'
 }
 
-publishing {
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
 
-    task sourcesJar(type: Jar, dependsOn: classes) {
-        classifier = 'sources'
-        from sourceSets.main.allSource
-    }
-    
-    task javadocJar(type: Jar, dependsOn: javadoc) {
-        classifier = 'javadoc'
-        from javadoc.destinationDir
-    }
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+publishing {
     
     artifacts {
         archives sourcesJar
@@ -59,7 +59,7 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            artifact sourceJar
+            artifact sourcesJar
             artifact javadocJar
         }
     }
@@ -67,8 +67,8 @@ publishing {
 		maven {
 			url "${project.version.endsWith('-SNAPSHOT') ? 'https://oss.sonatype.org/content/repositories/snapshots' : 'https://oss.sonatype.org/service/local/staging/deploy/maven2/' }"
 			credentials {
-				//username project.mavenUser
-				//password project.mavenPass
+				username project.mavenUser
+				password project.mavenPass
 			}
 		}
 	}
