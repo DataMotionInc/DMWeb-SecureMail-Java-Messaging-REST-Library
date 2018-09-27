@@ -5,48 +5,34 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * MetaData Model Class
  */
-@AllArgsConstructor
-@NoArgsConstructor
 public class MetaData {
 	/**
 	 * Array of MetaData Attachment objects
 	 * See MetaAttachment model class
 	 */
 	@JsonProperty ("Attachments") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private ArrayList<MetaAttachment> MetaAttachment;
 	
 	/**
 	 * Date/time string for message expiration	
 	 */
 	@JsonProperty("ExpirationDate") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private String ExpirationDate;
 	
 	/**
 	 * Unique message identifier	
 	 */
 	@JsonProperty("MessageId") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private int MessageId;
 	
 	/**
 	 * Size in bytes of message	
 	 */
 	@JsonProperty("MessageSize") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private int MessageSize;
 	
 	/**
@@ -54,8 +40,6 @@ public class MetaData {
 	 * See SecurityEnvelope Model Class
 	 */
 	@JsonProperty("SecurityEnvelope") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private SecurityEnvelope SecurityEnvelope;
 	
 	/**
@@ -63,8 +47,6 @@ public class MetaData {
 	 * See Tracking Model Class
 	 */
 	@JsonProperty("Tracking") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private ArrayList<Tracking> Tracking;
 
 	@Override
@@ -72,6 +54,88 @@ public class MetaData {
 		return "MetaData [MetaAttachment=" + MetaAttachment + ", ExpirationDate=" + ExpirationDate + ", MessageId="
 				+ MessageId + ", MessageSize=" + MessageSize + ", SecurityEnvelope=" + SecurityEnvelope + ", Tracking="
 				+ Tracking + "]";
+	}
+
+	@JsonIgnore
+	public MetaData() {
+		MetaAttachment = null;
+		ExpirationDate = null;
+		MessageId = 0;
+		MessageSize = 0;
+		SecurityEnvelope = null;
+		Tracking = null;
+	}
+
+	@JsonIgnore
+	public MetaData(ArrayList<com.datamotion.Models.MetaAttachment> metaAttachment, String expirationDate,
+			int messageId, int messageSize, com.datamotion.Models.SecurityEnvelope securityEnvelope,
+			ArrayList<com.datamotion.Models.Tracking> tracking) {
+		MetaAttachment = metaAttachment;
+		ExpirationDate = expirationDate;
+		MessageId = messageId;
+		MessageSize = messageSize;
+		SecurityEnvelope = securityEnvelope;
+		Tracking = tracking;
+	}
+
+	@JsonIgnore
+	public ArrayList<MetaAttachment> getMetaAttachment() {
+		return MetaAttachment;
+	}
+
+	@JsonIgnore
+	public void setMetaAttachment(ArrayList<MetaAttachment> metaAttachment) {
+		MetaAttachment = metaAttachment;
+	}
+
+	@JsonIgnore
+	public String getExpirationDate() {
+		return ExpirationDate;
+	}
+
+	@JsonIgnore
+	public void setExpirationDate(String expirationDate) {
+		ExpirationDate = expirationDate;
+	}
+
+	@JsonIgnore
+	public int getMessageId() {
+		return MessageId;
+	}
+
+	@JsonIgnore
+	public void setMessageId(int messageId) {
+		MessageId = messageId;
+	}
+
+	@JsonIgnore
+	public int getMessageSize() {
+		return MessageSize;
+	}
+
+	@JsonIgnore
+	public void setMessageSize(int messageSize) {
+		MessageSize = messageSize;
+	}
+
+	@JsonIgnore
+	public SecurityEnvelope getSecurityEnvelope() {
+		return SecurityEnvelope;
+	}
+
+	@JsonIgnore
+	public void setSecurityEnvelope(SecurityEnvelope securityEnvelope) {
+		SecurityEnvelope = securityEnvelope;
+	}
+
+	@JsonIgnore
+	public ArrayList<Tracking> getTracking() {
+		return Tracking;
+	}
+
+	@JsonIgnore
+	public void setTracking(ArrayList<Tracking> tracking) {
+		Tracking = tracking;
 	}
 	
 	

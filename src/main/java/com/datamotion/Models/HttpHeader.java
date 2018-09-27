@@ -1,28 +1,50 @@
 package com.datamotion.Models;
 
-import lombok.AllArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.NoArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * HttpHeader class with fields for key and value
  */
-@AllArgsConstructor
-@NoArgsConstructor
 public class HttpHeader {
 	/**
 	 * Http header key field
 	 */
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private String Key;
 	
 	/**
 	 * Http header value field
 	 */
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
-	private String Value;	
+	private String Value;
+
+	@JsonIgnore
+	public HttpHeader() {
+		Key = null;
+		Value = null;
+	}
+
+	@JsonIgnore
+	public HttpHeader(String key, String value) {
+		Key = key;
+		Value = value;
+	}
+
+	@JsonIgnore
+	public String getKey() {
+		return Key;
+	}
+
+	@JsonIgnore
+	public void setKey(String key) {
+		Key = key;
+	}
+
+	@JsonIgnore
+	public String getValue() {
+		return Value;
+	}
+
+	@JsonIgnore
+	public void setValue(String value) {
+		Value = value;
+	}	
 }

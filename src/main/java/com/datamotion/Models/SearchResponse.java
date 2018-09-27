@@ -5,24 +5,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Search Response Model Class
  */
-@NoArgsConstructor
-@AllArgsConstructor
 public class SearchResponse {
 	/**
 	 * PageDetails object
 	 * See PageDetails model class
 	 */
 	@JsonProperty("PageDetails") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private PageDetails details;
 	
 	/**
@@ -30,7 +22,37 @@ public class SearchResponse {
 	 * See Results model class
 	 */
 	@JsonProperty("Results")
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private ArrayList<Results> results;
+
+	@JsonIgnore
+	public SearchResponse() {
+		this.details = null;
+		this.results = null;
+	}
+
+	@JsonIgnore
+	public SearchResponse(PageDetails details, ArrayList<Results> results) {
+		this.details = details;
+		this.results = results;
+	}
+
+	@JsonIgnore
+	public PageDetails getDetails() {
+		return details;
+	}
+
+	@JsonIgnore
+	public void setDetails(PageDetails details) {
+		this.details = details;
+	}
+
+	@JsonIgnore
+	public ArrayList<Results> getResults() {
+		return results;
+	}
+
+	@JsonIgnore
+	public void setResults(ArrayList<Results> results) {
+		this.results = results;
+	}
 }

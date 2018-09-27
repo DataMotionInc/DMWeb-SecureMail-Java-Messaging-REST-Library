@@ -5,14 +5,28 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 public class MetaTracking {
 	@JsonProperty("Recipients") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private ArrayList<Recipients> Recipients;
+
+	@JsonIgnore
+	public MetaTracking() {
+		Recipients = null;
+	}
+
+	@JsonIgnore
+	public MetaTracking(ArrayList<com.datamotion.Models.Recipients> recipients) {
+		Recipients = recipients;
+	}
+
+	@JsonIgnore
+	public ArrayList<Recipients> getRecipients() {
+		return Recipients;
+	}
+
+	@JsonIgnore
+	public void setRecipients(ArrayList<Recipients> recipients) {
+		Recipients = recipients;
+	}
 }

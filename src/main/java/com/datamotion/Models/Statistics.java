@@ -3,135 +3,99 @@ package com.datamotion.Models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Account Statistics Model Class
  */
-@AllArgsConstructor
-@NoArgsConstructor
 public class Statistics {
 	/**
 	 * Total disk space (kb) allocated to the user's Outbox
 	 */
 	@JsonProperty("AccountSize") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private int AccountSize;
 	
 	/**
 	 * Available disk space (kb) for the user's Outbox
 	 */
 	@JsonProperty("AvailableAccountSize") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private int AvailableAccountSize;
 	
 	/**
 	 * Date and time the mailbox was created
 	 */
 	@JsonProperty("DateCreated") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private String DateCreated;
 	
 	/**
 	 * Date and time the user was last sent a message notification
 	 */
 	@JsonProperty("DateOfLastNotice") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private String DateOfLastNotice;
 	
 	/**
 	 * Date and time the user last logged into the account
 	 */
 	@JsonProperty("DateOfLastVisit") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private String DateOfLastVisit;
 	
 	/**
 	 * Date that the user's password will expire
 	 */
 	@JsonProperty("DatePasswordExpires") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private String DatePasswordExpires;
 	
 	/**
 	 * Total number of files in the outbox	
 	 */
 	@JsonProperty("TotalFilesInOutbox") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private int TotalFilesInOutbox;
 	
 	/**
 	 * Total number of files sent	
 	 */
 	@JsonProperty("TotalFilesSent") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private int TotalFilesSent;
 	
 	/**
 	 * Total number of messages in the Inbox	
 	 */
 	@JsonProperty("TotalMessagesInInbox") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private int TotalMessagesInInbox;
 	
 	/**
 	 * Total number of messages in the Outbox	
 	 */
 	@JsonProperty("TotalMessagesInOutbox") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private int TotalMessagesInOutbox;
 	
 	/**
 	 * Total number of messages received for the lifetime of the mailbox	
 	 */
 	@JsonProperty("TotalMessagesReceived") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private int TotalMessagesReceived;
 	
 	/**
 	 * Total number of messages sent for the lifetime of the mailbox	
 	 */
 	@JsonProperty("TotalMessagesSent") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private int TotalMessagesSent;
 	
 	/**
 	 * Total number of unread messages in the Inbox	
 	 */
 	@JsonProperty("TotalUnreadMessagesInInbox") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private int TotalUnreadMessagesInInbox;
 	
 	/**
 	 * Total number of times a mailbox was ever visited	
 	 */
 	@JsonProperty("TotalVisits") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private int TotalVisits;
 	
 	/**
 	 * Total disk space (kb) consumed by the user's Outbox	
 	 */
 	@JsonProperty("UsedAccountSize") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private int UsedAccountSize;
 
 	@Override
@@ -144,6 +108,197 @@ public class Statistics {
 				+ TotalMessagesReceived + "\nTotalMessagesSent= " + TotalMessagesSent + "\nTotalUnreadMessagesInInbox= "
 				+ TotalUnreadMessagesInInbox + "\nTotalVisits= " + TotalVisits + "\nUsedAccountSize= " + UsedAccountSize
 				+ "]";
+	}
+
+	@JsonIgnore
+	public Statistics() {
+		AccountSize = 0;
+		AvailableAccountSize = 0;
+		DateCreated = null;
+		DateOfLastNotice = null;
+		DateOfLastVisit = null;
+		DatePasswordExpires = null;
+		TotalFilesInOutbox = 0;
+		TotalFilesSent = 0;
+		TotalMessagesInInbox = 0;
+		TotalMessagesInOutbox = 0;
+		TotalMessagesReceived = 0;
+		TotalMessagesSent = 0;
+		TotalUnreadMessagesInInbox = 0;
+		TotalVisits = 0;
+		UsedAccountSize = 0;
+	}
+
+	@JsonIgnore
+	public Statistics(int accountSize, int availableAccountSize, String dateCreated, String dateOfLastNotice,
+			String dateOfLastVisit, String datePasswordExpires, int totalFilesInOutbox, int totalFilesSent,
+			int totalMessagesInInbox, int totalMessagesInOutbox, int totalMessagesReceived, int totalMessagesSent,
+			int totalUnreadMessagesInInbox, int totalVisits, int usedAccountSize) {
+		AccountSize = accountSize;
+		AvailableAccountSize = availableAccountSize;
+		DateCreated = dateCreated;
+		DateOfLastNotice = dateOfLastNotice;
+		DateOfLastVisit = dateOfLastVisit;
+		DatePasswordExpires = datePasswordExpires;
+		TotalFilesInOutbox = totalFilesInOutbox;
+		TotalFilesSent = totalFilesSent;
+		TotalMessagesInInbox = totalMessagesInInbox;
+		TotalMessagesInOutbox = totalMessagesInOutbox;
+		TotalMessagesReceived = totalMessagesReceived;
+		TotalMessagesSent = totalMessagesSent;
+		TotalUnreadMessagesInInbox = totalUnreadMessagesInInbox;
+		TotalVisits = totalVisits;
+		UsedAccountSize = usedAccountSize;
+	}
+
+	@JsonIgnore
+	public int getAccountSize() {
+		return AccountSize;
+	}
+
+	@JsonIgnore
+	public void setAccountSize(int accountSize) {
+		AccountSize = accountSize;
+	}
+
+	@JsonIgnore
+	public int getAvailableAccountSize() {
+		return AvailableAccountSize;
+	}
+
+	@JsonIgnore
+	public void setAvailableAccountSize(int availableAccountSize) {
+		AvailableAccountSize = availableAccountSize;
+	}
+
+	@JsonIgnore
+	public String getDateCreated() {
+		return DateCreated;
+	}
+
+	@JsonIgnore
+	public void setDateCreated(String dateCreated) {
+		DateCreated = dateCreated;
+	}
+
+	@JsonIgnore
+	public String getDateOfLastNotice() {
+		return DateOfLastNotice;
+	}
+
+	@JsonIgnore
+	public void setDateOfLastNotice(String dateOfLastNotice) {
+		DateOfLastNotice = dateOfLastNotice;
+	}
+
+	@JsonIgnore
+	public String getDateOfLastVisit() {
+		return DateOfLastVisit;
+	}
+
+	@JsonIgnore
+	public void setDateOfLastVisit(String dateOfLastVisit) {
+		DateOfLastVisit = dateOfLastVisit;
+	}
+
+	@JsonIgnore
+	public String getDatePasswordExpires() {
+		return DatePasswordExpires;
+	}
+
+	@JsonIgnore
+	public void setDatePasswordExpires(String datePasswordExpires) {
+		DatePasswordExpires = datePasswordExpires;
+	}
+
+	@JsonIgnore
+	public int getTotalFilesInOutbox() {
+		return TotalFilesInOutbox;
+	}
+
+	@JsonIgnore
+	public void setTotalFilesInOutbox(int totalFilesInOutbox) {
+		TotalFilesInOutbox = totalFilesInOutbox;
+	}
+
+	@JsonIgnore
+	public int getTotalFilesSent() {
+		return TotalFilesSent;
+	}
+
+	@JsonIgnore
+	public void setTotalFilesSent(int totalFilesSent) {
+		TotalFilesSent = totalFilesSent;
+	}
+
+	@JsonIgnore
+	public int getTotalMessagesInInbox() {
+		return TotalMessagesInInbox;
+	}
+
+	@JsonIgnore
+	public void setTotalMessagesInInbox(int totalMessagesInInbox) {
+		TotalMessagesInInbox = totalMessagesInInbox;
+	}
+
+	@JsonIgnore
+	public int getTotalMessagesInOutbox() {
+		return TotalMessagesInOutbox;
+	}
+
+	@JsonIgnore
+	public void setTotalMessagesInOutbox(int totalMessagesInOutbox) {
+		TotalMessagesInOutbox = totalMessagesInOutbox;
+	}
+
+	@JsonIgnore
+	public int getTotalMessagesReceived() {
+		return TotalMessagesReceived;
+	}
+
+	@JsonIgnore
+	public void setTotalMessagesReceived(int totalMessagesReceived) {
+		TotalMessagesReceived = totalMessagesReceived;
+	}
+
+	@JsonIgnore
+	public int getTotalMessagesSent() {
+		return TotalMessagesSent;
+	}
+
+	@JsonIgnore
+	public void setTotalMessagesSent(int totalMessagesSent) {
+		TotalMessagesSent = totalMessagesSent;
+	}
+
+	@JsonIgnore
+	public int getTotalUnreadMessagesInInbox() {
+		return TotalUnreadMessagesInInbox;
+	}
+
+	@JsonIgnore
+	public void setTotalUnreadMessagesInInbox(int totalUnreadMessagesInInbox) {
+		TotalUnreadMessagesInInbox = totalUnreadMessagesInInbox;
+	}
+
+	@JsonIgnore
+	public int getTotalVisits() {
+		return TotalVisits;
+	}
+
+	@JsonIgnore
+	public void setTotalVisits(int totalVisits) {
+		TotalVisits = totalVisits;
+	}
+
+	@JsonIgnore
+	public int getUsedAccountSize() {
+		return UsedAccountSize;
+	}
+
+	@JsonIgnore
+	public void setUsedAccountSize(int usedAccountSize) {
+		UsedAccountSize = usedAccountSize;
 	}
 	
 	

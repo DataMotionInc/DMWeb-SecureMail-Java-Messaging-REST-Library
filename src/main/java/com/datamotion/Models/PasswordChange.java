@@ -3,30 +3,52 @@ package com.datamotion.Models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Password Change Model Class
  */
-@AllArgsConstructor
-@NoArgsConstructor
 public class PasswordChange {
 	/**
 	 * Account's old password, must be correct
 	 */
 	@JsonProperty("OldPassword") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private String OldPassword;
 	
 	/**
 	 * new password, must meet complexity requirements
 	 */
 	@JsonProperty ("NewPassword") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
-	private String NewPassword;	
+	private String NewPassword;
+
+	@JsonIgnore
+	public PasswordChange() {
+		OldPassword = null;
+		NewPassword = null;
+	}
+
+	@JsonIgnore
+	public PasswordChange(String oldPassword, String newPassword) {
+		OldPassword = oldPassword;
+		NewPassword = newPassword;
+	}
+
+	@JsonIgnore
+	public String getOldPassword() {
+		return OldPassword;
+	}
+
+	@JsonIgnore
+	public void setOldPassword(String oldPassword) {
+		OldPassword = oldPassword;
+	}
+
+	@JsonIgnore
+	public String getNewPassword() {
+		return NewPassword;
+	}
+
+	@JsonIgnore
+	public void setNewPassword(String newPassword) {
+		NewPassword = newPassword;
+	}	
 }
