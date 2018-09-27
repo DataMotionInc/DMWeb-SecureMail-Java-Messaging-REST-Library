@@ -1,6 +1,5 @@
 package com.datamotion.Models;
 
-import lombok.Getter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
