@@ -9,7 +9,6 @@ buildscript {
 }
 
 plugins {
-    id 'io.franzbecker.gradle-lombok' version '1.14'
     id 'java'
 }
 
@@ -26,45 +25,6 @@ description = "Java SecureMail REST Messaging SDK for DataMotion"
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-lombok {
-    version = "1.18.2"
-    sha256 = ""
-}
-
-import io.franzbecker.gradle.lombok.task.DelombokTask
-
-task delombok(type: DelombokTask, dependsOn: compileJava) {
-    ext.outputDir = file("$buildDir/delombok")
-    outputs.dir(outputDir)
-    sourceSets.main.java.srcDirs.each { 
-        inputs.dir(it)
-        args(it, "-d", outputDir)
-    }
-    doFirst {
-        outputDir.deleteDir()
-    }
-}
-
-task sourceJar(type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allJava
-}
-
-task packageJavadoc(type: Jar) {
-    from javadoc
-    classifier = 'javadoc'
-}
-
-javadoc {
-    dependsOn delombok
-    source = delombok.outputDir
-    options {
-        setMemberLevel JavadocMemberLevel.PUBLIC
-        setAuthor true
-    }
-    failOnError = false
-}
-
 repositories {   
      maven { url "http://repo.maven.apache.org/maven2" }
 }
@@ -80,11 +40,27 @@ dependencies {
 }
 
 publishing {
+
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+    
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
+    
+    artifacts {
+        archives sourcesJar
+        archives javadocJar
+    }
+
     publications {
         mavenJava(MavenPublication) {
             from components.java
             artifact sourceJar
-            artifact packageJavadoc
+            artifact javadocJar
         }
     }
     repositories {
@@ -96,17 +72,4 @@ publishing {
 			}
 		}
 	}
-}
-
-test {
-	beforeTest { descriptor ->
-		logger.lifecycle("Running test: " + descriptor)
-	}
-	onOutput { descriptor, event ->
-    	logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
-  	}
-  	System.out.println 'Starthing the Unit and Integration test'
-  	filter {
-  		includeTestsMatching "*TestSuite*"
-  	}  	
 }
