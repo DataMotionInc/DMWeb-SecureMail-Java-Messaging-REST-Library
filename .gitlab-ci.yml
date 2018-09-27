@@ -13,7 +13,6 @@ before_script:
 
 stages:
   - build
-  - test
   - deploy
 
 build:
@@ -34,24 +33,6 @@ build:
       - "build/libs"
       - "build/docs"
 
-test:
-  stage: test
-  script: 
-    #Write Config File from Environment Variables
-    - echo $UserIdOrEmail > "userpass.txt"
-    - echo $Password >> "userpass.txt"
-    - cat userpass.txt
-    #Execute Tests
-    - gradle check -PmavenUser=$MavenUser -PmavenPass=$MavenPass
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: pull
-    paths:
-      - build
-      - .gradle
-  dependencies:
-    - build
-
 deploy:
   stage: deploy
   script: 
@@ -68,4 +49,3 @@ deploy:
     name: maven    
   dependencies:
     - build
-    - test
