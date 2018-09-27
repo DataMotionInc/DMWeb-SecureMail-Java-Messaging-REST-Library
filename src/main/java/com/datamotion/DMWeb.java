@@ -41,9 +41,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import lombok.Getter;
-import lombok.Setter;
-
 
 /**
  * Main Class containing methods for all DataMotion SecureMail API functions
@@ -55,25 +52,21 @@ public class DMWeb {
 	/**
 	 * Base URL for various DataMotion SecureMail methods
 	 */
-	@Getter @Setter
 	protected static String BaseUrl;
 	
 	/**
 	 * Session Key received after passing authentication, required for SecureMail methods
 	 */
-	@Getter @Setter
 	protected static String SessionKey;
 	
 	/**
 	 * Http response status code
 	 */
-	@Getter @Setter
 	protected static int StatusCode;
 	
 	/**
 	 * If the server responds with a simple error message (string) it will be stored here
 	 */
-	@Getter @Setter
 	protected static String ErrorMessage;
 	
 	public DMAccount Account = new DMAccount();
@@ -676,6 +669,38 @@ public class DMWeb {
 	public static byte[] decodeBase64ToByteArray(String base64) {
 		byte[] bytes = Base64.decodeBase64(base64);
 		return bytes;
+	}
+
+	public static String getBaseUrl() {
+		return BaseUrl;
+	}
+
+	public static void setBaseUrl(String baseUrl) {
+		BaseUrl = baseUrl;
+	}
+
+	public static String getSessionKey() {
+		return SessionKey;
+	}
+
+	public static void setSessionKey(String sessionKey) {
+		SessionKey = sessionKey;
+	}
+
+	public static int getStatusCode() {
+		return StatusCode;
+	}
+
+	public static void setStatusCode(int statusCode) {
+		StatusCode = statusCode;
+	}
+
+	public static String getErrorMessage() {
+		return ErrorMessage;
+	}
+
+	public static void setErrorMessage(String errorMessage) {
+		ErrorMessage = errorMessage;
 	}
 }
 

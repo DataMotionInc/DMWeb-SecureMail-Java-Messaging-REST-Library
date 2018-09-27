@@ -3,24 +3,35 @@ package com.datamotion.Models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * Size Model Class
  * @author TylerB
  *
  */
-@AllArgsConstructor
-@NoArgsConstructor
 public class Size {
 	/**
 	 * Size represented as StdString
 	 */
 	@JsonProperty("StdString") 
-	@Getter (onMethod_=@JsonIgnore)
-	@Setter (onMethod_=@JsonIgnore)
 	private String StdString;
+
+	@JsonIgnore
+	public Size() {
+		StdString = null;
+	}
+
+	@JsonIgnore
+	public Size(String stdString) {
+		StdString = stdString;
+	}
+
+	@JsonIgnore
+	public String getStdString() {
+		return StdString;
+	}
+
+	@JsonIgnore
+	public void setStdString(String stdString) {
+		StdString = stdString;
+	}
 }
