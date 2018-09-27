@@ -9,7 +9,6 @@ buildscript {
 }
 
 plugins {
-    id 'io.franzbecker.gradle-lombok' version '1.14'
     id 'java'
 }
 
@@ -26,48 +25,16 @@ description = "Java SecureMail REST Messaging SDK for DataMotion"
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-lombok {
-    version = "1.18.2"
-    sha256 = ""
-}
-
-import io.franzbecker.gradle.lombok.task.DelombokTask
-
-task delombok(type: DelombokTask, dependsOn: compileJava) {
-    ext.outputDir = file("$buildDir/delombok")
-    outputs.dir(outputDir)
-    sourceSets.main.java.srcDirs.each { 
-        inputs.dir(it)
-        args(it, "-d", outputDir)
-    }
-    doFirst {
-        outputDir.deleteDir()
-    }
-}
-
-task sourceJar(type: Jar) {
+task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
-    from sourceSets.main.allJava
+    from sourceSets.main.allSource
 }
 
-task packageJavadoc(type: Jar) {
-    from javadoc
+task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
+    from javadoc
 }
 
-javadoc {
-    dependsOn delombok
-    source = delombok.outputDir
-    options {
-        setMemberLevel JavadocMemberLevel.PUBLIC
-        setAuthor true
-    }
-    failOnError = false
-}
-
-repositories {   
-     maven { url "http://repo.maven.apache.org/maven2" }
-}
 dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:'2.9.6'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version:'2.9.6'
@@ -80,11 +47,17 @@ dependencies {
 }
 
 publishing {
+    
+    artifacts {
+        archives sourcesJar
+        archives javadocJar
+    }
+
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            artifact sourceJar
-            artifact packageJavadoc
+            artifact sourcesJar
+            artifact javadocJar
         }
     }
     repositories {
