@@ -1,10 +1,6 @@
 package com.datamotion.Models;
 
-import lombok.AllArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.NoArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * HttpHeader class with fields for key and value
