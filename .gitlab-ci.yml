@@ -20,6 +20,7 @@ build:
   stage: build
   script: 
     - sed -i "s/version-num/${BuildConfiguration[0]}/g" build.gradle
+    - cat build.gradle
     - gradle --build-cache -PmavenUser=$MavenUser -PmavenPass=$MavenPass assemble
     - gradle shadowJar -PmavenUser=$MavenUser -PmavenPass=$MavenPass
     - gradle javadoc -PmavenUser=$MavenUser -PmavenPass=$MavenPass
