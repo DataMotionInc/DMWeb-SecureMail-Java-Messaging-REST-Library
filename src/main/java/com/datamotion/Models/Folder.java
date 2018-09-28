@@ -50,14 +50,6 @@ public class Folder {
 	 */
 	@JsonProperty("TotalSize")
 	private int TotalSize;
-
-	@Override
-	public String toString() {
-		return "\nFolder [\nFolderId=" + FolderId + "\nFolderName=" + FolderName + "\nFolderType=" + FolderType
-				+ "\nFolderTypeDescription=" + FolderTypeDescription + "\nIsSystemFolder=" + IsSystemFolder
-				+ "\nTotalMessages=" + TotalMessages + "\nTotalSize=" + TotalSize + "]";
-	}
-
 	
 	public Folder() {
 		FolderId = 0;
