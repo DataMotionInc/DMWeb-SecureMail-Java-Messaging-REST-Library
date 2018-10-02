@@ -17,17 +17,10 @@ public class Folders {
 	@JsonProperty("Folders")
 	private ArrayList<Folder> Folders;
 
-	@Override
-	public String toString() {
-		return "Folders [\nFolders=" + Folders + "]";
-	}
-
-	
 	public Folders() {
 		Folders = null;
 	}
 
-	
 	public Folders(ArrayList<Folder> folders) {
 		Folders = folders;
 	}

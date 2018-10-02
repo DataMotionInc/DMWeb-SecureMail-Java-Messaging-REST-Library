@@ -1,16 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <name>DMWeb SecureMail Messaging</name>
+  <description>DMWeb SecureMail Messaging Java SDK</description>
+  <url>https://gitlab.com/DataMotion/DMWeb/SecureMail/Java/Messaging/REST/Library</url>
+  <scm>
+  	<url>https://gitlab.com/DataMotion/DMWeb/SecureMail/Java/Messaging/REST/Library</url>
+  </scm>
   <groupId>com.datamotion</groupId>
   <artifactId>dmweb.securemail.messaging</artifactId>
   <version>0.0.2-SNAPSHOT</version>
+  <developers>
+  	<developer>
+  		<name>Thomas Tyler Bissell</name>
+  		<organization>DataMotion</organization>
+  		<organizationUrl>https://www.datamotion.com/</organizationUrl>
+  	</developer>
+  </developers>
   <dependencies>
-<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-<dependency>
-    <groupId>org.projectlombok</groupId>
-    <artifactId>lombok</artifactId>
-    <version>1.18.0</version>
-    <scope>provided</scope>
-</dependency>
 <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>

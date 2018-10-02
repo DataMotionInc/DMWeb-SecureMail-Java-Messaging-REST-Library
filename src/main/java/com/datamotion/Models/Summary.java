@@ -62,15 +62,6 @@ public class Summary {
 	@JsonProperty("Subject") 
 	private String Subject;
 
-	@Override
-	public String toString() {
-		return "\nSummary [\nAttachmentCount= " + AttachmentCount + "\ncreateTimeString= " + createTimeString + "\nFolderId= "
-				+ FolderId + "\nMessageId= " + MessageId + "\nMessageSize= " + MessageSize + "\nRead= " + Read
-				+ "\nMessageStatus= " + MessageStatus + "\nSenderAddress= " + SenderAddress + "\nSubject= " + Subject
-				+ "]";
-	}
-
-	
 	public Summary() {
 		AttachmentCount = 0;
 		this.createTimeString = null;
