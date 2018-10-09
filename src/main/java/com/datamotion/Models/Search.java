@@ -102,7 +102,7 @@ public class Search {
 	}
 
 	@JsonIgnore
-	public boolean isGetInboxUnReadOnly() {
+	public boolean getGetInboxUnReadOnly() {
 		return GetInboxUnReadOnly;
 	}
 
@@ -112,7 +112,7 @@ public class Search {
 	}
 
 	@JsonIgnore
-	public boolean isGetRetractedMsgs() {
+	public boolean getGetRetractedMsgs() {
 		return GetRetractedMsgs;
 	}
 
@@ -132,7 +132,7 @@ public class Search {
 	}
 
 	@JsonIgnore
-	public boolean isOrderDesc() {
+	public boolean getOrderDesc() {
 		return OrderDesc;
 	}
 
