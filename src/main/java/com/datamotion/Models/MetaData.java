@@ -71,12 +71,12 @@ public class MetaData {
 	}
 
 	@JsonIgnore
-	public ArrayList<MetaAttachment> getMetaAttachment() {
+	public ArrayList<MetaAttachment> getAttachments() {
 		return Attachments;
 	}
 
 	@JsonIgnore
-	public void setMetaAttachment(ArrayList<MetaAttachment> metaAttachment) {
+	public void setAttachments(ArrayList<MetaAttachment> metaAttachment) {
 		Attachments = metaAttachment;
 	}
 
