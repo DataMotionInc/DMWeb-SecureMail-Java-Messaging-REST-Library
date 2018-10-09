@@ -114,7 +114,7 @@ public class Folder {
 	}
 
 	@JsonIgnore
-	public boolean isIsSystemFolder() {
+	public boolean getIsSystemFolder() {
 		return IsSystemFolder;
 	}
 

@@ -32,13 +32,6 @@ public class Details {
 	 */
 	@JsonProperty("Statistics")
 	private Statistics Statistics;
-
-	@Override
-	public String toString() {
-		return "Details [\nEmailAddress= " + EmailAddress + "\nFirstName= " + FirstName + "\nLastName= " + LastName
-				+ "\nStatistics=\n" + Statistics.toString() + "]";
-	}
-
 	
 	public Details() {
 		EmailAddress = null;

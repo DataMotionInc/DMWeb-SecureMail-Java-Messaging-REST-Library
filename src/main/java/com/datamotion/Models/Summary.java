@@ -138,7 +138,7 @@ public class Summary {
 	}
 
 	@JsonIgnore
-	public boolean isRead() {
+	public boolean getRead() {
 		return Read;
 	}
 
