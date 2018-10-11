@@ -11,8 +11,9 @@ build_script:
     - gradlew.bat shadowJar -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
     - gradlew.bat javadoc -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
 
-after_build:
-    - 
+test_script:
+    - ps: $string = %UserIdOrEmail%`r`n%Password% | Out-File userpass.txt
+    - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
 artifacts:
 - path: build/libs
 - path: build/docs
