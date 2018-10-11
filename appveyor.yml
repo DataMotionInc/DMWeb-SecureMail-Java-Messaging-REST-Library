@@ -3,7 +3,7 @@ version: 1.0.{build}
 image: Visual Studio 2017
 
 before_build:
-    - ps: $BUILDNUM = Get-Content -Path BUILD
+    - ps: $BUILDNUM = Get-Content -Path BUILDNUM
     - ps: (Get-Content -Path build.gradle).replace('version-num',$BUILDNUM) | Set-Content -Path build.gradle
 
 build_script:
