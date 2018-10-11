@@ -18,6 +18,7 @@ artifacts:
 - path: build/docs
 
 deploy_script:
-    - on: 
-        APPVEYOR_REPO_TAG: true
-    - gradlew.bat publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass
+    - ps: >-
+        if($env:appveyor_repo_tag -eq 'True') {
+            cmd gradlew.bat publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass
+        }
