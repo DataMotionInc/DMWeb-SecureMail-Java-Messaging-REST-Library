@@ -1,4 +1,4 @@
-version: 1.0.{build}
+version: 1.0.0.{build}
 
 image: Visual Studio 2017
 
@@ -11,9 +11,13 @@ build_script:
     - gradlew.bat shadowJar -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
     - gradlew.bat javadoc -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
 
+after_build:
+    - 
 artifacts:
 - path: build/libs
 - path: build/docs
 
 deploy_script:
+    - on: 
+        APPVEYOR_REPO_TAG: true
     - gradlew.bat publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass
