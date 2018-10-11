@@ -12,7 +12,7 @@ build_script:
     - gradlew.bat javadoc -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
 
 test_script:
-    - ps: $string = $env:UserIdOrEmail`r`n$env:Password | Out-File userpass.txt
+    - ps: $string = "{0}{1}{2}" -f $env:UserIdOrEmail,([Environment]::NewLine),$env:Password | Out-File userpass.txt
     - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
 artifacts:
 - path: build/libs
