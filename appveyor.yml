@@ -2,21 +2,19 @@ version: 1.0.{build}
 
 image: Visual Studio 2017
 
-build_script:
-
+before_build:
 - ps: >-
-
     $BUILDNUM = Get-Content -Path BUILD
-
     (Get-Content -Path build.gradle).replace('version-num',$BUILDNUM) | Set-Content -Path build.gradle
 
-    gradlew.bat --build-cache -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% assemble
-    gradlew.bat shadowJar -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
-    gradlew.bat javadoc -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
+build_script:
+    - gradlew.bat --build-cache -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% assemble
+    - gradlew.bat shadowJar -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
+    - gradlew.bat javadoc -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
 
 artifacts:
 - path: build/libs
 - path: build/docs
 
 deploy_script:
-- ps: gradlew.bat publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass
+    - gradlew.bat publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass
