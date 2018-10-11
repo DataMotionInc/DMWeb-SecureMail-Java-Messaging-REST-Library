@@ -10,13 +10,13 @@ build_script:
 
     (Get-Content -Path build.gradle).replace('version-num',$BUILDNUM) | Set-Content -Path build.gradle
 
-    gradle --build-cache -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% assemble
-    gradle shadowJar -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
-    gradle javadoc -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
+    gradlew.bat --build-cache -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% assemble
+    gradlew.bat shadowJar -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
+    gradlew.bat javadoc -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
 
 artifacts:
 - path: build/libs
 - path: build/docs
 
 deploy_script:
-- ps: gradle publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass
+- ps: gradlew.bat publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass
