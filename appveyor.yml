@@ -1,0 +1,22 @@
+version: 1.0.{build}
+
+image: Visual Studio 2017
+
+build_script:
+
+- ps: >-
+
+    $BUILDNUM = Get-Content -Path BUILD
+
+    (Get-Content -Path build.gradle).replace('version-num',$BUILDNUM) | Set-Content -Path build.gradle
+
+    gradle --build-cache -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% assemble
+    gradle shadowJar -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
+    gradle javadoc -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
+
+artifacts:
+- path: build/libs
+- path: build/docs
+
+deploy_script:
+- ps: gradle publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass
