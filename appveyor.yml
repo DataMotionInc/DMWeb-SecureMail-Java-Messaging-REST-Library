@@ -18,6 +18,7 @@ test_script:
 artifacts:
 - path: build/libs
 - path: build/docs
+- path: C:/projects/library/build/reports/tests/test/index.html
 
 deploy_script:
     - ps: >-
