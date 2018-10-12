@@ -15,6 +15,8 @@ build_script:
     - gradlew.bat javadoc -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon
 
 test_script:
+    - ps: Write-Host 'Setting TLS version to 1.2'
+    - ps: '[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12'
     - ps: $string = "{0}{1}{2}" -f $env:UserIdOrEmail,([Environment]::NewLine),$env:Password | Out-File -Encoding utf8 userpass.txt
     - ps: cat userpass.txt
     - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon
