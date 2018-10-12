@@ -41,6 +41,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import org.apache.http.Header;
+import org.apache.http.util.EntityUtils;
+
 
 /**
  * Main Class containing methods for all DataMotion SecureMail API functions
