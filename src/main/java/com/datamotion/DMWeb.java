@@ -102,6 +102,7 @@ public class DMWeb {
 			headers.add(contentType);
 			Credentials creds = new Credentials(user, pass);
 			String JSONcreds = buildJSONStringFromObject(creds);
+			System.out.println(JSONcreds);
 			String response = "";
 			try {
 				HttpEntity entity = buildHttpPostEntity(URL, JSONcreds, headers);
