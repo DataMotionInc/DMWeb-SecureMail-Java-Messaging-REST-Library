@@ -24,10 +24,10 @@ on_finish:
     - ps: $url = "https://ci.appveyor.com/api/testresults/junit/$env:APPVEYOR_JOB_ID"
     - ps: echo $url
     - ps: >
-        Get-ChildItem -Path "$env:APPVEYOR_BUILD_FOLDER/build/test-results" -Filter *.xml -Recurse -File -Name | ForEach-Object {
-            echo $_.FullName
+        foreach($file in Get-ChildItem -Path "$env:APPVEYOR_BUILD_FOLDER/build/test-results" -Filter *.xml -Recurse) {
+            Write-Host $file.FullName
             $wc = New-Object 'System.Net.WebClient'
-            $wc.UploadFile($url, $_.FullName)
+            $wc.UploadFile($url, $file.FullName)
         }
 
 artifacts:
