@@ -41,9 +41,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import org.apache.http.Header;
-import org.apache.http.util.EntityUtils;
-
 
 /**
  * Main Class containing methods for all DataMotion SecureMail API functions
@@ -101,10 +98,8 @@ public class DMWeb {
 			String sessionKey = "";
 			String URL = BaseUrl + "SecureMessagingApi/Account/Logon";
 			HttpHeader contentType = new HttpHeader("Content-Type", "application/json");
-			HttpHeader contentLength = new HttpHeader("Content-Length", 76);
 			ArrayList<HttpHeader> headers = new ArrayList<HttpHeader>();
 			headers.add(contentType);
-			headers.add(contentLength);
 			Credentials creds = new Credentials(user, pass);
 			String JSONcreds = buildJSONStringFromObject(creds);
 			String response = "";
@@ -563,24 +558,7 @@ public class DMWeb {
 			httpPost.addHeader(headerList.get(i).getKey(), headerList.get(i).getValue());
 		}
 		httpPost.setEntity(input);
-		
-		
 		HttpResponse httpResponse = client.execute(httpPost);
-		
-		Header[] headers = httpPost.getAllHeaders();
-        String content = EntityUtils.toString(input);
-        System.out.println(httpPost.toString());
-        for (Header header : headers) {
-            System.out.println(header.getName() + ": " + header.getValue());
-        }
-        System.out.println();
-        System.out.println(content);
-		
-		
-		
-		
-		
-		
 		StatusCode = httpResponse.getStatusLine().getStatusCode();
 		HttpEntity entity = httpResponse.getEntity();
 		return entity;
