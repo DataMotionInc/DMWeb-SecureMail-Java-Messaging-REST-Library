@@ -21,12 +21,13 @@ test_script:
     
 on_finish:
     # - ps: cat "$env:APPVEYOR_BUILD_FOLDER/build/test-results"
-    - ps: echo "https://ci.appveyor.com/api/testresults/junit/$env:APPVEYOR_JOB_ID"
+    - ps: $url = "https://ci.appveyor.com/api/testresults/junit/$env:APPVEYOR_JOB_ID"
+    - ps: echo $url
     - ps: >
         Get-ChildItem -Path "$env:APPVEYOR_BUILD_FOLDER/build/test-results" -Filter *.xml -Recurse -File -Name | ForEach-Object {
             echo $_.FullName
             $wc = New-Object 'System.Net.WebClient'
-            $wc.UploadFile("https://ci.appveyor.com/api/testresults/junit/$env:APPVEYOR_JOB_ID", $_.FullName)
+            $wc.UploadFile($url, $_.FullName)
         }
 
 artifacts:
