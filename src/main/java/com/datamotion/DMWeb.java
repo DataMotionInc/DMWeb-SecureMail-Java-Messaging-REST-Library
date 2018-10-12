@@ -558,6 +558,24 @@ public class DMWeb {
 			httpPost.addHeader(headerList.get(i).getKey(), headerList.get(i).getValue());
 		}
 		httpPost.setEntity(input);
+		
+		
+		
+		
+		Header[] headers = httpPost.getAllHeaders();
+        String content = EntityUtils.toString(input);
+        System.out.println(httpPost.toString());
+        for (Header header : headers) {
+            System.out.println(header.getName() + ": " + header.getValue());
+        }
+        System.out.println();
+        System.out.println(content);
+		
+		
+		
+		
+		
+		
 		HttpResponse httpResponse = client.execute(httpPost);
 		StatusCode = httpResponse.getStatusLine().getStatusCode();
 		HttpEntity entity = httpResponse.getEntity();
