@@ -15,9 +15,7 @@ build_script:
     - gradlew.bat javadoc -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon
 
 test_script:
-    # - ps: $string = "{0}{1}{2}" -f $env:UserIdOrEmail,([Environment]::NewLine),$env:Password | Out-File userpass.txt
-    - sh: echo %UserIdOrEmail% > userpass.txt
-    - sh: echo %Password% >> userpass.txt
+    - ps: $string = "{0}{1}{2}" -f $env:UserIdOrEmail,([Environment]::NewLine),$env:Password | Out-File -Encoding utf8 userpass.txt
     - ps: cat userpass.txt
     - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon
     
