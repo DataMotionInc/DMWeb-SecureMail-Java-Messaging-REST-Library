@@ -101,7 +101,7 @@ public class DMWeb {
 			String sessionKey = "";
 			String URL = BaseUrl + "SecureMessagingApi/Account/Logon";
 			HttpHeader contentType = new HttpHeader("Content-Type", "application/json");
-			HttpHeader contentLength = new HttpHeader("Content-Length", "76");
+			HttpHeader contentLength = new HttpHeader("Content-Length", 76);
 			ArrayList<HttpHeader> headers = new ArrayList<HttpHeader>();
 			headers.add(contentType);
 			headers.add(contentLength);
