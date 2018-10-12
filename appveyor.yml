@@ -20,6 +20,11 @@ test_script:
     - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon
     
 on_finish:
+    - ps: >
+        Get-ChildItem -Path "$env:APPVEYOR_BUILD_FOLDER/build/test-results" -Filter *.xml -Recurse -File -Name | ForEach-Object {
+            $wc = New-Object 'System.Net.WebClient'
+            $wc.UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", $_.FullName)
+        }
   - sh: |
       find "$APPVEYOR_BUILD_FOLDER/build/test-results" -type f -name 'TEST*.xml' -print0 | xargs -0 -I '{}' curl -F 'file=@{}' "https://ci.appveyor.com/api/testresults/junit/$APPVEYOR_JOB_ID"
 
