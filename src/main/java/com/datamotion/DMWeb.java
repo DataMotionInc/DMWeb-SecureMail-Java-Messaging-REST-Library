@@ -563,7 +563,7 @@ public class DMWeb {
 		httpPost.setEntity(input);
 		
 		
-		
+		HttpResponse httpResponse = client.execute(httpPost);
 		
 		Header[] headers = httpPost.getAllHeaders();
         String content = EntityUtils.toString(input);
@@ -579,7 +579,6 @@ public class DMWeb {
 		
 		
 		
-		HttpResponse httpResponse = client.execute(httpPost);
 		StatusCode = httpResponse.getStatusLine().getStatusCode();
 		HttpEntity entity = httpResponse.getEntity();
 		return entity;
