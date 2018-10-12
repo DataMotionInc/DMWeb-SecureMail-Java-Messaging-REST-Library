@@ -20,9 +20,9 @@ test_script:
     - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon
     
 on_finish:
+    - ps: cat "$env:APPVEYOR_BUILD_FOLDER/build/test-results"
+    - ps: cat "https://ci.appveyor.com/api/testresults/junit/$env:APPVEYOR_JOB_ID"
     - ps: >
-        cat "$env:APPVEYOR_BUILD_FOLDER/build/test-results"
-        cat "https://ci.appveyor.com/api/testresults/junit/$env:APPVEYOR_JOB_ID"
         Get-ChildItem -Path "$env:APPVEYOR_BUILD_FOLDER/build/test-results" -Filter *.xml -Recurse -File -Name | ForEach-Object {
             cat $_.FullName
             $wc = New-Object 'System.Net.WebClient'
