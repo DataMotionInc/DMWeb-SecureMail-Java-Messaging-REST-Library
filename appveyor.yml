@@ -2,23 +2,26 @@ version: 1.0.0.{build}
 
 image: Visual Studio 2017
 
+skip_commits:
+    message: /\[ci skip\]/
+
 before_build:
     - ps: $BUILDNUM = Get-Content -Path BUILDNUM
     - ps: (Get-Content -Path build.gradle).replace('version-num',$BUILDNUM) | Set-Content -Path build.gradle
 
 build_script:
-    - gradlew.bat --build-cache -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% assemble
-    - gradlew.bat shadowJar -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
-    - gradlew.bat javadoc -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
+    - gradlew.bat --build-cache -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% assemble --info --no-daemon
+    - gradlew.bat shadowJar -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon
+    - gradlew.bat javadoc -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon
 
 test_script:
     - ps: $string = "{0}{1}{2}" -f $env:UserIdOrEmail,([Environment]::NewLine),$env:Password | Out-File userpass.txt
     - ps: cat userpass.txt
-    - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass%
+    - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon
     
 on_finish:
   - sh: |
-      find "$APPVEYOR_BUILD_FOLDER" -type f -name 'TEST*.xml' -print0 | xargs -0 -I '{}' curl -F 'file=@{}' "https://ci.appveyor.com/api/testresults/junit/$APPVEYOR_JOB_ID"
+      find "$APPVEYOR_BUILD_FOLDER/build/test-results" -type f -name 'TEST*.xml' -print0 | xargs -0 -I '{}' curl -F 'file=@{}' "https://ci.appveyor.com/api/testresults/junit/$APPVEYOR_JOB_ID"
 
 artifacts:
 - path: build/libs
