@@ -15,6 +15,7 @@ public class GetSessionKeyTest {
 		DMWeb tester = new DMWeb();
 		Context context = new Context();
 		tester.Account.logon(context.getUsername(), context.getPassword());
+		System.out.println(tester.getErrorMessage());
 		assertEquals(32, tester.getSessionKey().length());
 	}
 }
