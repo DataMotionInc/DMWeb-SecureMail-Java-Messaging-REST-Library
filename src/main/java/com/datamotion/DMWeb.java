@@ -103,6 +103,7 @@ public class DMWeb {
 			Credentials creds = new Credentials(user, pass);
 			String JSONcreds = buildJSONStringFromObject(creds);
 			String response = "";
+			System.out.println(JSONcreds);
 			try {
 				HttpEntity entity = buildHttpPostEntity(URL, JSONcreds, headers);
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
