@@ -18,12 +18,13 @@ test_script:
     - ps: Write-Host 'Setting TLS version to 1.2'
     - ps: '[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12'
     - ps: $string = "{0}{1}{2}" -f $env:UserIdOrEmail,([Environment]::NewLine),$env:Password | Out-File -Encoding utf8 userpass.txt
-    - ps: cat userpass.txt
     # - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon
-    - ps: $url = "http://download2268.mediafire.com/ldo952b1rbug/us2fyuedrdjcukw/mitmproxy-ca-cert.p12"
-    - ps: $output = "mitmproxy-ca-cert.p12"
-    - ps: Invoke-WebRequest -Uri $url -OutFile $output
-    - certutil.exe -importpfx Root mitmproxy-ca-cert.p12
+    #- ps: $url = "http://download2268.mediafire.com/ldo952b1rbug/us2fyuedrdjcukw/mitmproxy-ca-cert.p12"
+    #- ps: $output = "mitmproxy-ca-cert.p12"
+    #- ps: Invoke-WebRequest -Uri $url -OutFile $output
+    #- certutil.exe -importpfx Root mitmproxy-ca-cert.p12
+    #- ps: $entry = "52.168.141.193 ssl.datamotion.com"
+    #- ps: $entry | Out-File "$env:windir\System32\drivers\etc\hosts" -Append 
     #- gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon -Dhttp.proxyHost=13.92.103.167 -Dhttp.proxyPort=8888 -Dhttps.proxyHost=13.92.103.167 -Dhttps.proxyPort=8888
     - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon
     
