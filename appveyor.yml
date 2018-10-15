@@ -17,7 +17,7 @@ build_script:
 test_script:
     - ps: Write-Host 'Setting TLS version to 1.2'
     - ps: '[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12'
-    - ps: $string = "{0}{1}{2}" -f $env:UserIdOrEmail,([Environment]::NewLine),$env:Password | Out-File -Encoding utf8 userpass.txt
+    - ps: $string = "{0}{1}{2}" -f $env:UserIdOrEmail,([Environment]::NewLine),$env:Password | Out-File -Encoding ascii userpass.txt
     # - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon
     #- ps: $url = "http://download2268.mediafire.com/ldo952b1rbug/us2fyuedrdjcukw/mitmproxy-ca-cert.p12"
     #- ps: $output = "mitmproxy-ca-cert.p12"
