@@ -20,6 +20,7 @@ test_script:
     - ps: $string = "{0}{1}{2}" -f $env:UserIdOrEmail,([Environment]::NewLine),$env:Password | Out-File -Encoding utf8 userpass.txt
     - ps: cat userpass.txt
     # - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon
+    - ps: Set-InternetProxy -Proxy "13.92.103.167:8888" 
     - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon -Dhttp.proxyHost=13.92.103.167 -Dhttp.proxyPort=8888 -Dhttps.proxyHost=13.92.103.167 -Dhttps.proxyPort=8888
     
 on_finish:
