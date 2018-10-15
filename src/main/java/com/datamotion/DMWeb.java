@@ -77,7 +77,7 @@ public class DMWeb {
 	 * Sets <code>BaseUrl</code>
 	 */
 	public DMWeb() {
-		BaseUrl = "https://ssl.datamotion.com/";
+		BaseUrl = "https://securemailbeta.datamotion.com/";
 	}
 	
 	public DMWeb(String url) {
