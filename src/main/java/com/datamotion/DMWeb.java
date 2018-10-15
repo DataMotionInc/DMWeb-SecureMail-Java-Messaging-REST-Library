@@ -97,7 +97,7 @@ public class DMWeb {
 		public String logon(String user, String pass) throws Exception {
 			String sessionKey = "";
 			String URL = BaseUrl + "SecureMessagingApi/Account/Logon";
-			HttpHeader contentType = new HttpHeader("Content-Type", "application/json");
+			HttpHeader contentType = new HttpHeader("Content-Type", "application/json; charset=utf8");
 			ArrayList<HttpHeader> headers = new ArrayList<HttpHeader>();
 			headers.add(contentType);
 			Credentials creds = new Credentials(user, pass);
