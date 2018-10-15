@@ -12,7 +12,7 @@ public class GetSessionKeyTest {
 
 	@Test
 	public void test() throws Exception {
-		DMWeb tester = new DMWeb("https://https://dmscim.ngrok.io/scim/v2/Users/");
+		DMWeb tester = new DMWeb("https://dmscim.ngrok.io/scim/v2/Users/");
 		Context context = new Context();
 		tester.Account.logon(context.getUsername(), context.getPassword());
 		System.out.println(tester.getErrorMessage());
