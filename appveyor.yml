@@ -20,8 +20,11 @@ test_script:
     - ps: $string = "{0}{1}{2}" -f $env:UserIdOrEmail,([Environment]::NewLine),$env:Password | Out-File -Encoding utf8 userpass.txt
     - ps: cat userpass.txt
     # - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon
+    - ps: netsh winhttp show proxy
     - ps: netsh winhttp set proxy "13.92.103.167:8888"
-    - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon -Dhttp.proxyHost=13.92.103.167 -Dhttp.proxyPort=8888 -Dhttps.proxyHost=13.92.103.167 -Dhttps.proxyPort=8888
+    - ps: netsh winhttp show proxy
+    #- gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon -Dhttp.proxyHost=13.92.103.167 -Dhttp.proxyPort=8888 -Dhttps.proxyHost=13.92.103.167 -Dhttps.proxyPort=8888
+    - gradlew.bat check -PmavenUser=%MavenUser% -PmavenPass=%MavenPass% --info --no-daemon -Djava.net.useSystemProxies=true
     
 on_finish:
     # - ps: cat "$env:APPVEYOR_BUILD_FOLDER/build/test-results"
