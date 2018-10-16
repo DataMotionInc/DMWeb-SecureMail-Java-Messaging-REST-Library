@@ -55,29 +55,30 @@ signing {
     sign publishing.publications
 }
 
-publishing {
+afterevaluate {
+    publishing {
+        
+        artifacts {
+            archives sourcesJar
+            archives javadocJar
+        }
     
-    artifacts {
-        archives sourcesJar
-        archives javadocJar
+        publications.mavenJava(MavenPublication) {
+                from components.java
+                artifact sourcesJar
+                artifact javadocJar
+        }
+        repositories {
+    		maven {
+    			url "${project.version.endsWith('-SNAPSHOT') ? 'https://oss.sonatype.org/content/repositories/snapshots' : 'https://oss.sonatype.org/service/local/staging/deploy/maven2/' }"
+    			credentials {
+    				username project.mavenUser
+    				password project.mavenPass
+    			}
+    		}
+    	}
     }
-
-    publications.mavenJava(MavenPublication) {
-            from components.java
-            artifact sourcesJar
-            artifact javadocJar
-    }
-    repositories {
-		maven {
-			url "${project.version.endsWith('-SNAPSHOT') ? 'https://oss.sonatype.org/content/repositories/snapshots' : 'https://oss.sonatype.org/service/local/staging/deploy/maven2/' }"
-			credentials {
-				username project.mavenUser
-				password project.mavenPass
-			}
-		}
-	}
 }
-
 test {
 	beforeTest { descriptor ->
 		logger.lifecycle("Running test: " + descriptor)
