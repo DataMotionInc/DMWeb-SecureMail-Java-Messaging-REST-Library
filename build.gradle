@@ -52,7 +52,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 signing {
-    sign publishing.publications.mavenJava
+    sign publishing.publications
 }
 
 publishing {
