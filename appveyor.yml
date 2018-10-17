@@ -41,7 +41,7 @@ deploy_script:
         if($env:appveyor_repo_tag -eq 'True') 
         {
             iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))
-            cmd /c "appveyor-tools\secure-file -decrypt codesigning.asc.enc -secret ^"$env:Secret^""
+            cmd /c "appveyor-tools\secure-file -decrypt codesigning.asc.enc -secret /"$env:Secret/""
             gpg --fast-import codesigning.asc
             cmd /c "gradlew.bat sign publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass -Psigning.keyId=$KeyId -Psigning.password=$KeyPassword"
         }
