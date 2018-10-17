@@ -57,10 +57,13 @@ publishing {
         archives javadocJar
     }
 
-    publications.mavenJava(MavenPublication) {
+    publications
+    {
+        mavenJava(MavenPublication) {
             from components.java
             artifact sourcesJar
             artifact javadocJar
+            }
     }
     repositories {
 		maven {
@@ -72,7 +75,7 @@ publishing {
 		}
 	}
 	signing {
-    sign publishing.publications
+        sign publishing.publications
     }
 }
 
