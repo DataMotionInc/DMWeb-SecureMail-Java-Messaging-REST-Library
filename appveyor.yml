@@ -45,6 +45,6 @@ deploy_script:
             ls
             gpg --fast-import codesigning.asc
             
-            $string = "{0}{1}{2}" -f signing.keyId=$KeyId,([Environment]::NewLine),signing.password=$KeyPassword | Out-File -Encoding ascii $env:GRADLE_USER_HOME\gradle.properties
+            $string = "{0}{1}{2}" -f signing.keyId=$env:KeyId,([Environment]::NewLine),signing.password=$env:KeyPassword | Out-File -Encoding ascii $env:GRADLE_USER_HOME\gradle.properties
             cmd /c "gradlew.bat sign publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass"
         }
