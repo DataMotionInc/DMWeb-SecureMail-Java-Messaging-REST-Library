@@ -74,11 +74,12 @@ publishing {
 			}
 		}
 	}
-}
-
-signing 
-{
-    sign publishing.publications.mavenJava
+	
+	signing 
+    {
+        useGpgCmd()
+        sign publishing.publications.mavenJava
+    }
 }
     
 test {
