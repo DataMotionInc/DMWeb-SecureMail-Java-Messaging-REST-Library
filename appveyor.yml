@@ -38,7 +38,8 @@ artifacts:
 
 deploy_script:
     - ps: >-
-        if($env:appveyor_repo_tag -eq 'True') {
+        if($env:appveyor_repo_tag -eq 'True') 
+        {
             iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))
             cmd /c "appveyor-tools\secure-file -decrypt codesigning.asc.enc -secret '$env:Secret'"
             gpg --fast-import codesigning.asc
