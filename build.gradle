@@ -55,9 +55,7 @@ signing {
     sign publishing.publications
 }
 
-afterevaluate {
     publishing {
-        
         artifacts {
             archives sourcesJar
             archives javadocJar
@@ -78,7 +76,6 @@ afterevaluate {
     		}
     	}
     }
-}
 test {
 	beforeTest { descriptor ->
 		logger.lifecycle("Running test: " + descriptor)
