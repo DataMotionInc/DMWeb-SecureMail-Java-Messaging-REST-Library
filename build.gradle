@@ -74,11 +74,13 @@ publishing {
 			}
 		}
 	}
-	signing {
-        sign publishing.publications
-    }
 }
 
+signing 
+{
+    sign publishing.publications.mavenJava
+}
+    
 test {
 	beforeTest { descriptor ->
 		logger.lifecycle("Running test: " + descriptor)
