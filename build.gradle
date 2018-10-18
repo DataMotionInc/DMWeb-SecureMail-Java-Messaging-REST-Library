@@ -10,6 +10,7 @@ buildscript {
 
 plugins {
     id 'java'
+    id 'signing'
 }
 
 apply plugin: 'java'
