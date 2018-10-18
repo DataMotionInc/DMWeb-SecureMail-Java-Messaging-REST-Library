@@ -49,6 +49,6 @@ deploy_script:
 
             $env:GRADLE_USER_HOME
             #cmd /c "gradlew.bat sign publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass"
-            cmd /c "gradlew.bat sign -PmavenUser=$MavenUser -PmavenPass=$MavenPass"
+            cmd /c "gradlew.bat signMavenJava -PmavenUser=$MavenUser -PmavenPass=$MavenPass"
             cmd /c "gradlew.bat publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass"
         }
