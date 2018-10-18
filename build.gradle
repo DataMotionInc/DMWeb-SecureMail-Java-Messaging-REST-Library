@@ -73,14 +73,14 @@ publishing {
 			}
 		}
 	}
-}
-    
-if (project.hasProperty("signing.keyId"))
-{
-    apply plugin: 'signing'
-    	signing 
+	
+	if (project.hasProperty("signing.keyId"))
     {
-        sign publishing.publications.mavenJava
+        apply plugin: 'signing'
+	    signing 
+        {
+            sign publishing.publications.mavenJava
+        }
     }
 }
 
