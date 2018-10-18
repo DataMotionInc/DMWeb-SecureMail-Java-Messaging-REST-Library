@@ -48,5 +48,5 @@ deploy_script:
             $string = "signing.keyId={0}{1}signing.keypassword={2}" -f $env:KeyId,([Environment]::NewLine),$env:KeyPassword | Out-File -Encoding ascii $env:GRADLE_USER_HOME\gradle.properties
 
             #cmd /c "gradlew.bat sign publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass"
-            gradlew.bat sign publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass
+            cmd gradlew.bat sign publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass
         }
