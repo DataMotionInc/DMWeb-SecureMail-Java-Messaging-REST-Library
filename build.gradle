@@ -17,6 +17,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'maven-publish'
+apply plugin: 'signing'
 
 group = 'com.datamotion'
 version = 'version-num'
@@ -77,7 +78,6 @@ publishing {
 	
 	if (project.hasProperty("signing.keyId"))
     {
-        apply plugin: 'signing'
 	    signing 
         {
             sign publishing.publications.mavenJava
