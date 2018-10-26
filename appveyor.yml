@@ -50,6 +50,8 @@ deploy_script:
             
             ls
             
+            echo $env:MavenUser
+            
             cmd /c "gradlew.bat signMavenJavaPublication -PmavenUser=$MavenUser -PmavenPass=$MavenPass"
             cmd /c "gradlew.bat publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass"
         }
