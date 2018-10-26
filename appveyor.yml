@@ -42,10 +42,11 @@ deploy_script:
         {
             iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))
             cmd /c "appveyor-tools\secure-file -decrypt codesigning.asc.enc -secret $env:Secret"
+            
             gpg --fast-import codesigning.asc
+            gpg --export-secret-keys -o ~/secret.gpg
             
             $string = "signing.keyId={0}{1}signing.password={2}{3}signing.secretKeyRingFile=/c/Users/appveyor/.gnupg/secring.gpg" -f $env:KeyId,([Environment]::NewLine),$env:KeyPassword,([Environment]::NewLine) | Out-File -Encoding ascii ~/gradle.properties
-            
             
             cmd /c "gradlew.bat signMavenJavaPublication -PmavenUser=$MavenUser -PmavenPass=$MavenPass"
             cmd /c "gradlew.bat publish -PmavenUser=$MavenUser -PmavenPass=$MavenPass"
