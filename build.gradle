@@ -64,7 +64,30 @@ publishing {
             from components.java
             artifact sourcesJar
             artifact javadocJar
+            
+            pom.withXml {
+				asNode().with {
+					appendNode('name', 'DMWeb SecureMail Messaging')
+					appendNode('description', 'DMWeb SecureMail Messaging Java SDK')
+					appendNode('url', 'https://gitlab.com/DataMotion/DMWeb/SecureMail/Java/Messaging/REST/Library')
+					appendNode('scm').with {
+						appendNode('url', 'https://gitlab.com/DataMotion/DMWeb/SecureMail/Java/Messaging/REST/Library')
+					}
+					appendNode('licenses').with {
+						appendNode('license').with {
+							appendNode('name', 'MIT')
+							appendNode('url', 'https://support.datamotion.com/license')
+						}
+					}
+					appendNode('developers').with {
+						appendNode('developer').with {
+							appendNode('name', 'Thomas Tyler Bissell')
+							appendNode('organization', 'DataMotion')
+							appendNode('organizationUrl', 'https://datamotion.com/')						}
+					}
+				}
             }
+        }
     }
     repositories {
 		maven {
