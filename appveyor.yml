@@ -44,9 +44,9 @@ deploy_script:
             cmd /c "appveyor-tools\secure-file -decrypt codesigning.asc.enc -secret $env:Secret"
             
             gpg --fast-import codesigning.asc
-            gpg --export-secret-keys -o ~/secret.gpg
+            gpg --export-secret-keys -o "C:/projects/library/secring.gpg"
             
-            $string = "signing.keyId={0}{1}signing.password={2}{3}signing.secretKeyRingFile=secring.gpg" -f $env:KeyId,([Environment]::NewLine),$env:KeyPassword,([Environment]::NewLine) | Out-File -Encoding ascii ~/gradle.properties
+            $string = "signing.keyId={0}{1}signing.password={2}{3}signing.secretKeyRingFile=secring.gpg" -f $env:KeyId,([Environment]::NewLine),$env:KeyPassword,([Environment]::NewLine) | Out-File -Encoding ascii "C:/projects/library/gradle.properties"
             
             ls
             
