@@ -77,7 +77,7 @@ public class DMWeb {
 	 * Sets <code>BaseUrl</code>
 	 */
 	public DMWeb() {
-		BaseUrl = "https://securemailbeta.datamotion.com/";
+		BaseUrl = "https://ssl.datamotion.com/SecureMessagingApi";
 	}
 	
 	public DMWeb(String url) {
@@ -96,7 +96,7 @@ public class DMWeb {
 		 */
 		public String logon(String user, String pass) throws Exception {
 			String sessionKey = "";
-			String URL = BaseUrl + "SecureMessagingApi/Account/Logon";
+			String URL = BaseUrl + "/Account/Logon";
 			HttpHeader contentType = new HttpHeader("Content-Type", "application/json; charset=utf8");
 			ArrayList<HttpHeader> headers = new ArrayList<HttpHeader>();
 			headers.add(contentType);
@@ -124,7 +124,7 @@ public class DMWeb {
 		public Details getAccountDetails() throws Exception {
 			Details details = new Details();
 			String response = "";
-			String URL = BaseUrl + "SecureMessagingApi/Account/Details";
+			String URL = BaseUrl + "/Account/Details";
 			try {
 				HttpEntity entity = buildHttpGetEntity(URL, assembleCommonHeaders());
 				response = IOUtils.toString(entity.getContent(), "UTF-8");
@@ -146,7 +146,7 @@ public class DMWeb {
 		public void changePassword(String oldPass, String newPass) throws Exception {
 			PasswordChange passChange = new PasswordChange(oldPass, newPass);
 			String JSONPassChange = buildJSONStringFromObject(passChange);
-			String URL = BaseUrl + "SecureMessagingApi/Account/ChangePassword";
+			String URL = BaseUrl + "/Account/ChangePassword";
 			String response = "";
 			try {
 				HttpEntity entity = buildHttpPostEntity(URL, JSONPassChange, assembleCommonHeaders());
@@ -165,7 +165,7 @@ public class DMWeb {
 		 * @throws Exception 
 		 */
 		public void logout() throws Exception {
-			String URL = BaseUrl + "SecureMessagingApi/Account/Logout";
+			String URL = BaseUrl + "/Account/Logout";
 			String response = "";
 			try {
 				HttpEntity entity = buildHttpPostEntity(URL, "", assembleCommonHeaders());
@@ -189,7 +189,7 @@ public class DMWeb {
 		 */
 		public Folders listAllFolders() throws Exception {
 			Folders folders = new Folders();
-			String URL = BaseUrl + "SecureMessagingApi/Folder/List";
+			String URL = BaseUrl + "/Folder/List";
 			String response = "";
 			try {
 				HttpEntity entity = buildHttpGetEntity(URL, assembleCommonHeaders());
@@ -210,7 +210,7 @@ public class DMWeb {
 		 * @throws Exception 
 		 */
 		public NewFolderId createFolder(NewFolder newFolder) throws Exception {
-			String URL = BaseUrl + "SecureMessagingApi/Folder";
+			String URL = BaseUrl + "/Folder";
 			String JSONNewFolder = buildJSONStringFromObject(newFolder);
 			NewFolderId newFolderId = new NewFolderId();
 			String response = "";
@@ -233,7 +233,7 @@ public class DMWeb {
 		 * @throws Exception 
 		 */
 		public void deleteFolder(int folderID) throws Exception {
-			String URL = BaseUrl + "SecureMessagingApi/Folder/" + folderID;
+			String URL = BaseUrl + "/Folder/" + folderID;
 			String response = "";
 			try {
 				HttpEntity entity = buildHttpDeleteEntity(URL, assembleCommonHeaders());
@@ -257,7 +257,7 @@ public class DMWeb {
 		 * @throws Exception 
 		 */
 		public MessageIds getInboxMessageIds(MessageIdGet ID) throws Exception {
-			String URL = BaseUrl + "SecureMessagingApi/Message/GetInboxMessageIds";
+			String URL = BaseUrl + "/Message/GetInboxMessageIds";
 			String JSONMessageIDget = buildJSONStringFromObject(ID);
 			MessageIds messageIds = new MessageIds();
 			String response = "";
@@ -281,7 +281,7 @@ public class DMWeb {
 		 */
 		public MessageSummariesResponse getMessageSummaries(MessageSummariesGet messageSummariesGet) throws Exception {
 			MessageSummariesResponse messageSummariesResponse = new MessageSummariesResponse();
-			String URL = BaseUrl + "SecureMessagingApi/Message/GetMessageSummaries";
+			String URL = BaseUrl + "/Message/GetMessageSummaries";
 			String JSONGetSummaries = buildJSONStringFromObject(messageSummariesGet);
 			String response = "";
 			try {
@@ -305,7 +305,7 @@ public class DMWeb {
 		 */
 		public MessageSummariesResponse getUnreadMessages(boolean after, int lastMessageId) throws Exception {
 			MessageSummariesResponse messageSummariesResponse = new MessageSummariesResponse();
-			String URL = BaseUrl + "SecureMessagingApi/Message/Inbox/Unread";
+			String URL = BaseUrl + "/Message/Inbox/Unread";
 			String response = "";
 			if (after) {URL += "?After=" + lastMessageId;}
 			try {
@@ -328,7 +328,7 @@ public class DMWeb {
 		 */
 		public SearchResponse searchInbox(Search search) throws Exception {
 			SearchResponse searchResponse = new SearchResponse();
-			String URL = BaseUrl + "SecureMessagingApi/Message/Inbox/Search";
+			String URL = BaseUrl + "/Message/Inbox/Search";
 			String JSONSearch = buildJSONStringFromObject(search);
 			String response = "";
 			try {
@@ -351,7 +351,7 @@ public class DMWeb {
 		 */
 		public MetaData getMessageMetadata(int messageId) throws Exception {
 			MetaData metaData = new MetaData();
-			String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Metadata";
+			String URL = BaseUrl + "/Message/" + messageId + "/Metadata";
 			String response = "";
 			try {
 				HttpEntity entity = buildHttpGetEntity(URL, assembleCommonHeaders());
@@ -373,7 +373,7 @@ public class DMWeb {
 		 */
 		public Message getMessage(int messageId) throws Exception {
 			Message message = new Message();
-			String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId;
+			String URL = BaseUrl + "/Message/" + messageId;
 			String response = "";
 			try {
 				HttpEntity entity = buildHttpGetEntity(URL, assembleCommonHeaders());
@@ -395,7 +395,7 @@ public class DMWeb {
 		 */
 		public MimeMessage getMimeMessage(int messageId) throws Exception {
 			MimeMessage mimeMessage = new MimeMessage();
-			String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Mime";
+			String URL = BaseUrl + "/Message/" + messageId + "/Mime";
 			String response = "";
 			try {
 				HttpEntity entity = buildHttpGetEntity(URL, assembleCommonHeaders());
@@ -417,7 +417,7 @@ public class DMWeb {
 		 */
 		public MessageId sendMessage(Message message) throws Exception {
 			MessageId messageId = new MessageId();
-			String URL = BaseUrl + "SecureMessagingApi/Message/";
+			String URL = BaseUrl + "/Message/";
 			String JSONMessage = buildJSONStringFromObject(message);
 			String response = "";
 			try {
@@ -440,7 +440,7 @@ public class DMWeb {
 		 */
 		public MessageId sendMimeMessage(MimeMessage mimeMessage) throws Exception {
 			MessageId messageId = new MessageId();
-			String URL = BaseUrl + "SecureMessagingApi/Message/Mime";
+			String URL = BaseUrl + "/Message/Mime";
 			String JSONMimeMessage = buildJSONStringFromObject(mimeMessage);
 			String response = "";
 			try {
@@ -462,7 +462,7 @@ public class DMWeb {
 		 * @throws Exception 
 		 */
 		public void moveMessage(MoveMessage moveMessage, int messageId) throws Exception {
-			String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Move";
+			String URL = BaseUrl + "/Message/" + messageId + "/Move";
 			String JSONMoveMessage = buildJSONStringFromObject(moveMessage);
 			String response = "";
 			try {
@@ -485,7 +485,7 @@ public class DMWeb {
 		 */
 		public DeleteMessageResponse deleteMessage(int messageId, boolean permanent) throws Exception {
 			DeleteMessageResponse deleteMessageResponse = new DeleteMessageResponse();
-			String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId;
+			String URL = BaseUrl + "/Message/" + messageId;
 			String response = "";
 			if (permanent) {URL += "?Permanently=true";}
 			try { 
@@ -506,7 +506,7 @@ public class DMWeb {
 		 * @throws Exception 
 		 */
 		public void retractMessage(int messageId) throws Exception {
-			String URL = BaseUrl + "SecureMessagingApi/Message/" + messageId + "/Retract";
+			String URL = BaseUrl + "/Message/" + messageId + "/Retract";
 			String response = "";
 			try {
 				HttpEntity entity = buildHttpPostEntity(URL, "", assembleCommonHeaders());
