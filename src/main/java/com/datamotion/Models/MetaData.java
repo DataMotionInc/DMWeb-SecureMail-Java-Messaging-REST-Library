@@ -15,7 +15,7 @@ public class MetaData {
 	 * See MetaAttachment model class
 	 */
 	@JsonProperty ("Attachments") 
-	private ArrayList<MetaAttachment> MetaAttachment;
+	private ArrayList<MetaAttachment> Attachments;
 	
 	/**
 	 * Date/time string for message expiration	
@@ -50,7 +50,7 @@ public class MetaData {
 	private ArrayList<Tracking> Tracking;
 	
 	public MetaData() {
-		MetaAttachment = null;
+		Attachments = null;
 		ExpirationDate = null;
 		MessageId = 0;
 		MessageSize = 0;
@@ -62,7 +62,7 @@ public class MetaData {
 	public MetaData(ArrayList<com.datamotion.Models.MetaAttachment> metaAttachment, String expirationDate,
 			int messageId, int messageSize, com.datamotion.Models.SecurityEnvelope securityEnvelope,
 			ArrayList<com.datamotion.Models.Tracking> tracking) {
-		MetaAttachment = metaAttachment;
+		Attachments = metaAttachment;
 		ExpirationDate = expirationDate;
 		MessageId = messageId;
 		MessageSize = messageSize;
@@ -71,13 +71,13 @@ public class MetaData {
 	}
 
 	@JsonIgnore
-	public ArrayList<MetaAttachment> getMetaAttachment() {
-		return MetaAttachment;
+	public ArrayList<MetaAttachment> getAttachments() {
+		return Attachments;
 	}
 
 	@JsonIgnore
-	public void setMetaAttachment(ArrayList<MetaAttachment> metaAttachment) {
-		MetaAttachment = metaAttachment;
+	public void setAttachments(ArrayList<MetaAttachment> metaAttachment) {
+		Attachments = metaAttachment;
 	}
 
 	@JsonIgnore

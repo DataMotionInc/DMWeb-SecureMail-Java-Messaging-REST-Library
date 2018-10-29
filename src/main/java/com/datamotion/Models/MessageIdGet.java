@@ -61,7 +61,7 @@ public class MessageIdGet {
 	}
 
 	@JsonIgnore
-	public boolean isMustHaveAttachments() {
+	public boolean getMustHaveAttachments() {
 		return MustHaveAttachments;
 	}
 

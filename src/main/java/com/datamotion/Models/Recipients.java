@@ -76,7 +76,7 @@ public class Recipients {
 	}
 
 	@JsonIgnore
-	public boolean isDelivered() {
+	public boolean getDelivered() {
 		return Delivered;
 	}
 
@@ -96,7 +96,7 @@ public class Recipients {
 	}
 
 	@JsonIgnore
-	public boolean isDownloaded() {
+	public boolean getDownloaded() {
 		return Downloaded;
 	}
 

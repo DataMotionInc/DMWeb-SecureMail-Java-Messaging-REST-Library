@@ -15,7 +15,6 @@ public class GetSessionKeyTest {
 		DMWeb tester = new DMWeb("https://securemailbeta.datamotion.com/");
 		Context context = new Context();
 		tester.Account.logon(context.getUsername(), context.getPassword());
-		System.out.println(tester.getErrorMessage());
 		assertEquals(32, tester.getSessionKey().length());
 	}
 }

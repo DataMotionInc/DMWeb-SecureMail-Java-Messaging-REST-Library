@@ -174,7 +174,7 @@ public class Results {
 	}
 
 	@JsonIgnore
-	public boolean isRead() {
+	public boolean getRead() {
 		return Read;
 	}
 
@@ -194,7 +194,7 @@ public class Results {
 	}
 
 	@JsonIgnore
-	public boolean isReadConfirmation() {
+	public boolean getReadConfirmation() {
 		return ReadConfirmation;
 	}
 

@@ -35,7 +35,7 @@ public class MessageSummariesResponse {
 	}
 
 	@JsonIgnore
-	public boolean isMoreMessagesAvailable() {
+	public boolean getMoreMessagesAvailable() {
 		return MoreMessagesAvailable;
 	}
 
