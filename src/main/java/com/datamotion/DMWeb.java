@@ -110,6 +110,7 @@ public class DMWeb {
 				sessionKey = node.get("SessionKey").asText();
 			}catch (Exception ex) {
 				ErrorMessage = response;
+				System.out.println(response);
 				throw new Exception(response);
 			}
 			SessionKey = sessionKey;
