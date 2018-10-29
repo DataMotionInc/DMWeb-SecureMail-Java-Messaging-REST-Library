@@ -12,7 +12,7 @@ public class GetSessionKeyTest {
 
 	@Test
 	public void test() throws Exception {
-		DMWeb tester = new DMWeb("https://securemailbeta.datamotion.com/");
+		DMWeb tester = new DMWeb();
 		Context context = new Context();
 		tester.Account.logon(context.getUsername(), context.getPassword());
 		assertEquals(32, tester.getSessionKey().length());
