@@ -83,7 +83,18 @@ publishing {
 						appendNode('developer').with {
 							appendNode('name', 'Thomas Tyler Bissell')
 							appendNode('organization', 'DataMotion')
-							appendNode('organizationUrl', 'https://datamotion.com/')						}
+							appendNode('organizationUrl', 'https://datamotion.com/')						
+						}
+						appendNode('developer').with {
+							appendNode('name', 'Christopher Ly')
+							appendNode('organization', 'DataMotion')
+							appendNode('organizationUrl', 'https://datamotion.com/')						
+						}
+						appendNode('developer').with {
+							appendNode('name', 'Kyle Corsi')
+							appendNode('organization', 'DataMotion')
+							appendNode('organizationUrl', 'https://datamotion.com/')						
+						}
 					}
 				}
             }
