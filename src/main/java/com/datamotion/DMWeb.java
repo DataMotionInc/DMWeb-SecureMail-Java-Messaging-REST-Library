@@ -21,6 +21,9 @@ import com.datamotion.Models.Credentials;
 import com.datamotion.Models.DeleteMessageResponse;
 import com.datamotion.Models.Details;
 import com.datamotion.Models.Folders;
+import com.datamotion.Models.GetAttachmentResponse;
+import com.datamotion.Models.GetMessageSummariesWithMetadata;
+import com.datamotion.Models.GetMessageSummariesWithMetadataResponse;
 import com.datamotion.Models.HttpHeader;
 import com.datamotion.Models.Message;
 import com.datamotion.Models.MessageIdGet;
@@ -28,6 +31,7 @@ import com.datamotion.Models.MessageId;
 import com.datamotion.Models.MessageIds;
 import com.datamotion.Models.MessageSummariesGet;
 import com.datamotion.Models.MessageSummariesResponse;
+import com.datamotion.Models.MessageWithAttachmentMetadata;
 import com.datamotion.Models.MetaData;
 import com.datamotion.Models.MimeMessage;
 import com.datamotion.Models.MoveMessage;
@@ -518,6 +522,88 @@ public class DMWeb {
 				throw new Exception(response);
 			}
 		}
+		
+//		public MessageWithAttachmentMetadata getMessageWithoutAttachmentData(int messageId) throws Exception {
+//			MessageWithAttachmentMetadata message = new MessageWithAttachmentMetadata();
+//			String URL = BaseUrl + "/Message/" + messageId + "/NoAttachmentData";
+//			String response = "";
+//			try {
+//				HttpEntity entity = buildHttpGetEntity(URL, assembleCommonHeaders());
+//				response = IOUtils.toString(entity.getContent(), "UTF-8");
+//				ObjectMapper objectMapper = new ObjectMapper();
+//				message = objectMapper.readValue(response, MessageWithAttachmentMetadata.class);
+//			} catch (Exception ex) {
+//				ErrorMessage = response;
+//				throw new Exception(response);
+//			}
+//			return message;
+//		}
+//		
+//		public GetAttachmentResponse getAttachment(int attachmentId) throws Exception {
+//			GetAttachmentResponse attachment = new GetAttachmentResponse();
+//			String URL = BaseUrl + "/Message/" + attachmentId + "/Attachment";
+//			String response = "";
+//			try {
+//				HttpEntity entity = buildHttpGetEntity(URL, assembleCommonHeaders());
+//				response = IOUtils.toString(entity.getContent(), "UTF-8");
+//				ObjectMapper objectMapper = new ObjectMapper();
+//				attachment = objectMapper.readValue(response, GetAttachmentResponse.class);
+//			} catch(Exception ex) {
+//				ErrorMessage = response;
+//				throw new Exception(response);
+//			}
+//			return attachment;
+//		}
+//		
+//		public GetMessageSummariesWithMetadataResponse getMessageSummariesWithMetadata(GetMessageSummariesWithMetadata req) throws Exception {
+//			GetMessageSummariesWithMetadataResponse summaries = new GetMessageSummariesWithMetadataResponse();
+//			String URL = BaseUrl + "/Message/GetMessageSummariesWithMetadata";
+//			String JSONreq = buildJSONStringFromObject(req);
+//			String response = "";
+//			try {
+//				HttpEntity entity = buildHttpPostEntity(URL, JSONreq, assembleCommonHeaders());
+//				response = IOUtils.toString(entity.getContent(), "UTF-8");
+//				ObjectMapper objectMapper = new ObjectMapper();
+//				summaries = objectMapper.readValue(response, GetMessageSummariesWithMetadataResponse.class);
+//			} catch (Exception ex) {
+//				ErrorMessage = response;
+//				throw new Exception(response);
+//			}
+//			return summaries;
+//		}
+//		
+//		public MessageId saveDraft(Message draft) throws Exception {
+//			MessageId messageId = new MessageId();
+//			String URL = BaseUrl + "/Message/SaveDraft";
+//			String JSONDraft = buildJSONStringFromObject(draft);
+//			String response = "";
+//			try {
+//				HttpEntity entity = buildHttpPostEntity(URL, JSONDraft, assembleCommonHeaders());
+//				response = IOUtils.toString(entity.getContent(), "UTF-8");
+//				ObjectMapper objectMapper = new ObjectMapper();
+//				messageId = objectMapper.readValue(response, MessageId.class);
+//			} catch (Exception ex) {
+//				ErrorMessage = response;
+//				throw new Exception(response);
+//			}
+//			return messageId;
+//		}
+//		
+//		public MessageId sendDraft(String draftId) throws Exception {
+//			MessageId messageId = new MessageId();
+//			String URL = BaseUrl + "/Message/" + draftId + "/SendDraft";
+//			String response = "";
+//			try {
+//				HttpEntity entity = buildHttpPostEntity(URL, "", assembleCommonHeaders());
+//				response = IOUtils.toString(entity.getContent(), "UTF-8");
+//				ObjectMapper objectMapper = new ObjectMapper();
+//				messageId = objectMapper.readValue(response, MessageId.class);
+//			} catch (Exception ex) {
+//				ErrorMessage = response;
+//				throw new Exception(response);
+//			}
+//			return messageId;
+//		}
 	}
 	//Auxiliary Functions:
 	
