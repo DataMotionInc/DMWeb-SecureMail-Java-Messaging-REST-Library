@@ -32,7 +32,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:'2.9.8'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:'2.9.9'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version:'2.9.6'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version:'2.9.6'
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version:'4.5.5'
@@ -104,8 +104,8 @@ publishing {
 		maven {
 			url "${project.version.endsWith('-SNAPSHOT') ? 'https://oss.sonatype.org/content/repositories/snapshots' : 'https://oss.sonatype.org/service/local/staging/deploy/maven2/' }"
 			credentials {
-				username project.mavenUser
-				password project.mavenPass
+				//username project.mavenUser
+				//password project.mavenPass
 			}
 		}
 	}
