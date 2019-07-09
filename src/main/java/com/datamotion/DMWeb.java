@@ -523,87 +523,87 @@ public class DMWeb {
 			}
 		}
 		
-//		public MessageWithAttachmentMetadata getMessageWithoutAttachmentData(int messageId) throws Exception {
-//			MessageWithAttachmentMetadata message = new MessageWithAttachmentMetadata();
-//			String URL = BaseUrl + "/Message/" + messageId + "/NoAttachmentData";
-//			String response = "";
-//			try {
-//				HttpEntity entity = buildHttpGetEntity(URL, assembleCommonHeaders());
-//				response = IOUtils.toString(entity.getContent(), "UTF-8");
-//				ObjectMapper objectMapper = new ObjectMapper();
-//				message = objectMapper.readValue(response, MessageWithAttachmentMetadata.class);
-//			} catch (Exception ex) {
-//				ErrorMessage = response;
-//				throw new Exception(response);
-//			}
-//			return message;
-//		}
-//		
-//		public GetAttachmentResponse getAttachment(int attachmentId) throws Exception {
-//			GetAttachmentResponse attachment = new GetAttachmentResponse();
-//			String URL = BaseUrl + "/Message/" + attachmentId + "/Attachment";
-//			String response = "";
-//			try {
-//				HttpEntity entity = buildHttpGetEntity(URL, assembleCommonHeaders());
-//				response = IOUtils.toString(entity.getContent(), "UTF-8");
-//				ObjectMapper objectMapper = new ObjectMapper();
-//				attachment = objectMapper.readValue(response, GetAttachmentResponse.class);
-//			} catch(Exception ex) {
-//				ErrorMessage = response;
-//				throw new Exception(response);
-//			}
-//			return attachment;
-//		}
-//		
-//		public GetMessageSummariesWithMetadataResponse getMessageSummariesWithMetadata(GetMessageSummariesWithMetadata req) throws Exception {
-//			GetMessageSummariesWithMetadataResponse summaries = new GetMessageSummariesWithMetadataResponse();
-//			String URL = BaseUrl + "/Message/GetMessageSummariesWithMetadata";
-//			String JSONreq = buildJSONStringFromObject(req);
-//			String response = "";
-//			try {
-//				HttpEntity entity = buildHttpPostEntity(URL, JSONreq, assembleCommonHeaders());
-//				response = IOUtils.toString(entity.getContent(), "UTF-8");
-//				ObjectMapper objectMapper = new ObjectMapper();
-//				summaries = objectMapper.readValue(response, GetMessageSummariesWithMetadataResponse.class);
-//			} catch (Exception ex) {
-//				ErrorMessage = response;
-//				throw new Exception(response);
-//			}
-//			return summaries;
-//		}
-//		
-//		public MessageId saveDraft(Message draft) throws Exception {
-//			MessageId messageId = new MessageId();
-//			String URL = BaseUrl + "/Message/SaveDraft";
-//			String JSONDraft = buildJSONStringFromObject(draft);
-//			String response = "";
-//			try {
-//				HttpEntity entity = buildHttpPostEntity(URL, JSONDraft, assembleCommonHeaders());
-//				response = IOUtils.toString(entity.getContent(), "UTF-8");
-//				ObjectMapper objectMapper = new ObjectMapper();
-//				messageId = objectMapper.readValue(response, MessageId.class);
-//			} catch (Exception ex) {
-//				ErrorMessage = response;
-//				throw new Exception(response);
-//			}
-//			return messageId;
-//		}
-//		
-//		public MessageId sendDraft(String draftId) throws Exception {
-//			MessageId messageId = new MessageId();
-//			String URL = BaseUrl + "/Message/" + draftId + "/SendDraft";
-//			String response = "";
-//			try {
-//				HttpEntity entity = buildHttpPostEntity(URL, "", assembleCommonHeaders());
-//				response = IOUtils.toString(entity.getContent(), "UTF-8");
-//				ObjectMapper objectMapper = new ObjectMapper();
-//				messageId = objectMapper.readValue(response, MessageId.class);
-//			} catch (Exception ex) {
-//				ErrorMessage = response;
-//				throw new Exception(response);
-//			}
-//			return messageId;
-//		}
+		public MessageWithAttachmentMetadata getMessageWithoutAttachmentData(int messageId) throws Exception {
+			MessageWithAttachmentMetadata message = new MessageWithAttachmentMetadata();
+			String URL = BaseUrl + "/Message/" + messageId + "/NoAttachmentData";
+			String response = "";
+			try {
+				HttpEntity entity = buildHttpGetEntity(URL, assembleCommonHeaders());
+				response = IOUtils.toString(entity.getContent(), "UTF-8");
+				ObjectMapper objectMapper = new ObjectMapper();
+				message = objectMapper.readValue(response, MessageWithAttachmentMetadata.class);
+			} catch (Exception ex) {
+				ErrorMessage = response;
+				throw new Exception(response);
+			}
+			return message;
+		}
+		
+		public GetAttachmentResponse getAttachment(int attachmentId) throws Exception {
+			GetAttachmentResponse attachment = new GetAttachmentResponse();
+			String URL = BaseUrl + "/Message/" + attachmentId + "/Attachment";
+			String response = "";
+			try {
+				HttpEntity entity = buildHttpGetEntity(URL, assembleCommonHeaders());
+				response = IOUtils.toString(entity.getContent(), "UTF-8");
+				ObjectMapper objectMapper = new ObjectMapper();
+				attachment = objectMapper.readValue(response, GetAttachmentResponse.class);
+			} catch(Exception ex) {
+				ErrorMessage = response;
+				throw new Exception(response);
+			}
+			return attachment;
+		}
+		
+		public GetMessageSummariesWithMetadataResponse getMessageSummariesWithMetadata(GetMessageSummariesWithMetadata req) throws Exception {
+			GetMessageSummariesWithMetadataResponse summaries = new GetMessageSummariesWithMetadataResponse();
+			String URL = BaseUrl + "/Message/GetMessageSummariesWithMetadata";
+			String JSONreq = buildJSONStringFromObject(req);
+			String response = "";
+			try {
+				HttpEntity entity = buildHttpPostEntity(URL, JSONreq, assembleCommonHeaders());
+				response = IOUtils.toString(entity.getContent(), "UTF-8");
+				ObjectMapper objectMapper = new ObjectMapper();
+				summaries = objectMapper.readValue(response, GetMessageSummariesWithMetadataResponse.class);
+			} catch (Exception ex) {
+				ErrorMessage = response;
+				throw new Exception(response);
+			}
+			return summaries;
+		}
+		
+		public MessageId saveDraft(Message draft) throws Exception {
+			MessageId messageId = new MessageId();
+			String URL = BaseUrl + "/Message/SaveDraft";
+			String JSONDraft = buildJSONStringFromObject(draft);
+			String response = "";
+			try {
+				HttpEntity entity = buildHttpPostEntity(URL, JSONDraft, assembleCommonHeaders());
+				response = IOUtils.toString(entity.getContent(), "UTF-8");
+				ObjectMapper objectMapper = new ObjectMapper();
+				messageId = objectMapper.readValue(response, MessageId.class);
+			} catch (Exception ex) {
+				ErrorMessage = response;
+				throw new Exception(response);
+			}
+			return messageId;
+		}
+		
+		public MessageId sendDraft(String draftId) throws Exception {
+			MessageId messageId = new MessageId();
+			String URL = BaseUrl + "/Message/" + draftId + "/SendDraft";
+			String response = "";
+			try {
+				HttpEntity entity = buildHttpPostEntity(URL, "", assembleCommonHeaders());
+				response = IOUtils.toString(entity.getContent(), "UTF-8");
+				ObjectMapper objectMapper = new ObjectMapper();
+				messageId = objectMapper.readValue(response, MessageId.class);
+			} catch (Exception ex) {
+				ErrorMessage = response;
+				throw new Exception(response);
+			}
+			return messageId;
+		}
 	}
 	//Auxiliary Functions:
 	
@@ -638,7 +638,7 @@ public class DMWeb {
 	public static HttpEntity buildHttpPostEntity(String URL, String body, ArrayList<HttpHeader> headerList) throws ClientProtocolException, IOException {
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost httpPost = new HttpPost(URL);
-		StringEntity input = new StringEntity(body);
+		StringEntity input = new StringEntity(body, "UTF-8");
 		for (int i = 0; i < headerList.size(); i++) {
 			httpPost.addHeader(headerList.get(i).getKey(), headerList.get(i).getValue());
 		}
