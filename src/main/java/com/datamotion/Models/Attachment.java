@@ -97,7 +97,8 @@ public class Attachment {
 	@JsonIgnore
 	public void setFileName(String fileName) {
 		FileName = fileName;
-
+	}
+	
 	@JsonIgnore
 	public String getContentId() {
 		return ContentId;
