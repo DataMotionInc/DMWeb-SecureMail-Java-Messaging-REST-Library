@@ -31,18 +31,25 @@ public class Attachment {
 	@JsonProperty("FileName")
 	private String FileName;
 	
+	/**
+	 * Attachment ContentId
+	 */
+	@JsonProperty("ContentId")
+	private String ContentId;
 	
 	public Attachment() {
 		AttachmentBase64 = null;
 		ContentType = null;
 		FileName = null;
+		ContentId = null;
 	}
 	
 	
-	public Attachment(String attachmentBase64, String contentType, String fileName) {
+	public Attachment(String attachmentBase64, String contentType, String fileName, String contentId) {
 		AttachmentBase64 = attachmentBase64;
 		ContentType = contentType;
 		FileName = fileName;
+		ContentId = contentId;
 	}
 	
 	@JsonIgnore
@@ -90,6 +97,15 @@ public class Attachment {
 	@JsonIgnore
 	public void setFileName(String fileName) {
 		FileName = fileName;
+
+	@JsonIgnore
+	public String getContentId() {
+		return ContentId;
+	}
+
+	@JsonIgnore
+	public void setContentId(String contentId) {
+		ContentId = contentId;
 	}
 	
 }
