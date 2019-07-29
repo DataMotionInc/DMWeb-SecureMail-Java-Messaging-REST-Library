@@ -34,7 +34,7 @@ public class MoveMessageTest {
 			ArrayList<String> cc = new ArrayList<String>();
 			ArrayList<String> bcc = new ArrayList<String>();
 			ArrayList<Attachment> attachments = new ArrayList<Attachment>();
-			Attachment attachment = new Attachment("dGhpcyBpcyBhIHRlc3QgZmlsZQ==", "text/plain", "test.txt");
+			Attachment attachment = new Attachment("dGhpcyBpcyBhIHRlc3QgZmlsZQ==", "text/plain", "test.txt", null);
 			attachments.add(attachment);
 			Message message = new Message(to, context.getUsername(), cc, bcc, "TestSubject", "CreateTime", attachments, "content", "content");
 			int messageId = tester.Message.sendMessage(message).getMessageId();
