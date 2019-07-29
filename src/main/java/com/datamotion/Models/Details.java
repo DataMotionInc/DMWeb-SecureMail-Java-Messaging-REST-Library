@@ -33,20 +33,36 @@ public class Details {
 	@JsonProperty("Statistics")
 	private Statistics Statistics;
 	
+	/**
+	 * Account Uid
+	 */
+	@JsonProperty("Uid")
+	private Integer Uid;
+
+	/**
+	 * Account UserId
+	 */
+	@JsonProperty("UserId")
+	private String UserId;
+
 	public Details() {
 		EmailAddress = null;
 		FirstName = null;
 		LastName = null;
 		Statistics = null;
+		Uid = null;
+		UserId = null;
 	}
 
 	
 	public Details(String emailAddress, String firstName, String lastName,
-			com.datamotion.Models.Statistics statistics) {
+			com.datamotion.Models.Statistics statistics, Integer uid, String userId) {
 		EmailAddress = emailAddress;
 		FirstName = firstName;
 		LastName = lastName;
 		Statistics = statistics;
+		Uid = uid;
+		UserId = userId;
 	}
 
 	@JsonIgnore
@@ -88,5 +104,26 @@ public class Details {
 	public void setStatistics(Statistics statistics) {
 		Statistics = statistics;
 	}
+	
+	@JsonIgnore
+	public Integer getUid(){
+		return Uid;
+	}
+
+	@JsonIgnore
+	public Integer setUid(Integer uid){
+		Uid = uid;
+	}
+
+	@JsonIgnore
+	public String getUserId(){
+		return UserId;
+	}
+
+	@JsonIgnore
+	public String setUserId(String userId){
+		UserId = userId;
+	}
+
 	
 }
