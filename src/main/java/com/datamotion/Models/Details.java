@@ -111,7 +111,7 @@ public class Details {
 	}
 
 	@JsonIgnore
-	public Integer setUid(Integer uid){
+	public void setUid(Integer uid){
 		Uid = uid;
 	}
 
@@ -121,7 +121,7 @@ public class Details {
 	}
 
 	@JsonIgnore
-	public String setUserId(String userId){
+	public void setUserId(String userId){
 		UserId = userId;
 	}
 
